@@ -1,0 +1,346 @@
+/* Menu */
+.menu--desktop {
+  display: block;
+  margin-right: 20px;
+  margin-top: 10px;
+}
+
+.menu--mobile {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .menu--desktop {
+    display: none;
+  }
+
+  .menu--mobile {
+    display: block;
+  }
+}
+
+/* Menu items */
+.menu__item {
+  position: relative;
+  pointer-events: auto !important;
+}
+
+.menu__link {
+  text-decoration: none;
+    text-decoration: none;
+    all: unset !important;
+    cursor: pointer !important;
+    font-size: 16px !important;
+}
+
+.menu__link:hover,
+.menu__link:focus {
+  opacity: 0.75 ;
+  text-decoration: none !important;
+  background-color: transparent !important;
+  color: #C25700 !important;
+  pointer-events: all;
+}
+
+/* Subrayado en el hover */
+.menu__link::after {
+  content: "";
+  position: absolute;
+  bottom: 0; /* Subrayado en la parte inferior */
+  left: 50%; /* Centramos el subrayado */
+  transform: translateX(-50%); /* Alineación perfecta */
+  width: 0; /* Comienza sin ancho */
+  height: 2px; /* Altura del subrayado */
+  background-color: #C25700; /* Color del subrayado */
+  transition: width 0.25s ease-in-out; /* Transición suave para el ancho */
+}
+
+/* Activación del subrayado en hover */
+.menu__link:hover::after {
+  width: 100%; /* Se expande el subrayado al 100% del ancho del elemento */
+}
+
+.menu__link--active-link,
+.menu__link--active-branch {
+  font-weight: bold;
+}
+/* Subrayado solo en los elementos principales, no en el submenu */
+.menu > .menu__wrapper > .menu__item > .menu__link::after {
+  content: "";
+  position: absolute;
+  bottom: 0; /* Subrayado en la parte inferior */
+  left: 50%; /* Centramos el subrayado */
+  transform: translateX(-50%); /* Alineación perfecta */
+  width: 0; /* Comienza sin ancho */
+  height: 2px; /* Altura del subrayado */
+  background-color: #C25700; /* Color del subrayado */
+  transition: width 0.25s ease-in-out; /* Transición suave para el ancho */
+}
+
+/* Activación del subrayado en hover SOLO en el menú principal */
+.menu > .menu__wrapper > .menu__item > .menu__link:hover::after {
+  width: 100%; /* Se expande el subrayado al 100% del ancho del elemento */
+}
+
+/* Cambiar color en el submenu en hover sin subrayado */
+.menu__submenu .menu__item .menu__link {
+  position: relative; /* Asegura que no herede estilos del hover anterior */
+}
+
+.menu__submenu .menu__item .menu__link:hover {
+  color: #C25700 !important; /* Color naranja en hover */
+}
+
+/* Evitar que los submenús tengan subrayado */
+.menu__submenu .menu__item .menu__link::after {
+  content: none !important;
+  display: none !important;
+}
+
+@media (min-width: 768px) and (max-width: 1150px) {
+  .menu__link {
+    font-size: 0.75rem; /* Cambiado de 0.833rem a 0.75rem */
+  }
+}
+
+@media (max-width: 767px) {
+  .menu__item {
+    display: block;
+    width: 100%;
+  }
+
+  .menu__link {
+    display: block;
+    font-size: 0.9rem; /* Cambiado de 1.083rem a 0.9rem */
+  }
+}
+
+/* Menu items - top level */
+.menu__item--depth-1 {
+  display: inline-block;
+  padding: 5px;
+  font-weight: bold;
+}
+
+.menu__item--depth-1 > .menu__link--active-link:after {
+  bottom: -3px;
+  content: '';
+  height: 2px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .menu__item--depth-1 {
+    border-top: 2px solid#CED4DB;
+    padding: 0;
+  }
+
+  .menu__item--depth-1 > .menu__link {
+    padding: 0.35rem 1.225rem;
+  }
+
+  .menu__item--depth-1 > .menu__link--active-link:after {
+    content: none;
+    cursor: pointer !important;
+  }
+}
+
+/* Menu items - submenus */
+.menu__submenu {
+  box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  display: none;
+  left: 0;
+  position: absolute;
+  text-align: left;
+  top: 100%;
+  width: 270px;
+  z-index: 99;
+  border: 0px solid !important;
+}
+
+.menu__item--open > .menu__submenu {
+  display: block;
+}
+
+.menu__submenu--level-2 {
+  transform: translateX(-50%);
+}
+
+.menu__item--depth-1:first-child .menu__submenu--level-2 {
+  transform: unset;
+}
+
+.menu__submenu .menu__item {
+/*  border-bottom: 1px solid #D1D6DC;*/
+  padding: 10px 10px;
+  width: 100%;
+  font-weight: normal !important;
+}
+
+.menu__submenu .menu__link {
+  display: block;
+  padding: 0.7rem 1.05rem;
+  width: 100%;
+}
+
+/*.menu__submenu .menu__link:hover,
+.menu__submenu .menu__link:focus {
+  background-color: #009ECC !important;
+  color: black !important;
+}*/
+
+.menu__submenu--level-3 {
+  left: 100%;
+  top: 0;
+}
+
+.menu__item--depth-1:nth-last-child(-n+2) .menu__submenu--level-3 {
+  left: auto;
+  right: 100%;
+  top: 0;
+}
+
+.menu__submenu .menu__item--has-submenu > .menu__link {
+  padding-right: 3rem;
+}
+
+@media (min-width: 768px) {
+  .menu__submenu--level-2 > .menu__item:first-child:before {
+    border-radius: 6px;
+    box-shadow: 0 2px 9px 0 rgb(0 0 0 / 20%);
+    content: '';
+    display: block;
+    height: 30px;
+    left: 125px;
+    margin-left: 1rem;
+    overflow: hidden;
+    position: absolute;
+    top: -12px;
+    transform: rotate(45deg);
+    width: 30px;
+    z-index: 2;
+     border: 0px solid !important;
+  }
+
+  .menu__item--depth-1:first-child > .menu__submenu--level-2 > .menu__item:first-child:before {
+    left: 0;
+  }
+
+  .menu__submenu--level-2 > .menu__item:first-child > .menu__link {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+.menu__submenu--level-2 > .menu__item:first-child:before {
+  content: none !important;
+  display: none !important;
+}
+
+
+@media (max-width: 767px) {
+  .menu__submenu {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    position: static;
+    transform: unset;
+    width: 100%;
+  }
+
+  .menu__submenu .menu__item {
+    background-color: #FFF;
+    border-bottom: none;
+   /* border-top: 2px solid #EBEFF3;*/
+    padding: 0;
+  }
+
+  .menu__submenu .menu__link {
+    display: block;
+    padding: 0.7rem 2rem;
+    width: 100%;
+  }
+
+  .menu__item--has-submenu > .menu__link {
+    width: 70%;
+  }
+
+  .menu__submenu--level-3 .menu__item .menu__link {
+    padding: 0.7rem 3rem;
+  }
+}
+
+.menu__submenu--level-4 {
+  left: 100%;
+  top: 0;
+}
+
+@media (max-width: 767px) {
+  .menu__submenu--level-4 {
+    left: 0;
+    right: auto;
+    top: 100%;
+  }
+}
+
+.menu__child-toggle {
+  position: absolute;
+  right: 5px;
+  top: 30px;
+  z-index: 2;
+}
+
+.menu__child-toggle-icon {
+ /* border-left: 5px solid transparent;*/
+/*  border-right: 5px solid transparent;*/
+  border-top-style: solid;
+  border-top-width: 7px;
+  display: block;
+  height: 0;
+  width: 0;
+}
+/* Utility Menu */
+.utility-menu {
+  display: flex; /* Usamos flex para que los items se alineen en una sola línea */
+  justify-content: flex-end; /* Alinea el contenido al final, en la parte derecha */
+  padding: 10px 20px; /* Espaciado en la parte superior e inferior */
+  background-color: transparent; /* Fondo transparente */
+}
+
+.utility-menu__item {
+  margin-left: 15px; /* Espaciado entre los items */
+  font-size: 0.8rem; /* Tamaño de fuente más pequeño */
+  color: #6c757d; /* Color gris (puedes ajustarlo si prefieres otro tono) */
+}
+
+.utility-menu__item a {
+  text-decoration: none; /* Quitamos el subrayado */
+  color: #6c757d; /* Color gris de los enlaces */
+  font-weight: normal; /* Font-weight normal */
+  transition: color 0.3s ease; /* Transición suave para el color al pasar el mouse */
+}
+
+.utility-menu__item a:hover,
+.utility-menu__item a:focus {
+  color: #495057; /* Un gris más oscuro al hacer hover */
+  text-decoration: underline; /* Agregamos un subrayado al hacer hover */
+}
+
+/* Responsividad en pantallas pequeñas */
+@media (max-width: 767px) {
+  .utility-menu {
+    padding: 8px 12px; /* Ajustamos el espaciado en pantallas más pequeñas */
+  }
+
+  .utility-menu__item {
+    margin-left: 10px; /* Menos espacio entre los elementos */
+    font-size: 0.75rem; /* Fuente aún más pequeña en móviles */
+  }
+}
+.utility-menu__item a {
+  pointer-events: all !important;
+}
+

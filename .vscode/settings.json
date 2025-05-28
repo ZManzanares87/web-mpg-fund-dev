@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "*.css": "css-hubl",
+        "*.html": "html-hubl"
+    },
+    "hubspot.beta": true,
+    "editor.defaultFoldingRangeProvider": "HubSpot.hubl",
+    "editor.defaultFormatter": "HubSpot.hubl",
+    "notebook.defaultFormatter": "HubSpot.hubl"
+}

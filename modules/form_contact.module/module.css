@@ -1,0 +1,223 @@
+s_cos_wrapper_widget_1734452864731 input[type="submit"] {
+  
+    width: auto !important; /* Ajusta el ancho según el contenido */
+    display: inline-block !important; /* Evita que ocupe todo el ancho del contenedor */
+    max-width: none !important; /* Elimina límites de ancho */
+    padding: 15px 80px !important; /* Padding de 5px arriba y abajo, 20px izquierda y derecha */
+    box-sizing: border-box !important; /* Asegura que el padding no aumente el ancho total */font-size: 20px;
+}
+
+form, .submitted-message {
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+    border: 1px none #000000;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    background-color: #ffffff;
+    padding: 0px;
+    font-size: 10px;
+    padding-top: 20px !important;
+    padding-right: 12px!important;
+    
+}
+
+/* General Form Styles */
+.mi-formulario {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Inter, sans-serif;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.mi-formulario h4,
+.mi-formulario p {
+    margin: 0 0 15px;
+    color: #333;
+}
+
+.mi-formulario h4 {
+    font-size: 24px;
+    text-align: center;
+    font-weight: bold;
+    color: #0056b3;
+}
+
+/* Input Styles */
+.mi-formulario .hs-form-field {
+    margin-bottom: 15px;
+}
+
+.mi-formulario .hs-input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.mi-formulario .hs-input:focus {
+    border-color: #0056b3;
+    outline: none;
+}
+
+/* Radio Buttons and Checkboxes */
+.mi-formulario .hs-form-radio,
+.mi-formulario .hs-form-booleancheckbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.mi-formulario .hs-form-radio-display,
+.mi-formulario .hs-form-booleancheckbox-display {
+    font-size: 16px;
+    color: #555;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    height: auto !important;
+}
+
+.mi-formulario .hs-form-radio-display input,
+.mi-formulario .hs-form-booleancheckbox-display input {
+    margin-right: 10px;
+}
+input[type=checkbox], .hs-form-fb03af8c-f258-4552-9b1c-c51823ae8cb5_ae057829-e881-47ee-a3bd-856b353d070a fieldset.form-columns-1 input[type=radio] {
+   
+    height: auto !important;
+}
+.hs-form-fb03af8c-f258-4552-9b1c-c51823ae8cb5_a3c23e27-1d4a-457c-9776-b82e4bbf4741 fieldset.form-columns-1 input[type=checkbox], .hs-form-fb03af8c-f258-4552-9b1c-c51823ae8cb5_a3c23e27-1d4a-457c-9776-b82e4bbf4741 fieldset.form-columns-1 input[type=radio] {
+ 
+    height: auto !important;
+}
+
+/* Labels */
+.mi-formulario label span {
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+.hs-form-fb03af8c-f258-4552-9b1c-c51823ae8cb5_a3c23e27-1d4a-457c-9776-b82e4bbf4741 fieldset.form-columns-1 .input {
+    margin-right: -8px;
+    width: 104%;
+}
+
+/* Submit Button */
+.mi-formulario .hs-submit .hs-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #0056b3;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.mi-formulario .hs-submit .hs-button:hover {
+    background-color: #004494;
+}
+
+/* Privacy Notice */
+.mi-formulario .legal-consent-container p {
+    font-size: 10px !important;
+    color: #777;
+    margin-bottom: 15px;
+    line-height: 1.5;
+        text-align: justify;
+    padding: 4px;
+        margin-right: 0px;
+}
+
+.mi-formulario .legal-consent-container a {
+    color: #0056b3;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+.legal-consent-container .hs-form-booleancheckbox-display > span, .legal-consent-container .hs-form-booleancheckbox-display > span p {
+    margin-left: -10px !important;
+    font-size: 11px;
+    margin-top: 5px !important;
+}
+.mi-formulario .legal-consent-container a:hover {
+    color: #003f7d;
+}
+.legal-consent-container .hs-form-booleancheckbox-display>span {
+    /* display: block; */
+    margin-left: 0px !important;
+}
+
+.legal-consent-container .hs-form-booleancheckbox-display input {
+    float: none !important;
+        margin-left: 10px;
+        height: auto !important;
+}
+.hs-form .actions {
+ 
+    padding: 30px !important;
+}
+form fieldset {
+    max-width: 100% !important;
+    padding-left: 15px !important;
+    border: 1px solid #ccc;
+}
+.hs-form-fb03af8c-f258-4552-9b1c-c51823ae8cb5_ae057829-e881-47ee-a3bd-856b353d070a fieldset.form-columns-2 .input {
+    margin-right: 25px !important;
+}
+.hs-form-fb03af8c-f258-4552-9b1c-c51823ae8cb5_ae057829-e881-47ee-a3bd-856b353d070a fieldset {
+    border: 0;
+    padding: 0;
+    margin-left: 4px !important;
+    max-width: 552px !important;
+    width: 100% !important;
+}
+
+.hs-form-fb03af8c-f258-4552-9b1c-c51823ae8cb5_ae057829-e881-47ee-a3bd-856b353d070a fieldset.form-columns-1 .hs-input {
+    width: 100% !important;
+}
+.hs-form-fb03af8c-f258-4552-9b1c-c51823ae8cb5_a1a4ca94-0d38-441c-a6ed-69cf24b5d3e9 fieldset.form-columns-2 .hs-form-field {
+    width: 96% !important;
+    float: left;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .mi-formulario {
+        padding: 15px;
+    }
+
+    .mi-formulario .hs-input,
+    .mi-formulario .hs-button {
+        font-size: 14px;
+    }
+
+    .mi-formulario h4 {
+        font-size: 20px;
+    }
+}
+.hs-form .input label {
+    color: #000;
+    display: inherit !important;
+    font-size: 12px;
+    font-weight: 400;
+    padding-bottom: 2px;
+    padding-top: 14px;
+}
+.header__container {
+  display: flex;
+  justify-content: space-between;
+      max-width: 89% !important;
+}

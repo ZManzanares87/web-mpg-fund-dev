@@ -1,0 +1,163 @@
+/* Estilos para el banner de video en la página de inicio */
+.home-video-banner {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start; /* Alinea contenido a la izquierda en desktop */
+    align-items: center;
+    color: white;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Altura total para desktop */
+    background: rgba(52, 68, 92, 0.8);
+    z-index: 1;
+}
+
+.video-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    transform: translate(-50%, -30%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.banner-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinea contenido a la izquierda */
+    padding: 0 50px; /* Espaciado desde el borde izquierdo */
+    text-align: left; /* Texto alineado a la izquierda */
+}
+
+.banner-title {
+    font-size: 70px;
+    line-height: 1.2;
+    margin: 0 0 20px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+
+.banner-subtitle {
+    font-size: 40px;
+    margin: 0 0 30px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-weight: 200;
+}
+
+.button-wrapper {
+    display: flex;
+    justify-content: flex-start; /* Botón alineado a la izquierda por defecto */
+    margin-top: 20px; /* Espaciado superior */
+    z-index: 1;
+}
+
+}
+
+.button {
+    font-size: 18px;
+    padding: 12px 40px;
+    background-color: #0056b3;
+    color: white;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Hover para el botón */
+.button:hover,
+.hs-button:hover,
+button:hover {
+    text-decoration: none !important; /* No subrayar al pasar el mouse */
+}
+
+/* ----- Estilos Responsivos ----- */
+
+/* Para pantallas medianas (tabletas) */
+@media (max-width: 768px) {
+    .home-video-banner {
+        height: 85vh; /* Altura reducida para el video */
+    }
+
+    .overlay {
+        height: 85vh; /* Mantiene el overlay alineado con el video */
+    }
+
+    .banner-content {
+        padding: 0 20px; /* Reduce el padding en tabletas */
+        align-items: center !important; /* Centra el contenido */
+        text-align: center !important; /* Centra el texto */
+    }
+
+    .banner-title {
+        font-size: 50px !important; /* Reduce el tamaño del texto */
+    }
+
+    .banner-subtitle {
+        font-size: 30px !important; /* Reduce el tamaño del subtítulo */
+    }
+
+    .button-wrapper {
+        justify-content: center !important; /* Centra el botón */
+    }
+
+    .button {
+        font-size: 20px !important; /* Botón más grande en tabletas */
+        padding: 16px 50px !important; /* Incrementa el padding del botón */
+    }
+}
+
+/* Para pantallas pequeñas (móviles) */
+@media (max-width: 480px) {
+    .home-video-banner {
+        height: 65vh; /* Altura aún más reducida para móviles */
+    }
+
+    .overlay {
+        height: 75vh; /* Mantiene el overlay alineado con el video */
+    }
+
+    .banner-content {
+        padding: 0 0px; /* Reduce aún más el padding */
+        align-items: center !important; /* Centra el contenido */
+        text-align: center !important; /* Centra el texto */
+    }
+
+    .banner-title {
+        font-size: 40px !important; /* Reduce el tamaño del título */
+              margin-left: 0px;
+        padding: 0px;
+    }
+
+    .banner-subtitle {
+        font-size: 24px !important; /* Reduce el tamaño del subtítulo */
+              margin-left: 10px;
+        padding: 2.5px;
+    }
+
+    .button-wrapper {
+        justify-content: center !important; /* Centra el botón */
+    }
+
+    .button {
+        font-size: 22px !important; /* Botón más grande */
+        padding: 18px 60px !important; /* Ajusta el tamaño del botón */
+    }
+}

@@ -1,0 +1,359 @@
+/* --- Disposición principal --- */
+.blog-content-wrapper {
+  display: flex;
+  gap: 80px; /* Espacio entre el contenido principal y el sidebar */
+  max-width: 1200px; /* Define un ancho máximo */
+  margin: 0 auto; /* Centra el contenedor en la pantalla */
+  padding: 0 20px; /* Añade espacio alrededor del contenido */
+  overflow: hidden; /* Evita desplazamientos horizontales */
+  box-sizing: border-box; /* Padding incluido en el ancho total */
+}
+
+@media (max-width: 768px) {
+  .blog-content-wrapper {
+    flex-direction: column; /* Elementos en columna */
+    padding: 0 0px; /* Reduce padding en móviles */
+    gap: 15px; /* Espaciado entre elementos */
+  }
+
+  .sidebar-form {
+    order: 2; /* Mueve el formulario después del contenido */
+    max-width: 100%;
+    margin-top: 0px; /* Separación superior en móviles */
+  }
+
+  .sidebar-desktop.sticky {
+    position: relative;
+    top: auto;
+  }
+}
+
+/* --- Blog Principal --- */
+.blog-post {
+  flex: 2; /* Área de contenido principal */
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden; /* Previene desbordes */
+  box-sizing: border-box; /* Incluye padding en el cálculo del ancho */
+}
+
+/* --- Sticky en Desktop --- */
+@media (min-width: 1000px) {
+  .sticky {
+    position: sticky;
+    top: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .blog-post {
+    max-width: 100%;
+    margin-bottom: -54px;
+    margin-top: -32px;
+    padding: 65px 30px!important;
+  }
+}
+
+/* --- Redes Sociales (Social Bar) --- */
+.social-bar {
+  display: flex; /* Hace que los elementos estén en fila */
+  flex-direction: row; /* Asegura que los elementos estén en fila, no en columna */
+  align-items: center; /* Alinea verticalmente los elementos */
+  justify-content: center; /* Centra los elementos horizontalmente */
+  gap: 0px; /* Añade espacio entre los elementos */
+  margin: 40px 0; /* Ajusta el margen alrededor de la barra */
+  width: 100%;
+}
+
+.social-bar .share-text {
+  color: #ACADB3;
+  font-size: 14px;
+  white-space: nowrap; /* Evita que el texto se rompa */
+  margin-right: 20px; /* Espacio entre el texto y los iconos */
+}
+
+.social-bar .icons {
+  display: flex; /* Los iconos estarán en fila */
+  gap: 70px; /* Espacio entre los iconos */
+  align-items: center; /* Centra verticalmente los iconos */
+}
+
+.social-bar .icons a {
+  width: 20px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-bar .icons a img {
+  width: 100%;
+  height: auto;
+}
+
+.social-bar .icons a.facebook img {
+  width: 11px; /* Ajuste específico para Facebook */
+}
+
+
+/* --- Responsivo para pantallas pequeñas --- */
+@media (max-width: 768px) {
+  .social-bar {
+    flex-direction: row; /* Cambia a una fila en pantallas pequeñas */
+    align-items: center; /* Alinea los elementos en el centro verticalmente */
+    justify-content: center; /* Centra los elementos horizontalmente */
+    margin: 30px 0; /* Reduce el margen en móviles */
+    gap: 0px; /* Espacio entre el texto y los iconos */
+  }
+
+  .social-bar .share-text {
+    font-size: 14px; /* Tamaño de texto adecuado para móviles */
+    margin-right: 20px; /* Espacio entre el texto y los iconos */
+    margin-bottom: 0; /* Elimina el margen inferior */
+    white-space: nowrap; /* Asegura que el texto no se rompa */
+  }
+
+  .social-bar .icons {
+    gap: 15px; /* Reduce el espacio entre los iconos */
+    justify-content: center; /* Asegura que los iconos estén centrados */
+  }
+
+  .social-bar .icons a {
+    width: 20px; /* Mantiene el tamaño de los iconos */
+    height: 24px;
+  }
+
+  .social-bar .icons a img {
+    width: 100%; /* Asegura que las imágenes de los iconos se ajusten correctamente */
+    height: auto;
+  }
+
+  .social-bar .icons a.facebook img {
+    width: 11px; /* Ajusta tamaño específico para Facebook */
+    height: auto;
+  }
+
+  .social-bar {
+    order: 3; /* Mueve la barra social después del contenido */
+  }
+}
+
+/* --- Imagen destacada y fecha de publicación --- */
+.featured-image-wrapper {
+  max-width: 100%; /* La imagen puede expandirse al 100% del contenedor */
+  margin: 0 auto; /* Centrado horizontal */
+  margin-bottom: 10px; /* Espacio debajo de la imagen */
+  overflow: hidden; /* Evita desbordes si la imagen es más grande */
+  text-align: center; /* Centra la imagen */
+}
+
+.featured-image {
+  width: 100%; /* La imagen ocupará el 100% del contenedor */
+  height: 100%; /* Altura fija para la imagen */
+  object-fit: cover; /* Si la imagen es más grande que el contenedor, se recorta */
+  object-position: center; /* Centra la imagen si es más pequeña */
+}
+
+@media (max-width: 768px) {
+  .featured-image-wrapper {
+    margin-bottom: 15px; /* Aumenta el margen inferior en pantallas móviles */
+  }
+
+  .featured-image {
+    height: 200px; /* Ajusta la altura en dispositivos móviles si es necesario */
+  } object-fit: contain; /* Asegura que la imagen más pequeña se ajuste sin recorte */
+}
+
+.blog-post__timestamp {
+  color: #939498 !important; /* Color de la fecha */
+  font-size: 12px; /* Tamaño de la fuente */
+  text-transform: capitalize; /* Capitaliza la fecha */
+  margin-bottom: 20px; /* Margen inferior para separar de otros elementos */
+  display: block; /* Hace que la fecha ocupe una línea completa */
+  text-align: left; /* Alinea la fecha a la izquierda */
+}
+
+/* --- Formulario de Sidebar --- */
+.form_desktop {
+  border: 3px solid #3F5B8A;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  padding: 35px;
+  margin-top: 30px;
+}
+
+.legal-consent-container .hs-form-booleancheckbox-display > span,
+.legal-consent-container .hs-form-booleancheckbox-display > span p {
+  font-size: 10px;
+  margin-left: 10px !important;
+}
+
+form .inputs-list input,
+form .inputs-list span {
+  margin-bottom: 35px;
+}
+
+.legal-consent-container {
+  margin-top: 25px;
+}
+
+form .hs-richtext,
+form .hs-richtext p {
+  font-size: 12px !important;
+  margin-top: 18px !important;
+}
+
+/* --- Título del Blog (Responsive) --- */
+@media (max-width: 768px) {
+  .blog-title {
+    font-size: 16px; /* Tamaño adecuado para móviles */
+    line-height: 1.4; /* Espaciado */
+    word-wrap: break-word; /* Evita desbordes */
+    text-align: center; /* Opcional */
+  }
+}
+
+/* --- Cuerpo del Texto (Responsive) --- */
+@media (max-width: 768px) {
+  .blog-post__body {
+    font-size: 14px; /* Texto más pequeño */
+    line-height: 1.6; /* Mejor lectura */
+   
+}
+
+/* --- Estilo del post --- */
+.blog-post__meta {
+  margin-bottom: 1.4rem;
+}
+
+.blog-post__meta a {
+  text-decoration: underline;
+}
+
+.blog-post__tags svg {
+  height: auto;
+  margin-right: 0.35rem;
+  width: 15px;
+}
+
+.blog-post__tag-link {
+  font-size: 0.875rem;
+}
+
+/* --- Blog related posts --- */
+.blog-related-posts {
+  background-color: #F8FAFC;
+}
+
+.blog-related-posts h2 {
+  text-align: center;
+}
+
+.blog-related-posts__list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.blog-related-posts__post {
+  flex: 0 0 100%;
+  padding: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .blog-related-posts__post {
+    flex: 0 0 calc(100% / 2);
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .blog-related-posts__post {
+    flex: 0 0 calc(100% / 3);
+  }
+}
+
+.blog-related-posts__image {
+  height: auto;
+  max-width: 100%;
+}
+
+.blog-related-posts__title {
+  margin: 0.7rem 0;
+}
+
+/* --- Blog comments --- */
+.blog-comments {
+  margin: 0 auto;
+  max-width: 680px;
+}
+
+.blog-comments .hs-submit {
+  text-align: center;
+}
+
+.blog-comments .comment-reply-to {
+  border: none;
+}
+
+.blog-comments .comment-reply-to:hover,
+.blog-comments .comment-reply-to:focus {
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+/* --- Ajuste Global para Desbordes --- */
+body, .blog-content-wrapper, .blog-post, .blog-post__body {
+  word-wrap: break-word; /* Evita desbordes */
+  overflow-wrap: break-word;
+}
+@media (max-width: 768px) {
+  .blog-content-wrapper {
+    flex-direction: column; /* Elementos en columna */
+  }
+  /* Ajustar el tamaño del ícono en pantallas pequeñas */
+
+  .sidebar-form {
+    order: 2; /* Coloca el formulario debajo del contenido principal */
+    max-width: 100%;
+    margin-top: 20px; /* Espaciado superior en móviles */
+  }
+
+  .blog-post__share:last-of-type {
+    order: 3; /* Coloca la barra de compartir como el último elemento */
+  }
+}
+  
+  .desktop.sidebar-form.hidden-mobile {
+  margin-top: 119px;
+    
+}
+
+  /* Ocultar módulos según el dispositivo */
+  .hidden-mobile {
+    display: none;
+  }
+
+  .hidden-desktop {
+    display: block;
+    margin-bottom: 70px;
+  }
+
+  @media (min-width: 768px) {
+    .hidden-mobile {
+      display: block;
+      
+    }
+
+    .hidden-desktop {
+      display: none!important;
+    }
+  }
+  /* Por defecto, el formulario es visible */
+.sticky {
+  transform: translateY(0); /* Mantener en posición inicial */
+  transition: transform 0.3s ease-in-out; /* Transición suave */
+}
+
+/* Al desplazarse hacia abajo (ocultar el formulario) */
+.sticky.scrollUp {
+  transform: translateY(-100px); /* Ajusta el valor según tus necesidades */
+}

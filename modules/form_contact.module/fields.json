@@ -1,0 +1,13 @@
+[ {
+  "id" : "5fe9148f-4786-30bc-27cd-8d37ff88a668",
+  "name" : "form_field",
+  "label" : "Formulario",
+  "required" : false,
+  "locked" : false,
+  "type" : "form",
+  "display_width" : null,
+  "default" : {
+    "response_type" : "inline",
+    "message" : "Gracias por enviar el formulario."
+  }
+} ]

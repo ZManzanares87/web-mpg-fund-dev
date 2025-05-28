@@ -1,0 +1,39 @@
+[ {
+  "id" : "c26520d4-4787-5544-29ca-0c1940e27464",
+  "name" : "description_text",
+  "label" : "description text",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "display_width" : null
+}, {
+  "id" : "657b8c3e-c34e-0329-380b-7976469e4be2",
+  "name" : "card_img",
+  "label" : "card img",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "display_width" : null,
+  "default" : {
+    "size_type" : "auto",
+    "src" : "",
+    "alt" : null,
+    "loading" : "lazy"
+  }
+}, {
+  "id" : "f6af70b7-c785-1691-4d11-a02959565b3f",
+  "name" : "variant",
+  "label" : "variant",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "left", "left" ], [ "rigth", "rigth" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "display_width" : null
+} ]

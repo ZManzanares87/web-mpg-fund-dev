@@ -1,0 +1,45 @@
+{% if module.variant == 'rigth' %}
+
+    <div class="puzzle-card">
+        <div class="puzzle-image puzzle-image-right">
+            {% if module.card_img.src %}
+            {% set sizeAttrs = 'width="{{ module.card_img.width|escape_attr }}" height="{{ module.card_img.height|escape_attr }}"' %}
+            {% if module.card_img.size_type == 'auto' %}
+            {% set sizeAttrs = 'width="{{ module.card_img.width|escape_attr }}" height="{{ module.card_img.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+            {% elif module.card_img.size_type == 'auto_custom_max' %}
+            {% set sizeAttrs = 'width="{{ module.card_img.max_width|escape_attr }}" height="{{ module.card_img.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+            {% endif %}
+            {% set loadingAttr = module.card_img.loading != 'disabled' ? 'loading="{{ module.card_img.loading|escape_attr }}"' : '' %}
+            <img src="{{ module.card_img.src|escape_url }}" alt="{{ module.card_img.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+            {% endif %}
+        </div>
+        <div class="puzzle-overlay puzzle-overlay-right"></div>
+        <div class="puzzle-text puzzle-text-left">
+            {% inline_rich_text field="description_text" value="{{ module.description_text }}" %}
+        </div>
+    </div>
+
+
+{% elif module.variant == 'left' %}
+
+    <div class="puzzle-card ">
+        <div class="puzzle-image puzzle-image-left">
+            {% if module.card_img.src %}
+            {% set sizeAttrs = 'width="{{ module.card_img.width|escape_attr }}" height="{{ module.card_img.height|escape_attr }}"' %}
+            {% if module.card_img.size_type == 'auto' %}
+            {% set sizeAttrs = 'width="{{ module.card_img.width|escape_attr }}" height="{{ module.card_img.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+            {% elif module.card_img.size_type == 'auto_custom_max' %}
+            {% set sizeAttrs = 'width="{{ module.card_img.max_width|escape_attr }}" height="{{ module.card_img.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+            {% endif %}
+            {% set loadingAttr = module.card_img.loading != 'disabled' ? 'loading="{{ module.card_img.loading|escape_attr }}"' : '' %}
+            <img src="{{ module.card_img.src|escape_url }}" alt="{{ module.card_img.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+            {% endif %}
+        </div>
+        <div class="puzzle-overlay puzzle-overlay-left"></div>
+        <div class="puzzle-text puzzle-text-right">
+            {% inline_rich_text field="description_text" value="{{ module.description_text }}" %}
+        </div>
+    </div>
+
+
+{% endif %}
