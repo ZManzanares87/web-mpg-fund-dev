@@ -1,0 +1,32 @@
+<!--
+  templateType: "none"
+  isAvailableForNewContent: false
+-->
+<!-- Contenedor de botones filtradores con flechas -->
+<div class="filter-buttons-wrapper">
+  <div class="arrow arrow-left"></div>
+  <div class="filter-buttons">
+    {% for item in module.button_tags %}
+      <button class="filter-btn" value="{{ item.tag }}">{{ item.tag }}</button>
+    {% endfor %}
+  </div>
+
+</div>
+
+<!-- Listado de posts -->
+<div class="cards">
+  {% for item in module.card_content %}
+    <div class="card {{ item.card_tag }} filter-item">
+      <div class="card-front" style="background-image: url('{{ item.background_img.src|escape_url }}');">
+        <p class="title">{{ item.titulo }}</p>
+      </div>
+      <div class="card-back">
+        <div class="overlay"></div>
+        <p class="desc">{{ item.descripcion }}</p>
+        <button class="card-button"><a href="{{ item.boton_link.href }}" class="card-button" target="{{ item.boton_link.target }}">
+  {{ item.boton }}
+</a></button>
+      </div>
+    </div>
+  {% endfor %}
+</div>

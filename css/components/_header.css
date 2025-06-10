@@ -8,8 +8,9 @@
 
 .header__container {
   display: flex;
-  justify-content: space-around;
-      max-width: 100% !important; 
+  justify-content: space-between;
+  max-width: 100% !important;
+  padding: 10px;
 }
 
 .header__row-1 {
