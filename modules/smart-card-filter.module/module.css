@@ -1,0 +1,273 @@
+/* ============================
+   🔹 Slider wrapper (mobile)
+   ============================ */
+.filter-buttons-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  max-width: 100%;
+  padding: 10px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+}
+
+/* ============================
+   🔹 Flechas CSS (triángulos)
+   ============================ */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  cursor: pointer;
+  display: none;
+}
+.arrow-left {
+  left: 8px;
+  border: 12px solid transparent;
+  border-right-color: #5e7c70;
+}
+.arrow-right {
+  right: 8px;
+  border: 12px solid transparent;
+  border-left-color: #5e7c70;
+}
+
+/* ============================
+   🔹 Contenedor de botones filtradores
+   ============================ */
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap; /* en desktop */
+  justify-content: center;
+  gap: 15px;
+  max-width: 1200px;
+  margin: 0 auto 10px;
+  padding: 15px;
+  overflow-x: auto; /* en mobile */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.filter-buttons::-webkit-scrollbar {
+  display: none;
+}
+
+/* ============================
+   🔹 Botón reposo / default
+   ============================ */
+.filter-btn {
+  padding: 8px 16px;
+  background: #ffffff;
+  outline: 1px solid #5e7c70;
+  outline-offset: -1px;
+  border: none;
+  border-radius: 50px;
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+
+  color: #5e7c70;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 16px;
+  word-wrap: break-word;
+
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  text-transform: none;
+}
+
+/* ============================
+   🔹 Hover: verde claro mismo tono
+   ============================ */
+.filter-btn:hover {
+  background: #6c8e81; /* ~15% más claro que #5E7C70 */
+  color: rgb(255, 255, 255);
+  border-radius: 50px;
+}
+
+/* ============================
+   🔹 Active / seleccionado
+   ============================ */
+.filter-btn:active,
+.filter-btn.active {
+  background: #5e7c70;
+  color: #ffffff;
+  border-radius: 50px;
+}
+
+/* ============================
+   🔹 Cards con efecto flip
+   ============================ */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+.card {
+  background-color: transparent;
+  height: 250px;
+  max-width: 340px;
+  perspective: 1000px;
+  position: relative;
+  width: 100%;
+}
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  box-shadow: 0 8px 14px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  transition: transform 0.8s ease-in-out;
+}
+.card-front {
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+}
+.title {
+  background: #38619980;
+  color: white;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  max-width: 90%;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.card-back {
+  background: #386199e0;
+  color: white;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.card:hover .card-front {
+  transform: rotateY(180deg);
+}
+.card:hover .card-back {
+  transform: rotateY(0deg);
+}
+
+/* ============================
+   🔹 Botón dentro de la card
+   ============================ */
+.card-button {
+  background-color: #ff6600;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.card-button:hover {
+  background-color: #e65c00;
+}
+
+/* ============================
+   🔹 Grayscale para filtrar tarjetas
+   ============================ */
+.grayscale {
+  filter: grayscale(100%);
+  pointer-events: none;
+  position: relative;
+}
+.grayscale::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  z-index: 1;
+  border-radius: 11px;
+}
+.grayscale .title {
+  z-index: 2;
+  opacity: 0.5;
+}
+.highlight {
+  filter: grayscale(0%);
+}
+
+/* ============================
+   🔹 Ajuste descripción en la card
+   ============================ */
+.card-back .desc {
+  font-size: 12px;
+  padding: 10px;
+  text-align: center;
+  max-height: 80px;
+  overflow: hidden;
+}
+
+/* ============================
+   🔹 Responsive para cards y botones
+   ============================ */
+@media (max-width: 1024px) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .filter-buttons {
+    flex-wrap: nowrap;
+  }
+}
+@media (max-width: 480px) {
+  .cards {
+    justify-content: center;
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+    align-content: center;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+  }
+  .filter-btn {
+    flex-wrap: wrap !important;
+    max-height: 7rem !important;
+    overflow: hidden;
+    border-radius: 50px;
+    font-size: 12px;
+    height: 40px;
+    min-width: 150px;
+    padding: 9px 15px;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    display: flex;
+  }
+}
