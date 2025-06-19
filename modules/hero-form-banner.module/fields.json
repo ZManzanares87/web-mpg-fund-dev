@@ -1,25 +1,26 @@
 [ {
-  "id" : "d10580c7-3cf2-91d0-52f2-cabaf1f295d3",
-  "name" : "imagen_banner",
-  "label" : "Imagen banner",
+  "id" : "ec7c06e5-0e9a-8ebe-656a-72833aee3296",
+  "name" : "titulo",
+  "label" : "Titulo",
   "required" : false,
   "locked" : false,
-  "responsive" : true,
-  "resizable" : true,
-  "show_loading" : false,
-  "type" : "image",
-  "display_width" : null,
-  "default" : {
-    "src" : "https://4272053.fs1.hubspotusercontent-na1.net/hubfs/4272053/Imported%20images/chica%20en%20taller%20sonriendo.png",
-    "alt" : "chica en taller sonriendo",
-    "loading" : "lazy",
-    "width" : 1200,
-    "height" : 812
-  }
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "display_width" : null
 }, {
-  "id" : "88d02d48-dc3a-a78c-d804-c818e56b92c6",
-  "name" : "imagen_mobile",
-  "label" : "Imagen_mobile",
+  "id" : "a3bd53c0-efb2-9de0-8bbb-4a2aa1007609",
+  "name" : "descripcion",
+  "label" : "descripcion",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "display_width" : null
+}, {
+  "id" : "db301841-fbd4-91c1-6d07-c276b69e2454",
+  "name" : "image_field",
+  "label" : "Imagen",
   "required" : false,
   "locked" : false,
   "responsive" : true,
@@ -29,45 +30,21 @@
   "display_width" : null,
   "default" : {
     "size_type" : "auto",
-    "src" : "https://4272053.fs1.hubspotusercontent-na1.net/hubfs/4272053/chica%20en%20taller%20sonriendo-1.png",
-    "alt" : "chica en taller sonriendo-1",
-    "loading" : "lazy",
-    "width" : 300,
-    "height" : 203,
-    "max_width" : 300,
-    "max_height" : 203
+    "src" : "",
+    "alt" : null,
+    "loading" : "lazy"
   }
 }, {
-  "id" : "27456806-e0e6-d96b-598d-dfd0ac3b623e",
-  "name" : "texto_1",
-  "label" : "texto 1",
+  "id" : "b5f9ec21-3d6c-e70d-17e5-f7d59f08f040",
+  "name" : "formulario_del_programa",
+  "label" : "Formulario del programa",
   "required" : false,
   "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
+  "embed_versions" : [ "v2", "v4" ],
+  "type" : "form",
   "display_width" : null,
-  "default" : "Soy Empresa"
-}, {
-  "id" : "0fed7840-0989-6ef4-06e0-5eca7b247121",
-  "name" : "texto_2",
-  "label" : "texto 2",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "display_width" : null,
-  "default" : "multiplico"
-}, {
-  "id" : "13a0f142-1e2c-e77a-ab20-dd8e5ee086b2",
-  "name" : "descripci_n",
-  "label" : "Descripción",
-  "required" : false,
-  "locked" : false,
-  "type" : "richtext",
-  "display_width" : null,
-  "default" : "&nbsp; &nbsp;Nec massa viverra eget feugiat pellentesque. Feugiat adipiscing massa vitae auctor mi massa.&nbsp;<br>&nbsp; &nbsp; &nbsp; Sodales libero viverra cursus sed duis luctus nulla. In malesuada vulputate pharetra ipsum orci."
+  "default" : {
+    "response_type" : "inline",
+    "message" : "Gracias por enviar el formulario."
+  }
 } ]

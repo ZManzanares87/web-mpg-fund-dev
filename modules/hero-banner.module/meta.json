@@ -1,7 +1,8 @@
 {
   "global" : false,
   "content_types" : [ "LANDING_PAGE", "SITE_PAGE" ],
-  "host_template_types" : [ "PAGE", "BLOG_LISTING", "BLOG_POST" ],
-  "module_id" : 191244114764,
+  "host_template_types" : [ "ANY" ],
+  "module_id" : 191165355042,
+  "label" : "Hero Banner Programs",
   "is_available_for_new_content" : true
 }
