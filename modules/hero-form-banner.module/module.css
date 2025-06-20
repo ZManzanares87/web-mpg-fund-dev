@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+/* ================================================
+   HERO – ESTILOS GENERALES
+   ================================================ */
+.hero {
+  width: 100%;
+  max-width: 1920px;
+  height: 920px;
+  background: linear-gradient(142deg, #48709d 0%, #77ab5a 100%);
+  display: flex;
+  font-family: 'Silka', sans-serif;
+  line-height: 1.2;
+}
+
+.hero-inner {
+  flex: 1;
+  display: flex;
+}
+
+.image-mask {
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.image-mask .hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* máscara Figma */
+  -webkit-mask-image: url('https://4272053.fs1.hubspotusercontent-na1.net/hubfs/4272053/WEB_FUND_MPG/detail-program-mask-banner.png');
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  -webkit-mask-position: center;
+  mask-image: url('https://4272053.fs1.hubspotusercontent-na1.net/hubfs/4272053/WEB_FUND_MPG/detail-program-mask-banner.png');
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  mask-position: center;
+}
+
+.hero-content {
+  flex: 1;
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+}
+
+.hero-title {
+  margin: 0;
+  color: #fff;
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 46.2px;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #dde1e6;
+  margin: 0;
+}
+
+.hero-body {
+  margin: 0;
+  width: 800px;
+  color: #fff;
+  font-size: 16px;
+  line-height: 22.4px;
+}
+
+
+/* ================================================
+   FORMULARIO INCRUSTADO – OVERRIDES
+   Scope: .hero-banner-form
+   ================================================ */
+
+.hero-banner-form {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+    background: transparent !important;
+}
+.hero-banner-form .form-title {
+  background: transparent !important;
+}
+
+/* Reset de padding/margen de HS form */
+.hero-banner-form .hs-form {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Separación entre campos */
+.hero-banner-form .hs-form-field {
+  margin-bottom: 16px !important;
+}
+
+/* Etiquetas */
+.hero-banner-form label,
+.hero-banner-form .hs-form-field label {
+  display: block !important;
+  margin-bottom: 5px !important;
+  font-size: 14px !important;
+  color: #fff !important;
+  background: none !important;
+  padding: 0 !important;
+}
+
+/* Inputs, selects, textareas */
+.hero-banner-form input[type="text"],
+.hero-banner-form input[type="email"],
+.hero-banner-form input[type="tel"],
+.hero-banner-form input[type="password"],
+.hero-banner-form select,
+.hero-banner-form textarea {
+  width: 100% !important;
+  height: 48px !important;
+  padding: 12px 16px !important;
+  font-size: 16px !important;
+  line-height: 22.4px !important;
+  color: #697077 !important;
+  background: #f2f4f8 !important;
+  border: none !important;
+  border-bottom: 1px solid #c1c7cd !important;
+  border-radius: 4px !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+}
+
+/* Radio/Checkbox como grupo inline */
+.hero-banner-form .inputs-list,
+.hero-banner-form .inputs-list.multi-container {
+  display: flex !important;
+  gap: 16px !important;
+  margin: 0 0 16px 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+.hero-banner-form .hs-form-radio input,
+.hero-banner-form .hs-form-booleancheckbox input {
+  width: 20px !important;
+  height: 20px !important;
+  margin-right: 8px !important;
+}
+
+.hero-banner-form .hs-form-radio span,
+.hero-banner-form .hs-form-booleancheckbox span {
+  color: #fff !important;
+  font-size: 14px !important;
+}
+
+/* Asteriscos de campo obligatorio */
+.hero-banner-form .hs-form-field .hs-form-required {
+  color: #ef8036 !important;
+}
+
+/* Botón de envío */
+.hero-banner-form .actions,
+.hero-banner-form button[type="submit"] {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.hero-banner-form .hs-richtext, form .hs-richtext p{
+color: white;
+}
+.hero-banner-form .actions .hs-button.primary,
+.hero-banner-form button[type="submit"] {
+  display: inline-block !important;
+  width: 213px !important;
+  height: 48px !important;
+  background-color: #ef8036 !important;
+  color: #fff !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  border: none !important;
+  border-radius: 20px !important;
+  cursor: pointer !important;
+  line-height: 0px !important;
+  text-align: center !important;
+  margin-top: 8px !important;
+}
+.hero-banner-form form,
+.hero-banner-form .submitted-message {
+  background: transparent !important;
+}

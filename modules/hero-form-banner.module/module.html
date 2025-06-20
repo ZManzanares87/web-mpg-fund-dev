@@ -1,0 +1,155 @@
+<!-- hero-module.html -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="image-mask">
+      {% if module.image_field.src %}
+        <img
+          src="{{ module.image_field.src|escape_url }}"
+          alt="{{ module.image_field.alt|escape_attr }}"
+          class="hero-image"
+          {% if module.image_field.loading != 'disabled' %}loading="{{ module.image_field.loading }}"{% endif %}
+        />
+      {% endif %}
+    </div>
+
+    <div class="hero-content">
+      <h2 class="hero-title">
+        {% inline_text field="titulo" value="{{ module.titulo }}" %}
+      </h2>
+      <hr class="divider" />
+      <div class="hero-body">
+        {% inline_rich_text field="descripcion" value="{{ module.descripcion }}" %}
+      </div>
+      <hr class="divider" />
+   <div class="hero-banner-form">
+{% form
+	form_to_use="{{ module.formulario_del_programa.form_id }}"
+	response_response_type="{{ module.formulario_del_programa.response_type }}"
+	response_message="{{ module.formulario_del_programa.message }}"
+	response_redirect_id="{{ module.formulario_del_programa.redirect_id }}"
+	response_redirect_url="{{module.formulario_del_programa.redirect_url}}"
+	gotowebinar_webinar_key="{{ module.formulario_del_programa.gotowebinar_webinar_key }}"
+%}
+    </div>
+<style>
+/* ================================================
+   FORMULARIO INCRUSTADO – OVERRIDES
+   Scope: .hero-banner-form
+   ================================================ */
+
+.hero-banner-form {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+    background: transparent !important;
+}
+.hero-banner-form .form-title {
+  background: transparent !important;
+}
+
+/* Reset de padding/margen de HS form */
+.hero-banner-form .hs-form {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Separación entre campos */
+.hero-banner-form .hs-form-field {
+  margin-bottom: 16px !important;
+}
+
+/* Etiquetas */
+.hero-banner-form label,
+.hero-banner-form .hs-form-field label {
+  display: block !important;
+  margin-bottom: 5px !important;
+  font-size: 14px !important;
+  color: #fff !important;
+  background: none !important;
+  padding: 0 !important;
+}
+
+/* Inputs, selects, textareas */
+.hero-banner-form input[type="text"],
+.hero-banner-form input[type="email"],
+.hero-banner-form input[type="tel"],
+.hero-banner-form input[type="password"],
+.hero-banner-form select,
+.hero-banner-form textarea {
+  width: 100% !important;
+  height: 48px !important;
+  padding: 12px 16px !important;
+  font-size: 16px !important;
+  line-height: 22.4px !important;
+  color: #697077 !important;
+  background: #f2f4f8 !important;
+  border: none !important;
+  border-bottom: 1px solid #c1c7cd !important;
+  border-radius: 4px !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+}
+
+/* Radio/Checkbox como grupo inline */
+.hero-banner-form .inputs-list,
+.hero-banner-form .inputs-list.multi-container {
+  display: flex !important;
+  gap: 16px !important;
+  margin: 0 0 16px 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+.hero-banner-form .hs-form-radio input,
+.hero-banner-form .hs-form-booleancheckbox input {
+  width: 20px !important;
+  height: 20px !important;
+  margin-right: 8px !important;
+}
+
+.hero-banner-form .hs-form-radio span,
+.hero-banner-form .hs-form-booleancheckbox span {
+  color: #fff !important;
+  font-size: 14px !important;
+}
+
+/* Asteriscos de campo obligatorio */
+.hero-banner-form .hs-form-field .hs-form-required {
+  color: #ef8036 !important;
+}
+
+/* Botón de envío */
+.hero-banner-form .actions,
+.hero-banner-form button[type="submit"] {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.hero-banner-form .actions .hs-button.primary,
+.hero-banner-form button[type="submit"] {
+  display: inline-block !important;
+  width: 213px !important;
+  height: 48px !important;
+  background-color: #ef8036 !important;
+  color: #fff !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  border: none !important;
+  border-radius: 20px !important;
+  cursor: pointer !important;
+  line-height: 0px !important;
+  text-align: center !important;
+  margin-top: 8px !important;
+}
+.hero-banner-form form,
+.hero-banner-form .submitted-message {
+  background: transparent !important;
+}
+
+</style>
+    </div>
+  </div>
+</div>

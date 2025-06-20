@@ -1,0 +1,20 @@
+[ {
+  "id" : "f04390c9-7188-0ddc-4083-7aa5642e7882",
+  "name" : "titulo_card",
+  "label" : "titulo card",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Talleres de cocina"
+}, {
+  "id" : "27bbcdeb-097c-d7b0-149f-ad52264e0a67",
+  "name" : "card_description",
+  "label" : "card description",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "display_width" : null,
+  "default" : "<span>uam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.</span>"
+} ]

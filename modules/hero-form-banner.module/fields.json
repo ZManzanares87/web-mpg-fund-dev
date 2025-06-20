@@ -1,0 +1,48 @@
+[ {
+  "id" : "ec7c06e5-0e9a-8ebe-656a-72833aee3296",
+  "name" : "titulo",
+  "label" : "Titulo",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null
+}, {
+  "id" : "a3bd53c0-efb2-9de0-8bbb-4a2aa1007609",
+  "name" : "descripcion",
+  "label" : "descripcion",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "display_width" : null
+}, {
+  "id" : "db301841-fbd4-91c1-6d07-c276b69e2454",
+  "name" : "image_field",
+  "label" : "Imagen",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "display_width" : null,
+  "default" : {
+    "size_type" : "auto",
+    "src" : "",
+    "alt" : null,
+    "loading" : "lazy"
+  }
+}, {
+  "id" : "b5f9ec21-3d6c-e70d-17e5-f7d59f08f040",
+  "name" : "formulario_del_programa",
+  "label" : "Formulario del programa",
+  "required" : false,
+  "locked" : false,
+  "embed_versions" : [ "v2", "v4" ],
+  "type" : "form",
+  "display_width" : null,
+  "default" : {
+    "response_type" : "inline",
+    "message" : "Gracias por enviar el formulario."
+  }
+} ]
