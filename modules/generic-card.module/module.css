@@ -3,7 +3,7 @@
   max-width: 1900px;
   margin: 40px auto;
   display: flex;
-  gap: 85px;
+  gap: 40px;
   justify-content: center;
   flex-wrap: wrap;
 }
@@ -15,7 +15,7 @@
   overflow: hidden;
   padding: 0;
   width: 100%;
-  max-width: 450px;
+  max-width: 500px;
   display: flex;
   flex-direction: column;
   transition: none;
@@ -25,7 +25,7 @@
 .card-image-container {
     align-items: center;
     background: #ffffff;
-    height: 210px;
+    height: 280px;
     justify-content: center;
     padding: 10px;
 }

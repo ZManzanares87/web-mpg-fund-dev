@@ -1,1 +1,54 @@
-[ ]
+[
+ {
+  "type": "link",
+  "id": "37ec46d9-fbe6-9d27-00e0-6dcd176621e5",
+  "default": [
+   {
+    "url": {
+     "content_id": null,
+     "type": "EXTERNAL",
+     "href": ""
+    },
+    "open_in_new_tab": false,
+    "no_follow": false
+   }
+  ],
+  "supported_types": [
+   "EXTERNAL",
+   "CONTENT",
+   "FILE",
+   "EMAIL_ADDRESS",
+   "BLOG",
+   "CALL_TO_ACTION",
+   "PHONE_NUMBER",
+   "WHATSAPP_NUMBER",
+   "PAYMENT"
+  ],
+  "label": "Enlace",
+  "name": "link_field",
+  "occurrence": {
+   "min": 1,
+   "default": 1
+  }
+ },
+ {
+  "type": "text",
+  "id": "f71ad5b9-99f4-1aff-ea24-197245084f22",
+  "validation_regex": "",
+  "label": "titulo acordeon",
+  "name": "titulo_acordeon"
+ },
+ {
+  "type": "richtext",
+  "id": "ac1279c9-24bd-991c-5da7-59e6af194bae",
+  "label": "descripcion acordeon",
+  "name": "descripcion_acordeon"
+ },
+ {
+  "type": "text",
+  "id": "14d257a4-2204-e91c-5b74-2fa0de26c193",
+  "validation_regex": "",
+  "label": "titulo tag",
+  "name": "titulo_tag"
+ }
+]
