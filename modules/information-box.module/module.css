@@ -2,8 +2,7 @@
  .information-boxes-container {
     display: grid
 ;
-    gap: 32px;
-    grid-template-columns: repeat(3, 1fr);
+
     justify-items: center;
     margin: 0 auto;
     max-width: 1900px;
@@ -51,7 +50,7 @@
 
 .information-box-title {
   color: #48709D;
-  font-size: 32px;
+  font-size: 28px;
   font-family: 'Inter', Arial, sans-serif;
   font-weight: 700;
   line-height: 1.1;

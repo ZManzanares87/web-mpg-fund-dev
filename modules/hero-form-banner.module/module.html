@@ -1,0 +1,39 @@
+<!-- hero-module.html -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="image-mask">
+      {% if module.image_field.src %}
+        <img
+          src="{{ module.image_field.src|escape_url }}"
+          alt="{{ module.image_field.alt|escape_attr }}"
+          class="hero-image"
+          {% if module.image_field.loading != 'disabled' %}loading="{{ module.image_field.loading }}"{% endif %}
+        />
+      {% endif %}
+    </div>
+
+    <div class="hero-content">
+      <h2 class="hero-title">
+        {% inline_text field="titulo" value="{{ module.titulo }}" %}
+      </h2>
+      <hr class="divider" />
+      <div class="hero-body">
+        {% inline_rich_text field="descripcion" value="{{ module.descripcion }}" %}
+      </div>
+      <hr class="divider" />
+   <div class="hero-banner-form">
+{% form
+	form_to_use="{{ module.formulario_del_programa.form_id }}"
+	response_response_type="{{ module.formulario_del_programa.response_type }}"
+	response_message="{{ module.formulario_del_programa.message }}"
+	response_redirect_id="{{ module.formulario_del_programa.redirect_id }}"
+	response_redirect_url="{{module.formulario_del_programa.redirect_url}}"
+	gotowebinar_webinar_key="{{ module.formulario_del_programa.gotowebinar_webinar_key }}"
+%}
+    </div>
+<style>
+
+</style>
+    </div>
+  </div>
+</div>
