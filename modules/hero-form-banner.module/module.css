@@ -203,3 +203,168 @@ color: white;
 .hero-banner-form .submitted-message {
   background: transparent !important;
 }
+
+@media (max-width: 500px) {
+  .hero {
+    background: linear-gradient(139deg, #48709D 0%, #77AB5A 75%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 20px;
+    width: 100vw;
+    min-width: 0;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  .hero-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100vw;
+    padding: 0 !important;
+    gap: 0;
+  }
+
+  .image-mask {
+    width: 100vw;
+    max-width: none;
+    min-width: 0;
+    height: 272px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+  }
+
+  .hero-image {
+    width: 100vw;
+    height: 100%;
+    object-fit: cover;
+    /* Mascara responsive */
+    -webkit-mask-image: url('https://4272053.fs1.hubspotusercontent-na1.net/hubfs/4272053/WEB_FUND_MPG/responsive_form_banner.png');
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: cover;
+    -webkit-mask-position: left center;
+    mask-image: url('https://4272053.fs1.hubspotusercontent-na1.net/hubfs/4272053/WEB_FUND_MPG/responsive_form_banner.png');
+    mask-repeat: no-repeat;
+    mask-size: cover;
+    mask-position: left center;
+    border-radius: 0;
+    display: block;
+  }
+
+  .hero-content {
+    align-self: stretch;
+    padding: 32px 16px 32px 16px;
+    gap: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100vw;
+    box-sizing: border-box;
+  }
+
+  .hero-title {
+    color: #fff;
+    font-size: 32px;
+    font-weight: 700;
+    font-family: Inter, Arial, sans-serif;
+    line-height: 35.2px;
+    word-break: break-word;
+    margin: 0;
+    width: 100%;
+  }
+
+  .hero-body {
+    width: 100%;
+    color: #fff;
+    font-size: 14px;
+    font-family: 'Silka', Inter, Arial, sans-serif;
+    line-height: 19.6px;
+    margin: 0;
+    padding: 0;
+    word-break: break-word;
+  }
+
+  .hero-body p {
+    width: 100% !important;
+    font-size: 15px !important;
+    line-height: 22px !important;
+    padding: 0 !important;
+    box-sizing: border-box;
+  }
+
+  .divider {
+    width: 100%;
+    height: 0;
+    outline: 1px #DDE1E6 solid;
+    outline-offset: -0.5px;
+    border: none;
+    margin: 0;
+    background: none;
+    display: block;
+  }
+
+  .hero-banner-form {
+    align-self: stretch;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: none !important;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Campos del formulario */
+  .hero-banner-form .hs-form-field {
+    width: 100%;
+    margin-bottom: 16px !important;
+  }
+
+  .hero-banner-form label,
+  .hero-banner-form .hs-form-field label {
+    color: #fff !important;
+    font-size: 14px !important;
+    font-family: 'Silka', Inter, Arial, sans-serif;
+    margin-bottom: 4px !important;
+    font-weight: 400 !important;
+  }
+
+  .hero-banner-form input,
+  .hero-banner-form select,
+  .hero-banner-form textarea {
+    height: 48px !important;
+    padding: 12px 16px !important;
+    font-size: 16px !important;
+    font-family: 'Silka', Inter, Arial, sans-serif;
+    background: #f2f4f8 !important;
+    border: none !important;
+    border-bottom: 1px solid #c1c7cd !important;
+    color: #697077 !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+  }
+
+  .hero-banner-form .actions .hs-button.primary,
+  .hero-banner-form button[type="submit"] {
+    width: 100%;
+    max-width: 100%;
+    height: 48px;
+    background: #EF8036 !important;
+    border-radius: 20px !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: #fff !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    margin: 0 !important;
+  }
+}
