@@ -29,7 +29,7 @@
   "type" : "image",
   "display_width" : null,
   "default" : {
-    "size_type" : "auto",
+    "size_type" : "auto", 
     "src" : "",
     "alt" : null,
     "loading" : "lazy"

@@ -6,15 +6,14 @@
 .hero {
   width: 100%;
   max-width: 1920px;
-  height: 820px;
   background: linear-gradient(142deg, #48709d 0%, #77ab5a 100%);
   display: flex;
-  font-family: 'Silka', sans-serif;
+ 
   line-height: 1.2;
 }
 
 .hero-inner {
-  flex: 1;
+  flex: 1; 
   display: flex;
 }
 
@@ -42,19 +41,28 @@
 
 .hero-content {
   flex: 1;
-  padding: 80px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 15px;
+  gap: 8px;
 }
 
+.hero-body p {
+    color: #fff;
+    font-size: 14px !important;
+    line-height: 27px;
+    margin: 0px;
+    width: 782px;
+        padding: 5px;
+}
 .hero-title {
   margin: 0;
   color: #fff;
   font-size: 42px;
   font-weight: 700;
   line-height: 46.2px;
+  margin
 }
 
 .divider {
@@ -118,7 +126,7 @@
 .hero-banner-form select,
 .hero-banner-form textarea {
   width: 100% !important;
-  height: 48px !important;
+  height: 35px !important;
   padding: 12px 16px !important;
   font-size: 16px !important;
   line-height: 22.4px !important;
@@ -167,6 +175,11 @@
 }
 .hero-banner-form .hs-richtext, form .hs-richtext p{
 color: white;
+}
+.hero-banner-form .hs-richtext a{
+  color:#9ecbf8;
+  font-weight: 700;
+
 }
 .hero-banner-form .actions .hs-button.primary,
 .hero-banner-form button[type="submit"] {
