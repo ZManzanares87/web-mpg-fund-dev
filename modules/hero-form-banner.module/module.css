@@ -6,47 +6,69 @@
 .hero {
   width: 100%;
   max-width: 1920px;
-  height: 920px;
   background: linear-gradient(142deg, #48709d 0%, #77ab5a 100%);
   display: flex;
-  font-family: 'Silka', sans-serif;
-  line-height: 1.2;
+  align-items: flex-start;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  padding: 0;
 }
 
 .hero-inner {
-  flex: 1;
   display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 .image-mask {
-  flex: 1;
-  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
   overflow: hidden;
-  position: relative;
+  width: auto;
+  height: auto;
+  max-height: 600px; /* Cambia este valor si necesitas más/menos alto */
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  box-sizing: border-box;
+  background: transparent;
 }
 
 .image-mask .hero-image {
-  width: 100%;
+  display: block;
   height: 100%;
-  object-fit: cover;
-  /* máscara Figma */
+  width: auto;
+  max-height: 600px; /* Igual que image-mask */
+  object-fit: contain;
   -webkit-mask-image: url('https://4272053.fs1.hubspotusercontent-na1.net/hubfs/4272053/WEB_FUND_MPG/detail-program-mask-banner.png');
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-size: contain;
-  -webkit-mask-position: center;
+  -webkit-mask-position: left center;
   mask-image: url('https://4272053.fs1.hubspotusercontent-na1.net/hubfs/4272053/WEB_FUND_MPG/detail-program-mask-banner.png');
   mask-repeat: no-repeat;
   mask-size: contain;
-  mask-position: center;
+  mask-position: left center;
+  border-radius: 0;
+  position: relative;
+  left: 0;
+  background: transparent;
 }
 
 .hero-content {
-  flex: 1;
-  padding: 80px;
+  width: 400px; /* Ancho fijo para el contenido */
+  min-width: 320px;
+  max-width: 500px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 15px;
+  justify-content: flex-start;
+  gap: 8px;
+  box-sizing: border-box;
 }
 
 .hero-title {
@@ -65,12 +87,20 @@
 
 .hero-body {
   margin: 0;
-  width: 800px;
+  width: 100%;
   color: #fff;
   font-size: 16px;
   line-height: 22.4px;
 }
-
+.hero-body p {
+  color: #fff;
+  font-size: 14px !important;
+  line-height: 27px;
+  margin: 0px;
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+}
 
 /* ================================================
    FORMULARIO INCRUSTADO – OVERRIDES
@@ -82,24 +112,19 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Inter', sans-serif;
-    background: transparent !important;
+  background: transparent !important;
 }
 .hero-banner-form .form-title {
   background: transparent !important;
 }
 
-/* Reset de padding/margen de HS form */
 .hero-banner-form .hs-form {
   margin: 0 !important;
   padding: 0 !important;
 }
-
-/* Separación entre campos */
 .hero-banner-form .hs-form-field {
   margin-bottom: 16px !important;
 }
-
-/* Etiquetas */
 .hero-banner-form label,
 .hero-banner-form .hs-form-field label {
   display: block !important;
@@ -109,8 +134,6 @@
   background: none !important;
   padding: 0 !important;
 }
-
-/* Inputs, selects, textareas */
 .hero-banner-form input[type="text"],
 .hero-banner-form input[type="email"],
 .hero-banner-form input[type="tel"],
@@ -118,7 +141,7 @@
 .hero-banner-form select,
 .hero-banner-form textarea {
   width: 100% !important;
-  height: 48px !important;
+  height: 35px !important;
   padding: 12px 16px !important;
   font-size: 16px !important;
   line-height: 22.4px !important;
@@ -130,8 +153,6 @@
   box-sizing: border-box !important;
   margin: 0 !important;
 }
-
-/* Radio/Checkbox como grupo inline */
 .hero-banner-form .inputs-list,
 .hero-banner-form .inputs-list.multi-container {
   display: flex !important;
@@ -140,33 +161,31 @@
   padding: 0 !important;
   list-style: none !important;
 }
-
 .hero-banner-form .hs-form-radio input,
 .hero-banner-form .hs-form-booleancheckbox input {
   width: 20px !important;
   height: 20px !important;
   margin-right: 8px !important;
 }
-
 .hero-banner-form .hs-form-radio span,
 .hero-banner-form .hs-form-booleancheckbox span {
   color: #fff !important;
   font-size: 14px !important;
 }
-
-/* Asteriscos de campo obligatorio */
 .hero-banner-form .hs-form-field .hs-form-required {
   color: #ef8036 !important;
 }
-
-/* Botón de envío */
 .hero-banner-form .actions,
 .hero-banner-form button[type="submit"] {
   margin: 0 !important;
   padding: 0 !important;
 }
 .hero-banner-form .hs-richtext, form .hs-richtext p{
-color: white;
+  color: white;
+}
+.hero-banner-form .hs-richtext a{
+  color:#9ecbf8;
+  font-weight: 700;
 }
 .hero-banner-form .actions .hs-button.primary,
 .hero-banner-form button[type="submit"] {
@@ -190,3 +209,94 @@ color: white;
 .hero-banner-form .submitted-message {
   background: transparent !important;
 }
+
+/* ===========================
+   RESPONSIVE <700px
+   =========================== */
+@media (max-width: 700px) {
+  .hero, .hero-inner {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    width: 100vw;
+    max-width: 100vw;
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+  }
+  .image-mask {
+    width: 100vw;
+    max-width: 100vw;
+    height: auto;
+    max-height: none;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .hero-image {
+    width: 100vw;
+    max-width: 100vw;
+    height: auto;
+    max-height: 300px;
+    min-height: 150px;
+    object-fit: cover;
+    -webkit-mask-image: url('https://4272053.fs1.hubspotusercontent-na1.net/hubfs/4272053/WEB_FUND_MPG/responsive_form_banner.png');
+    mask-image: url('https://4272053.fs1.hubspotusercontent-na1.net/hubfs/4272053/WEB_FUND_MPG/responsive_form_banner.png');
+    -webkit-mask-size: cover;
+    mask-size: cover;
+    -webkit-mask-position: left center;
+    mask-position: left center;
+    display: block;
+    border-radius: 0;
+  }
+  .hero-content {
+    width: 100vw;
+    max-width: 100vw;
+    min-width: 0;
+    padding: 32px 16px 32px 16px;
+    box-sizing: border-box;
+  }
+  .hero-title {
+    font-size: 32px;
+    line-height: 35.2px;
+    width: 100%;
+  }
+  .hero-body {
+    width: 100%;
+    font-size: 15px !important;
+    line-height: 22px !important;
+    padding: 0 !important;
+    box-sizing: border-box;
+  }
+  .hero-body p {
+    width: 100% !important;
+    font-size: 15px !important;
+    line-height: 22px !important;
+    padding: 0 !important;
+    box-sizing: border-box;
+  }
+  .divider {
+    width: 100%;
+    height: 0;
+    outline: 1px #DDE1E6 solid;
+    outline-offset: -0.5px;
+    border: none;
+    margin: 0;
+    background: none;
+    display: block;
+  }
+  .hero-banner-form {
+    align-self: stretch;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: none !important;
+    padding: 0;
+    margin: 0;
+  }
+  .hero-banner-form .hs-form-field {
+    width: 100%;
+    margin-bottom: 16px !important;
+  }
+}
+
