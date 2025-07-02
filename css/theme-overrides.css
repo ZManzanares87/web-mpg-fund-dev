@@ -82,8 +82,8 @@
 /* 1e. Forms */
 {% set form_bg_color = color(theme.forms.form.background.color) %}
 
-{% set form_title_font = theme.forms.title.text.font %}
-{% set form_title_bg_color =  color(theme.forms.title.background.color) %}
+{% set form_title_font = theme.forms.title.text.font %} 
+{% set form_title_bg_color =  color(theme.forms.title.background.color) %}   
 {% set form_title_spacing = theme.forms.title.spacing.spacing.css %}
 {% set form_title_border = theme.forms.title.border.border.css %}
 {% set form_title_top_left_corner_radius = theme.forms.title.corner.top_left_radius ~ "px" %}
