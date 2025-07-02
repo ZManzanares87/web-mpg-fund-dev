@@ -1,0 +1,41 @@
+[ {
+  "id" : "f04390c9-7188-0ddc-4083-7aa5642e7882",
+  "name" : "titulo_card",
+  "label" : "titulo card",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Talleres de cocina"
+}, {
+  "id" : "27bbcdeb-097c-d7b0-149f-ad52264e0a67",
+  "name" : "card_description",
+  "label" : "card description",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "display_width" : null,
+  "default" : "<span>uam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.</span>"
+}, {
+  "id" : "ea742a3b-b2df-c9ec-f8b2-978fdcfc0db8",
+  "name" : "card_image",
+  "label" : "Card image",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "display_width" : null,
+  "default" : {
+    "size_type" : "auto",
+    "src" : "https://4272053.fs1.hubspotusercontent-na1.net/hubfs/4272053/barcelona-profesionales-cocina.jpg",
+    "alt" : "barcelona-profesionales-cocina",
+    "loading" : "lazy",
+    "width" : 1200,
+    "height" : 800,
+    "max_width" : 1200,
+    "max_height" : 800
+  }
+} ]
