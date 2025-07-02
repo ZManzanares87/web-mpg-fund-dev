@@ -1,0 +1,18 @@
+[ {
+  "id" : "389f01a5-74da-eeac-8ea0-9fb74a0cde15",
+  "name" : "box_title",
+  "label" : "box title",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null
+}, {
+  "id" : "0c48a3b2-9668-d83a-c756-936923294a44",
+  "name" : "box_description",
+  "label" : "box description",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "display_width" : null
+} ]

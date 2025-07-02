@@ -6,5 +6,11 @@
     "hubspot.beta": true,
     "editor.defaultFoldingRangeProvider": "HubSpot.hubl",
     "editor.defaultFormatter": "HubSpot.hubl",
-    "notebook.defaultFormatter": "HubSpot.hubl"
+    "notebook.defaultFormatter": "HubSpot.hubl",
+    "[html-hubl]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[css-hubl]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 }

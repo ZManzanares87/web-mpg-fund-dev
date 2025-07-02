@@ -1,0 +1,21 @@
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<div class="card-list">
+  <article class="card">
+    <div class="card-image-container">
+     {% if module.card_image.src %}
+	{% set sizeAttrs = 'width="{{ module.card_image.width|escape_attr }}" height="{{ module.card_image.height|escape_attr }}"' %}
+	{% if module.card_image.size_type == 'auto' %}
+		{% set sizeAttrs = 'width="{{ module.card_image.width|escape_attr }}" height="{{ module.card_image.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+	{% elif module.card_image.size_type == 'auto_custom_max' %}
+		{% set sizeAttrs = 'width="{{ module.card_image.max_width|escape_attr }}" height="{{ module.card_image.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+	{% endif %}
+	 {% set loadingAttr = module.card_image.loading != 'disabled' ? 'loading="{{ module.card_image.loading|escape_attr }}"' : '' %}
+	<img src="{{ module.card_image.src|escape_url }}" alt="{{ module.card_image.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+{% endif %}
+    </div>
+    <div class="card-content">
+      <div class="card-title">{% inline_text field="titulo_card" value="{{ module.titulo_card }}" %}</div>
+      <p class="card-desc">{% inline_rich_text field="card_description" value="{{ module.card_description }}" %}</p>
+    </div>
+  </article>
+</div>
