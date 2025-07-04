@@ -1,0 +1,189 @@
+:root {
+  --orange-light: #ef8036;
+  --orange-dark:  #9e5530;
+  --card-bg:      #fff;
+  --trans:        .5s cubic-bezier(.4,0,.2,1);
+}
+
+/* 1) Contenedor principal */
+.accordion {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* 2) Card */
+.accordion__card {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  padding: 20px;
+  width: 100%;
+  max-width: 420px;
+  background: var(--card-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+}
+@media (min-width: 601px) {
+  .accordion__card { height: 450px; }
+}
+@media (max-width: 600px) {
+  .accordion__card {
+    flex-direction: column;
+    padding: .6em;
+    max-height: 620px;
+  }
+}
+
+/* 3) Item */
+.accordion__item {
+  flex: 1 1 0;
+  background: var(--orange-light);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    flex-basis var(--trans),
+    flex-grow  var(--trans),
+    background  var(--trans),
+    height      var(--trans);
+}
+@media (min-width: 601px) {
+  .accordion__item { height: 100%; }
+}
+
+/* Header */
+.accordion__header {
+  writing-mode: vertical-rl;
+  transform: rotate(-180deg);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.2em;
+  padding: .7em 0;
+  pointer-events: none;
+  transition: transform var(--trans), writing-mode var(--trans);
+}
+
+/* Divider */
+.accordion__divider {
+  width: 70%;
+  height: 2px;
+  background: #fff;
+  opacity: .6;
+  margin: .3em auto .5em;
+  display: none;
+  transition: opacity var(--trans);
+}
+
+/* Content oculto */
+.accordion__content {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--trans);
+  align-items: center;
+}
+.accordion__content a {
+  width: 100%;
+  text-align: center;
+  background: rgba(255,255,255,0.08);
+  padding: .5em 1.2em;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 1em;
+  letter-spacing: .1em;
+  color: #fff;
+  text-decoration: none;
+  transition: background .2s;
+}
+.accordion__content a:hover {
+  background: rgba(255,255,255,0.18);
+}
+
+/* Desktop: caso 1 sólo item */
+@media (min-width: 601px) {
+  .accordion__card > .accordion__item:only-child {
+    flex-basis: 80px;
+    flex-grow: 0;
+  }
+  .accordion__card > .accordion__item:only-child:hover,
+  .accordion__card > .accordion__item:only-child.accordion__item--expanded {
+    flex-basis: 220px;
+    background: var(--orange-dark);
+  }
+  .accordion__card > .accordion__item:only-child:hover .accordion__header,
+  .accordion__card > .accordion__item:only-child.accordion__item--expanded .accordion__header {
+    writing-mode: horizontal-tb;
+    transform: rotate(0);
+    padding: .7em 0 .2em;
+  }
+  .accordion__card > .accordion__item:only-child:hover .accordion__divider,
+  .accordion__card > .accordion__item:only-child.accordion__item--expanded .accordion__divider {
+    display: block;
+  }
+  .accordion__card > .accordion__item:only-child:hover .accordion__content,
+  .accordion__card > .accordion__item:only-child.accordion__item--expanded .accordion__content {
+    opacity: 1;
+    pointer-events: auto;
+    margin-top: .3em;
+  }
+
+  /* Desktop: varios items */
+  .accordion__item:hover {
+    flex-grow: 4;
+    background: var(--orange-dark);
+    z-index: 2;
+  }
+  .accordion__item:hover .accordion__header {
+    writing-mode: horizontal-tb;
+    transform: rotate(0);
+    padding: .7em 0 .2em;
+  }
+  .accordion__item:hover .accordion__divider {
+    display: block;
+  }
+  .accordion__item:hover .accordion__content {
+    opacity: 1;
+    pointer-events: auto;
+    margin-top: .3em;
+  }
+}
+
+/* Móvil (<600px) */
+@media (max-width: 600px) {
+  .accordion__item {
+    flex: none;
+    width: 100%;
+    min-height: 50px;
+  }
+  .accordion__item--expanded {
+    min-height: 140px;
+    background: var(--orange-dark);
+    z-index: 2;
+  }
+  .accordion__item--expanded .accordion__header {
+    writing-mode: horizontal-tb;
+    transform: rotate(0);
+    padding: .7em 0 .2em;
+  }
+  .accordion__item--expanded .accordion__divider {
+    display: block;
+  }
+  .accordion__item--expanded .accordion__content {
+    opacity: 1;
+    pointer-events: auto;
+    margin-top: .3em;
+  }
+  .accordion__divider {
+    width: 80%;
+  }
+}
