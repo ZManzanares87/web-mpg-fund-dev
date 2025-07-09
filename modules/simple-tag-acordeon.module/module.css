@@ -62,7 +62,7 @@
   transform: rotate(-180deg);
   color: #fff;
   font-weight: 700;
-  font-size: 1.2em;
+  font-size: 1em;
   padding: .7em 0;
   pointer-events: none;
   transition: transform var(--trans), writing-mode var(--trans);
@@ -74,7 +74,7 @@
   height: 2px;
   background: #fff;
   opacity: .6;
-  margin: .3em auto .5em;
+  margin: 15px;
   display: none;
   transition: opacity var(--trans);
 }
@@ -96,10 +96,10 @@
   width: 100%;
   text-align: center;
   background: rgba(255,255,255,0.08);
-  padding: .5em 1.2em;
+     padding: 13px;
   border-radius: 4px;
   font-weight: 600;
-  font-size: 1em;
+  font-size: 0.7em;
   letter-spacing: .1em;
   color: #fff;
   text-decoration: none;
@@ -112,7 +112,7 @@
 /* Desktop: caso 1 sólo item */
 @media (min-width: 601px) {
   .accordion__card > .accordion__item:only-child {
-    flex-basis: 80px;
+    flex-basis: 90px;
     flex-grow: 0;
   }
   .accordion__card > .accordion__item:only-child:hover,
