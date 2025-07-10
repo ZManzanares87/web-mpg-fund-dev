@@ -13,24 +13,7 @@
 {% endblock header %}
 
 {% block body %}
-  <!-- Sección del banner con video de fondo -->
-  <section class="home-video-banner">
-    <div class="overlay"></div>
-    <video autoplay muted loop playsinline class="video-background">
-      <source src="https://4272053.fs1.hubspotusercontent-na1.net/hubfs/4272053/WEB_HUAI_2025/video_header.mp4" type="video/mp4" />
-      <p>Su navegador no soporta vídeos HTML5.</p>
-    </video>
-    <div class="banner-content">
-      <h1 class="banner-title">
-        <span class="banner-subtitle">
-          {% module "module_17296935215756" path="@hubspot/text", label="text.module" %}
-        </span>
-      </h1>
-      <div class="button-wrapper">
-     
-      </div> 
-    </div>
-  </section>
+
 
   {% dnd_area "dnd_area" label="Main section" class="body-container body-container--home" %}
 
