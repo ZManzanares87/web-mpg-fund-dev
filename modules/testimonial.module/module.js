@@ -1,21 +1,23 @@
-// home-testimonials.module.js
+// home-testimonial-slider.module.js
 (function() {
-  const cards = document.querySelectorAll('.home-testimonials__card');
+  const slides = document.querySelectorAll('.home-testimonial-slider__slide');
+  const prev = document.querySelector('.home-testimonial-slider__arrow--prev');
+  const next = document.querySelector('.home-testimonial-slider__arrow--next');
   let idx = 0;
 
-  function showCard(i) {
-    cards.forEach((c, j) => c.classList.toggle('active', j === i));
+  function show(i) {
+    slides.forEach((sl, j) => sl.classList.toggle('active', j === i));
   }
 
-  document.querySelector('.home-testimonials__arrow--prev')
-    .addEventListener('click', () => {
-      idx = (idx - 1 + cards.length) % cards.length;
-      showCard(idx);
-    });
+  prev.addEventListener('click', () => {
+    idx = (idx - 1 + slides.length) % slides.length;
+    show(idx);
+  });
+  next.addEventListener('click', () => {
+    idx = (idx + 1) % slides.length;
+    show(idx);
+  });
 
-  document.querySelector('.home-testimonials__arrow--next')
-    .addEventListener('click', () => {
-      idx = (idx + 1) % cards.length;
-      showCard(idx);
-    });
+  // Init
+  show(idx);
 })();

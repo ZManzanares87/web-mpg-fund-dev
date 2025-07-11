@@ -3,7 +3,7 @@
   position: relative;
   width: 1278px;
   height: 566px;
-  background: url('https://4272053.fs1.hubspotusercontent-na1.net/hubfs/4272053/WEB_FUND_MPG/assets/mujer-con-tablet.png') center/cover no-repeat;
+  background: url('https://4272053.fs1.hubspotusercontent-na1.net/hubfs/4272053/WEB_FUND_MPG/FOTOS%20POWER%20YOU%20EXPERIENCE/bannerhome%20fundacion.png') center/cover no-repeat;
   border-radius: 8px;
   overflow: hidden;
   display: flex;
@@ -88,13 +88,13 @@
 .home-hero-banner__card-link {
   font-family: Inter, sans-serif;
   font-size: 16px;
-  font-weight: 800;
+  font-weight: 800 !important;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   line-height: 1;
   display: inline-flex;
   align-items: center;
-  text-decoration: none;
+  text-decoration: none !important;
   color: inherit;
 }
 

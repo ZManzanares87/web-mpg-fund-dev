@@ -1,6 +1,6 @@
-/* Desktop: grid de 3 columnas por defecto */
 .information-boxes-container {
   display: grid;
+  gap: 32px;
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
   margin: 0 auto;
@@ -30,12 +30,13 @@
   width: 450px;
   background: #fff;
   border-radius: 10px;
-  border: 1px solidrgb(255, 255, 255);
+  border: 1px solid #dde1e6;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 50px;
   box-sizing: border-box;
+  justify-content: flex-start;
 }
 
 .information-box-header {
@@ -46,16 +47,16 @@
   align-items: flex-start;
 }
 
-.information-box-title { 
+.information-box-title {
   color: #48709D;
   font-size: 28px;
   font-family: 'Inter', Arial, sans-serif;
   font-weight: 700;
   line-height: 1.1;
-} 
+}
 
 .information-box-line {
-  height: 6px;
+  height: 15px;
 }
 
 .information-box-body {
