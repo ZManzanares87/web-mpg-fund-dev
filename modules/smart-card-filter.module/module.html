@@ -1,11 +1,7 @@
-<<<<<<< HEAD
-=======
-<!--
-  templateType: "none"
-  isAvailableForNewContent: false
--->
->>>>>>> 351e566233089300bcf9dd904380837ad370746a
-<!-- Contenedor de botones filtradores con flechas -->
+<!-- ============================
+     HTML CORREGIDO
+     ============================ -->
+<!-- Contenedor slider de botones filtradores con flechas -->
 <div class="filter-buttons-wrapper">
   <div class="arrow arrow-left"></div>
   <div class="filter-buttons">
@@ -13,7 +9,7 @@
       <button class="filter-btn" value="{{ item.tag }}">{{ item.tag }}</button>
     {% endfor %}
   </div>
-
+  <div class="arrow arrow-right"></div>
 </div>
 
 <!-- Listado de posts -->
@@ -26,9 +22,12 @@
       <div class="card-back">
         <div class="overlay"></div>
         <p class="desc">{{ item.descripcion }}</p>
-        <button class="card-button"><a href="{{ item.boton_link.href }}" class="card-button" target="{{ item.boton_link.target }}">
-  {{ item.boton }}
-</a></button>
+        <!-- Ahora SOLO un <a> con clase card-button -->
+        <a href="{{ item.boton_link.href }}"
+           target="{{ item.boton_link.target }}" 
+           class="card-button">
+          {{ item.boton }}
+        </a>
       </div>
     </div>
   {% endfor %}

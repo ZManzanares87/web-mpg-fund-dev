@@ -1,0 +1,37 @@
+<div class="banner-multiplico">
+  {# Imagen solo para MOBILE #}
+  <div class="image-masked-mobile">
+    {% if module.imagen_mobile.src %}
+      {% set sizeAttrs = 'width="{{ module.imagen_mobile.width|escape_attr }}" height="{{ module.imagen_mobile.height|escape_attr }}"' %}
+      {% if module.imagen_mobile.size_type == 'auto' %}
+        {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+      {% elif module.imagen_mobile.size_type == 'auto_custom_max' %}
+        {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+      {% endif %}
+      {% set loadingAttr = module.imagen_mobile.loading != 'disabled' ? 'loading="{{ module.imagen_mobile.loading|escape_attr }}"' : '' %}
+      <img src="{{ module.imagen_mobile.src|escape_url }}" alt="{{ module.imagen_mobile.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+    {% endif %}
+  </div>
+
+  <div class="text-content">
+    <div class="headline">
+      <span class="badge">{% inline_text field="texto_1" value="{{ module.texto_1 }}" %}</span>
+      <strong>{% inline_text field="texto_2" value="{{ module.texto_2 }}" %}</strong>
+    </div>
+    <p>{% inline_rich_text field="descripci_n" value="{{ module.descripci_n }}" %}</p>
+  </div>
+
+  {# Imagen solo para DESKTOP #}
+  <div class="image-masked">
+    {% if module.imagen_banner.src %}
+      {% set sizeAttrs = 'width="{{ module.imagen_banner.width|escape_attr }}" height="{{ module.imagen_banner.height|escape_attr }}"' %}
+      {% if module.imagen_banner.size_type == 'auto' %}
+        {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+      {% elif module.imagen_banner.size_type == 'auto_custom_max' %}
+        {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+      {% endif %}
+      {% set loadingAttr = module.imagen_banner.loading != 'disabled' ? 'loading="{{ module.imagen_banner.loading|escape_attr }}"' : '' %}
+      <img src="{{ module.imagen_banner.src|escape_url }}" alt="{{ module.imagen_banner.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+    {% endif %}
+  </div>
+</div>

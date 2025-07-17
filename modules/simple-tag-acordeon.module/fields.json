@@ -1,0 +1,120 @@
+[
+ {
+  "children": [
+   {
+    "allow_new_line": false,
+    "default": "Tag",
+    "display_width": null,
+    "id": "65181947-3ef7-ac2c-4d53-bcd976fd0c67",
+    "label": "Tag name",
+    "locked": false,
+    "name": "tag_name",
+    "required": false,
+    "type": "text"
+   },
+   {
+    "children": [
+     {
+      "allow_new_line": false,
+      "display_width": null,
+      "id": "6972cc5c-b8d8-2526-f930-4a67c2a07433",
+      "label": "Program name",
+      "locked": false,
+      "name": "program_name",
+      "required": false,
+      "type": "text"
+     },
+     {
+      "default": {
+       "url": {
+        "content_id": null,
+        "type": "EXTERNAL",
+        "href": ""
+       },
+       "open_in_new_tab": false,
+       "no_follow": false
+      },
+      "display_width": null,
+      "id": "baa9eb35-cb62-5b0f-d623-6cb691668a6d",
+      "label": "program link",
+      "locked": false,
+      "name": "program_link",
+      "required": false,
+      "show_advanced_rel_options": false,
+      "supported_types": [
+       "EXTERNAL",
+       "CONTENT",
+       "FILE",
+       "EMAIL_ADDRESS",
+       "BLOG",
+       "CALL_TO_ACTION",
+       "PHONE_NUMBER",
+       "WHATSAPP_NUMBER",
+       "PAYMENT"
+      ],
+      "type": "link"
+     }
+    ],
+    "default": [
+     {
+      "program_link": {
+       "url": {
+        "content_id": null,
+        "type": "EXTERNAL",
+        "href": ""
+       },
+       "open_in_new_tab": false,
+       "no_follow": false
+      }
+     }
+    ],
+    "display_width": null,
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "id": "c24a3f1b-d670-de48-a3ca-18e54b46e092",
+    "label": "Program button",
+    "locked": false,
+    "name": "program_button",
+    "occurrence": {
+     "default": 1,
+     "min": 1
+    },
+    "required": false,
+    "tab": "CONTENT",
+    "type": "group"
+   }
+  ],
+  "default": [
+   {
+    "tag_name": "Tag",
+    "program_button": [
+     {
+      "program_link": {
+       "url": {
+        "content_id": null,
+        "type": "EXTERNAL",
+        "href": ""
+       },
+       "open_in_new_tab": false,
+       "no_follow": false
+      }
+     }
+    ]
+   }
+  ],
+  "display_width": null,
+  "expanded": false,
+  "group_occurrence_meta": null,
+  "id": "1adb1184-30cb-148b-4650-33692a319969",
+  "label": "Tag box",
+  "locked": false,
+  "name": "tag_box",
+  "required": false,
+  "tab": "CONTENT",
+  "type": "group",
+  "occurrence": {
+   "min": 1,
+   "default": 1
+  }
+ }
+]

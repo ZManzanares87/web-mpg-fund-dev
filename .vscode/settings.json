@@ -9,5 +9,8 @@
     "notebook.defaultFormatter": "HubSpot.hubl",
     "[html-hubl]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[css-hubl]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     }
 }

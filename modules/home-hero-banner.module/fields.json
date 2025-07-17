@@ -1,0 +1,93 @@
+[ {
+  "id" : "532a960c-9535-38d4-19c7-7b7626f59684",
+  "name" : "texto_titulo",
+  "label" : "texto-hero",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "display_width" : null
+}, {
+  "id" : "40b63992-99c0-cc42-8d23-9538f4f8bf48",
+  "name" : "hero_card",
+  "label" : "hero-card",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "f49b3e63-4b13-c43c-0b4b-4233332e0919",
+    "name" : "texto_card",
+    "label" : "texto card",
+    "required" : false,
+    "locked" : false, 
+    "type" : "richtext",
+    "display_width" : null
+  }, {
+    "id" : "560e141f-2e98-6d02-86ca-fd4f044b5d61",
+    "name" : "button_card",
+    "label" : "button card",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "9b3f1454-cc9b-b317-10b6-cce232b60e43",
+      "name" : "boton",
+      "label" : "boton",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null
+    }, {
+      "id" : "e098fdfa-0bc6-809d-a1b1-b5a092eaff0d",
+      "name" : "link_boton",
+      "label" : "link boton",
+      "required" : false,
+      "locked" : false,
+      "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
+      "show_advanced_rel_options" : false,
+      "type" : "link",
+      "display_width" : null,
+      "default" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "link_boton" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "button_card" : {
+      "link_boton" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }
+  }
+} ]

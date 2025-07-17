@@ -1,0 +1,52 @@
+[ {
+  "id" : "37ec46d9-fbe6-9d27-00e0-6dcd176621e5",
+  "name" : "link_field",
+  "label" : "Enlace",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : 1
+  },
+  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
+  "show_advanced_rel_options" : false,
+  "type" : "link",
+  "display_width" : null,
+  "default" : [ {
+    "url" : {
+      "content_id" : null,
+      "type" : "EXTERNAL",
+      "href" : ""
+    },
+    "open_in_new_tab" : false,
+    "no_follow" : false
+  } ]
+}, {
+  "id" : "f71ad5b9-99f4-1aff-ea24-197245084f22",
+  "name" : "titulo_acordeon",
+  "label" : "titulo acordeon",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null
+}, {
+  "id" : "ac1279c9-24bd-991c-5da7-59e6af194bae",
+  "name" : "descripcion_acordeon",
+  "label" : "descripcion acordeon",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "display_width" : null
+}, {
+  "id" : "14d257a4-2204-e91c-5b74-2fa0de26c193",
+  "name" : "titulo_tag",
+  "label" : "titulo tag",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null
+} ]
