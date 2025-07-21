@@ -1,66 +1,99 @@
-let selectedTags = []; // Array para almacenar los tags seleccionados
+let selectedTags = [];
+  let page = 0;
+  const mobileFilters = document.querySelector('.mobile-filters');
+  const filterToggle = document.querySelector('.filter-toggle');
+  const allMobileButtons = Array.from(document.querySelectorAll('.mobile-filters .filter-btn'));
 
-document.querySelectorAll('.filter-btn').forEach(button => {
-  button.addEventListener('click', function () {
-    console.log("Clic en botón:", button.textContent.trim());
-
-    // Obtener el filtro del botón y normalizar
-    const selectedTag = button.value.toLowerCase();
-    console.log("🎯 Filtro seleccionado:", selectedTag);
-
-    // Alternar la selección del botón
-    const tagIndex = selectedTags.indexOf(selectedTag);
-    if (tagIndex === -1) {
-      console.log("✅ Agregando filtro:", selectedTag);
-      selectedTags.push(selectedTag);
-      button.classList.add('active');
-    } else {
-      console.log("❌ Quitando filtro:", selectedTag);
-      selectedTags.splice(tagIndex, 1);
-      button.classList.remove('active');
-    }
-
-    console.log("📌 Tags seleccionados actualmente:", selectedTags);
-    filterCardsByTags(selectedTags);
+  // Click en cualquier filtro
+  document.querySelectorAll('.filter-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const tag = button.value.toLowerCase();
+      console.log("Clic en botón:", tag);
+      const idx = selectedTags.indexOf(tag);
+      if (idx === -1) {
+        selectedTags.push(tag);
+        button.classList.add('active');
+        console.log("✅ Agregando filtro:", tag);
+      } else {
+        selectedTags.splice(idx, 1);
+        button.classList.remove('active');
+        console.log("❌ Quitando filtro:", tag);
+      }
+      console.log("📌 Tags seleccionados actualmente:", selectedTags);
+      filterCardsByTags();
+      updateSelectedTagsUI();
+      renderMobilePage();
+    });
   });
-});
 
-// 🔹 Función para filtrar las cards con transición suave
-function filterCardsByTags(tags) {
-  console.log("🔎 Ejecutando filtro con tags:", tags);
+  // Filtrar cards
+  function filterCardsByTags() {
+    console.log("🔎 Ejecutando filtro con tags:", selectedTags);
+    document.querySelectorAll('.filter-item').forEach(card => {
+      const hasTag = selectedTags.length === 0 ||
+        selectedTags.some(t => card.className.toLowerCase().includes(t));
+      if (hasTag) {
+        card.classList.add('highlight');
+        card.classList.remove('grayscale');
+      } else {
+        card.classList.remove('highlight');
+        card.classList.add('grayscale');
+      }
+    });
+  }
 
-  const cards = document.querySelectorAll('.filter-item');
-  cards.forEach(card => {
-    const match = card.className.match(/\[(.*?)\]/);
-    let cardTags = match ? match[1].split(',').map(tag => tag.trim().toLowerCase()) : [];
-
-    // Si no hay filtros activos, mostrar todas las cards con una transición suave
-    if (tags.length === 0) {
-      card.style.transition = "filter 0.5s ease-in-out, opacity 0.5s ease-in-out";
-      card.style.opacity = "1";
-      card.classList.remove('grayscale');
-      card.classList.add('highlight');
-      return;
-    }
-
-    // Comparar con los tags seleccionados
-    const matchFound = tags.some(tag => cardTags.includes(tag));
-
-    if (matchFound) {
-      card.style.transition = "filter 0.5s ease-in-out, opacity 0.5s ease-in-out";
-      card.style.opacity = "1";
-      card.classList.remove('grayscale');
-      card.classList.add('highlight');
-    } else {
-card.style.transition = "opacity 0.5s ease-in-out, filter 0.5s ease-in-out";
-
-
-setTimeout(() => {
-  card.classList.add('grayscale');
-  card.classList.remove('highlight');
-  card.style.opacity = "1"; 
-}, 300);
-
-    }
+  // Toggle móvil: abre/cierra panel y anima logo
+  filterToggle.addEventListener('click', () => {
+    console.log("🔀 Toggle filtros móviles");
+    filterToggle.classList.toggle('open');
+    mobileFilters.classList.toggle('open');
   });
-}
+
+  // Actualizar UI de selected tags
+  function updateSelectedTagsUI() {
+    const container = document.querySelector('.selected-tags');
+    container.innerHTML = '';
+    selectedTags.forEach(tag => {
+      const div = document.createElement('div');
+      div.className = 'tag';
+      div.textContent = tag;
+      const span = document.createElement('span');
+      span.className = 'remove-tag';
+      span.textContent = 'x';
+      span.addEventListener('click', () => {
+        console.log("❌ Quitando filtro vía UI seleccionados:", tag);
+        selectedTags = selectedTags.filter(t => t !== tag);
+        document.querySelectorAll(`.filter-btn[value=\"${tag}\"]`).forEach(b => b.classList.remove('active'));
+        filterCardsByTags();
+        updateSelectedTagsUI();
+        renderMobilePage();
+      });
+      div.appendChild(span);
+      container.appendChild(div);
+    });
+  }
+
+  // Paginación móvil
+  function renderMobilePage() {
+    const pageSize = 4;
+    const start = page * pageSize;
+    allMobileButtons.forEach(btn => btn.style.display = 'none');
+    allMobileButtons.slice(start, start + pageSize).forEach(btn => btn.style.display = 'inline-flex');
+    document.querySelector('.pagination .arrow-left').style.visibility = page === 0 ? 'hidden' : 'visible';
+    document.querySelector('.pagination .arrow-right').style.visibility = start + pageSize >= allMobileButtons.length ? 'hidden' : 'visible';
+  }
+  document.querySelector('.pagination .arrow-left').addEventListener('click', () => {
+    if (page > 0) { console.log("🔙 Página móvil:", page - 1); page--; renderMobilePage(); }
+  });
+  document.querySelector('.pagination .arrow-right').addEventListener('click', () => {
+    if ((page + 1) * 4 < allMobileButtons.length) { console.log("🔜 Página móvil:", page + 1); page++; renderMobilePage(); }
+  });
+  console.log("🚀 Inicializando móvil");
+  renderMobilePage();
+
+  // Botón Ver menos
+  document.querySelector('.less-button').addEventListener('click', () => {
+    console.log("🔽 Cerrar filtros móviles");
+    filterToggle.classList.remove('open');
+    mobileFilters.classList.remove('open');
+  });

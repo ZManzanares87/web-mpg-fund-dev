@@ -1,34 +1,57 @@
-<!-- ============================
-     HTML CORREGIDO
-     ============================ -->
-<!-- Contenedor slider de botones filtradores con flechas -->
-<div class="filter-buttons-wrapper">
-  <div class="arrow arrow-left"></div>
-  <div class="filter-buttons">
+<div class="desktop-filters">
+  <!-- Contenedor slider de botones filtradores con flechas -->
+  <div class="filter-buttons-wrapper">
+    <div class="arrow arrow-left"></div>
+    <div class="filter-buttons">
+      {% for item in module.button_tags %}
+        <button class="filter-btn" value="{{ item.tag }}">{{ item.tag }}</button>
+      {% endfor %}
+    </div>
+    <div class="arrow arrow-right"></div>
+  </div>
+
+  <!-- Listado de posts (cards) -->
+  <div class="cards">
+    {% for item in module.card_content %}
+      <div class="card {{ item.card_tag }} filter-item">
+        <div class="card-front" style="background-image: url('{{ item.background_img.src|escape_url }}');">
+          <p class="title">{{ item.titulo }}</p>
+        </div>
+        <div class="card-back">
+          <div class="overlay"></div>
+          <p class="desc">{{ item.descripcion }}</p>
+          <a href="{{ item.boton_link.href }}" target="{{ item.boton_link.target }}" class="card-button">
+            {{ item.boton }}
+          </a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- MOBILE VERSION -->
+<div class="mobile-filters">
+  <!-- Toggle logo animado + pregunta -->
+  <div class="filter-toggle IconContainer">
+    <div class="Question">¿Qué te gustaría aprender?</div>
+    <svg width="23" height="25" viewBox="0 0 23 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="15.7402" width="6.80376" height="24.0735" rx="3.40188" fill="#C05801"/>
+      <rect x="9.66211" y="1.90332" width="4.66487" height="19.016" rx="2.33243" fill="#5E7C70"/>
+      <rect x="4.67969" y="3.66235" width="3.28017" height="14.7109" rx="1.38057" fill="#4C79B1"/>
+      <rect x="0.455566" y="5.27954" width="2.76114" height="11.4332" rx="1.38057" fill="#396299"/>
+    </svg>
+  </div>
+
+  <!-- Contenido oculto hasta abrir -->
+  <div class="selected-tags"></div>
+  <div class="pagination">
+    <div class="arrow arrow-left"></div>
+    <div class="arrow arrow-right"></div>
+  </div>
+  <div class="tag-rows">
     {% for item in module.button_tags %}
       <button class="filter-btn" value="{{ item.tag }}">{{ item.tag }}</button>
     {% endfor %}
   </div>
-  <div class="arrow arrow-right"></div>
-</div>
-
-<!-- Listado de posts -->
-<div class="cards">
-  {% for item in module.card_content %}
-    <div class="card {{ item.card_tag }} filter-item">
-      <div class="card-front" style="background-image: url('{{ item.background_img.src|escape_url }}');">
-        <p class="title">{{ item.titulo }}</p>
-      </div>
-      <div class="card-back">
-        <div class="overlay"></div>
-        <p class="desc">{{ item.descripcion }}</p>
-        <!-- Ahora SOLO un <a> con clase card-button -->
-        <a href="{{ item.boton_link.href }}"
-           target="{{ item.boton_link.target }}" 
-           class="card-button">
-          {{ item.boton }}
-        </a>
-      </div>
-    </div>
-  {% endfor %}
+  <button class="less-button">Ver menos</button>
 </div>
