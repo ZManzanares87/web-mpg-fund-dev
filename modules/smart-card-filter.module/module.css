@@ -107,7 +107,16 @@
 
 @media (max-width:480px){
 
-  .desktop-filters{ display:none !important; }
+  /* Oculta solo el header desktop, deja las cards */
+  .desktop-filters .filter-buttons-wrapper{ display:none !important; }
+  .desktop-filters{ display:block !important; }
+
+  .module-wrapper{
+    display:flex;
+    flex-direction:column;
+  }
+  .mobile-filters{ order:1; }
+  .desktop-filters{ order:2; }
 
   .mobile-filters{
     display:flex;
@@ -229,7 +238,7 @@
   }
   .pag-arrow[disabled]{ opacity:.3; cursor:default; }
 
-  /* Lógica display none via grayscale */
+  /* Mostrar/ocultar cards */
   .filter-item{ display:block !important; }
   .filter-item.grayscale{ display:none !important; }
 
@@ -246,4 +255,3 @@
     cursor:pointer;
   }
 }
-

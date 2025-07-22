@@ -5,6 +5,24 @@ let selectedTags = [];
 let page = 0;
 const PAGE_SIZE = 4; // 2 filas x 2
 
+// Helpers
+const normalizeTag = t => (t || "")
+  .toLowerCase()
+  .replace(/\s+/g, '')   // quita espacios/tabs nuevos
+  .trim();
+
+const extractCardTags = (card) => {
+  // Busca formato [tag1, tag2]
+  const m = card.className.match(/\[([^\]]+)\]/);
+  if (m) {
+    return m[1].split(',').map(x => normalizeTag(x));
+  }
+  // Fallback: usa classList filtrando utilitarias
+  return Array.from(card.classList)
+    .map(c => normalizeTag(c))
+    .filter(c => !['card','filter-item','highlight','grayscale'].includes(c));
+};
+
 // ---- Selectores ----
 const mobileFilters   = document.querySelector('.mobile-filters');
 const headerClosed    = document.querySelector('.mobile-header-closed');
@@ -23,8 +41,10 @@ const allBtns         = Array.from(document.querySelectorAll('.filter-btn'));
 // ---- Listeners filtros ----
 allBtns.forEach(btn=>{
   btn.addEventListener('click', ()=>{
-    const tag = btn.value.toLowerCase();
-    console.log("Clic en botón:", tag);
+    const raw = btn.value;
+    const tag = normalizeTag(raw);
+    console.log("Clic en botón:", raw, "-> normalizado:", tag);
+
     const idx = selectedTags.indexOf(tag);
     if(idx === -1){
       selectedTags.push(tag);
@@ -45,15 +65,24 @@ allBtns.forEach(btn=>{
 // ---- Filtrado cards ----
 function filterCardsByTags(){
   console.log("🔎 Ejecutando filtro con tags:", selectedTags);
+
+  const isMobile = window.matchMedia("(max-width:480px)").matches;
+
   document.querySelectorAll('.filter-item').forEach(card=>{
-    const ok = selectedTags.length === 0 ||
-               selectedTags.some(t => card.className.toLowerCase().includes(t));
-    if(ok){
+    const cardTags = extractCardTags(card);
+    console.log("➡️ Card tags:", cardTags, "vs selected:", selectedTags);
+
+    const noFilters = selectedTags.length === 0;
+    const match = noFilters || selectedTags.some(t => cardTags.includes(t));
+
+    if(match){
       card.classList.add('highlight');
       card.classList.remove('grayscale');
+      if(isMobile) card.style.display = 'block';
     }else{
       card.classList.remove('highlight');
       card.classList.add('grayscale');
+      if(isMobile) card.style.display = 'none';
     }
   });
 }
@@ -93,7 +122,9 @@ function updateSelectedTagsUI(){
     x.addEventListener('click', ()=>{
       console.log("❌ Quitando filtro desde UI seleccionados:", tag);
       selectedTags = selectedTags.filter(t => t !== tag);
-      document.querySelectorAll(`.filter-btn[value="${tag}"]`).forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll(`.filter-btn`).forEach(b=>{
+        if (normalizeTag(b.value) === tag) b.classList.remove('active');
+      });
       filterCardsByTags();
       updateSelectedTagsUI();
       renderMobilePage();
@@ -141,8 +172,14 @@ if(arrowRight){
   });
 }
 
+// ---- Re-evaluar en resize (opcional)
+window.addEventListener('resize', ()=>{
+  console.log("📏 Resize -> re-evaluar filtro");
+  filterCardsByTags();
+});
+
 // ---- Init ----
 console.log("🚀 Inicializando módulo");
-filterCardsByTags();    // Todas visibles
+filterCardsByTags();    // Todas visibles por defecto
 updateSelectedTagsUI(); // Limpia UI
 renderMobilePage();     // Página 0
