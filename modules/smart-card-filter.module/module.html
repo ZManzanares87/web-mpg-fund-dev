@@ -1,5 +1,9 @@
+<!-- ============================
+     RESPONSIVE FILTER MODULE
+     ============================ -->
+
+<!-- DESKTOP VERSION -->
 <div class="desktop-filters">
-  <!-- Contenedor slider de botones filtradores con flechas -->
   <div class="filter-buttons-wrapper">
     <div class="arrow arrow-left"></div>
     <div class="filter-buttons">
@@ -10,7 +14,6 @@
     <div class="arrow arrow-right"></div>
   </div>
 
-  <!-- Listado de posts (cards) -->
   <div class="cards">
     {% for item in module.card_content %}
       <div class="card {{ item.card_tag }} filter-item">
@@ -31,27 +34,46 @@
 
 <!-- MOBILE VERSION -->
 <div class="mobile-filters">
-  <!-- Toggle logo animado + pregunta -->
-  <div class="filter-toggle IconContainer">
-    <div class="Question">¿Qué te gustaría aprender?</div>
-    <svg width="23" height="25" viewBox="0 0 23 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="15.7402" width="6.80376" height="24.0735" rx="3.40188" fill="#C05801"/>
-      <rect x="9.66211" y="1.90332" width="4.66487" height="19.016" rx="2.33243" fill="#5E7C70"/>
-      <rect x="4.67969" y="3.66235" width="3.28017" height="14.7109" rx="1.38057" fill="#4C79B1"/>
-      <rect x="0.455566" y="5.27954" width="2.76114" height="11.4332" rx="1.38057" fill="#396299"/>
-    </svg>
+  <!-- HEADER CERRADO -->
+  <div class="mobile-header-closed">
+    <div class="question-row">
+      <div class="Question">¿Qué te gustaría aprender?</div>
+      <div class="IconContainer filter-toggle" aria-expanded="false">
+        <svg class="logo-svg" width="23" height="25" viewBox="0 0 23 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="15.7402" width="6.80376" height="24.0735" rx="3.40188" fill="#C05801"/>
+          <rect x="9.66211"  y="1.90332" width="4.66487" height="19.016"  rx="2.33243" fill="#5E7C70"/>
+          <rect x="4.67969"  y="3.66235" width="3.28017" height="14.7109" rx="1.38057" fill="#4C79B1"/>
+          <rect x="0.455566" y="5.27954" width="2.76114" height="11.4332" rx="1.38057" fill="#396299"/>
+        </svg>
+      </div>
+    </div>
+    <button class="tags-button" type="button">Ver tags</button>
   </div>
 
-  <!-- Contenido oculto hasta abrir -->
-  <div class="selected-tags"></div>
-  <div class="pagination">
-    <div class="arrow arrow-left"></div>
-    <div class="arrow arrow-right"></div>
+  <!-- CONTENIDO ABIERTO -->
+  <div class="mobile-filters-content">
+    <div class="selected-tags"></div>
+
+    <div class="tags-slider">
+      <button class="pag-arrow arrow-left" type="button" aria-label="Anterior">
+        <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10.757 12.0735L15.707 17.0235C15.8026 17.1158 15.8787 17.2261 15.9311 17.3481C15.9836 17.4701 16.0111 17.6014 16.0123 17.7341C16.0135 17.8669 15.9882 17.9986 15.9379 18.1215C15.8876 18.2444 15.8133 18.356 15.7194 18.4499C15.6256 18.5438 15.5139 18.6181 15.391 18.6684C15.2681 18.7186 15.1364 18.7439 15.0036 18.7428C14.8709 18.7416 14.7396 18.7141 14.6176 18.6616C14.4956 18.6092 14.3853 18.5331 14.293 18.4375L8.63605 12.7805C8.44858 12.593 8.34326 12.3387 8.34326 12.0735C8.34326 11.8084 8.44858 11.5541 8.63605 11.3665L14.293 5.70954C14.4817 5.52739 14.7343 5.42659 14.9964 5.42887C15.2586 5.43115 15.5095 5.53632 15.6949 5.72173C15.8803 5.90713 15.9854 6.15795 15.9877 6.42014C15.99 6.68234 15.8892 6.93494 15.707 7.12354L10.757 12.0735Z" fill="#A8A1A1"/>
+        </svg>
+      </button>
+
+      <div class="tag-rows">
+        {% for item in module.button_tags %}
+          <button class="filter-btn" value="{{ item.tag }}">{{ item.tag }}</button>
+        {% endfor %}
+      </div>
+
+      <button class="pag-arrow arrow-right" type="button" aria-label="Siguiente">
+        <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13.3142 12.1445L8.36421 7.19447C8.18205 7.00587 8.08126 6.75326 8.08353 6.49107C8.08581 6.22887 8.19098 5.97806 8.37639 5.79265C8.5618 5.60724 8.81261 5.50207 9.07481 5.49979C9.337 5.49752 9.58961 5.59831 9.77821 5.78047L15.4352 11.4375C15.6227 11.625 15.728 11.8793 15.728 12.1445C15.728 12.4096 15.6227 12.6639 15.4352 12.8515L9.77821 18.5085C9.58961 18.6906 9.337 18.7914 9.07481 18.7891C8.81261 18.7869 8.5618 18.6817 8.37639 18.4963C8.19098 18.3109 8.08581 18.0601 8.08353 17.7979C8.08126 17.5357 8.18205 17.2831 8.36421 17.0945L13.3142 12.1445Z" fill="#3B4656"/>
+        </svg>
+      </button>
+    </div>
+
+    <button class="less-button" type="button">Ver menos</button>
   </div>
-  <div class="tag-rows">
-    {% for item in module.button_tags %}
-      <button class="filter-btn" value="{{ item.tag }}">{{ item.tag }}</button>
-    {% endfor %}
-  </div>
-  <button class="less-button">Ver menos</button>
 </div>
