@@ -1,15 +1,51 @@
-<!-- ============================
-     RESPONSIVE FILTER MODULE
-     ============================ -->
-<div class="module-wrapper">
+<div class="switch-wrapper">
+  {% for fs in module.filter_sets %}
+    <button class="switch-btn{% if loop.first %} active{% endif %}" data-set="{{ fs.set_id }}">
+      {{ fs.switch_label }}
+    </button>
+  {% endfor %}
+</div>
 
-  <!-- MOBILE VERSION -->
+{% for fs in module.filter_sets %}
+<section class="filter-set{% if loop.first %} active{% endif %}" data-set="{{ fs.set_id }}" style="{% if not loop.first %}display:none;{% endif %}">
+
+  {# ================= DESKTOP ================= #}
+  <div class="desktop-filters">
+    <div class="filter-buttons-wrapper">
+      <div class="arrow arrow-left"></div>
+      <div class="filter-buttons">
+        {% for t in fs.button_tags %}
+          <button class="filter-btn" value="{{ t.tag|lower|trim }}">{{ t.tag }}</button>
+        {% endfor %}
+      </div>
+      <div class="arrow arrow-right"></div>
+    </div>
+
+    <div class="cards">
+      {% for c in fs.card_content %}
+        {% set tags_norm = c.card_tag|lower|replace('[','')|replace(']','')|trim %}
+        <div class="card filter-item {{ c.card_tag }}" data-tags="{{ tags_norm }}">
+          <div class="card-front" style="background-image:url('{{ c.background_img.src|escape_url }}');">
+            <p class="title">{{ c.titulo }}</p>
+          </div>
+          <div class="card-back">
+            <div class="overlay"></div>
+            <p class="desc">{{ c.descripcion }}</p>
+            <a href="{{ c.boton_link.href }}" target="{{ c.boton_link.target }}" class="card-button">{{ c.boton }}</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  {# ================= MOBILE ================= #}
   <div class="mobile-filters">
-    <!-- HEADER CERRADO -->
+    <!-- Header cerrado -->
     <div class="mobile-header-closed">
       <div class="question-row">
-        <div class="Question">¿Qué te gustaría aprender?</div>
+        <div class="Question">{{ fs.question_text }}</div>
         <div class="IconContainer filter-toggle" aria-expanded="false">
+          <!-- Logo: barras -->
           <svg class="logo-svg" width="23" height="25" viewBox="0 0 23 25" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="15.7402" width="6.80376" height="24.0735" rx="3.40188" fill="#C05801"/>
             <rect x="9.66211"  y="1.90332" width="4.66487" height="19.016"  rx="2.33243" fill="#5E7C70"/>
@@ -18,10 +54,10 @@
           </svg>
         </div>
       </div>
-      <button class="tags-button" type="button">Ver tags</button>
+      <button class="tags-button" type="button">{{ fs.tags_button_text }}</button>
     </div>
 
-    <!-- CONTENIDO ABIERTO -->
+    <!-- Contenido abierto -->
     <div class="mobile-filters-content">
       <div class="selected-tags"></div>
 
@@ -33,8 +69,8 @@
         </button>
 
         <div class="tag-rows">
-          {% for item in module.button_tags %}
-            <button class="filter-btn" value="{{ item.tag }}">{{ item.tag }}</button>
+          {% for t in fs.button_tags %}
+            <button class="filter-btn" value="{{ t.tag|lower|trim }}">{{ t.tag }}</button>
           {% endfor %}
         </div>
 
@@ -45,38 +81,9 @@
         </button>
       </div>
 
-      <button class="less-button" type="button">Ver menos</button>
+      <button class="less-button" type="button">{{ fs.less_button_text }}</button>
     </div>
   </div>
 
-  <!-- DESKTOP VERSION (cards también visibles en mobile) -->
-  <div class="desktop-filters">
-    <div class="filter-buttons-wrapper">
-      <div class="arrow arrow-left"></div>
-      <div class="filter-buttons">
-        {% for item in module.button_tags %}
-          <button class="filter-btn" value="{{ item.tag }}">{{ item.tag }}</button>
-        {% endfor %}
-      </div>
-      <div class="arrow arrow-right"></div>
-    </div>
-
-    <div class="cards">
-      {% for item in module.card_content %}
-        <div class="card {{ item.card_tag }} filter-item">
-          <div class="card-front" style="background-image: url('{{ item.background_img.src|escape_url }}');">
-            <p class="title">{{ item.titulo }}</p>
-          </div>
-          <div class="card-back">
-            <div class="overlay"></div>
-            <p class="desc">{{ item.descripcion }}</p>
-            <a href="{{ item.boton_link.href }}" target="{{ item.boton_link.target }}" class="card-button">
-              {{ item.boton }}
-            </a>
-          </div>
-        </div>
-      {% endfor %}
-    </div>
-  </div>
-
-</div>
+</section>
+{% endfor %}

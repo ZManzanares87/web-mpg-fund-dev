@@ -17,8 +17,8 @@
 /* Imagen MOBILE visible por defecto */
 .image-masked-mobile {
   display: block;
-width: 514px;
-
+width: 100%;
+    margin-top: -19px;
   -webkit-mask-image: url('https://4272053.fs1.hubspotusercontent-na1.net/hubfs/4272053/WEB_FUND_MPG/Mask%20group_mobile1.png');
   mask-image: url('https://4272053.fs1.hubspotusercontent-na1.net/hubfs/4272053/WEB_FUND_MPG/Mask%20group_mobile1.png');
   -webkit-mask-repeat: no-repeat;

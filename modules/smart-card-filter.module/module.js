@@ -1,115 +1,215 @@
+
 /* ======================
-   JS con console.log
+   JS con console.log y multi-set (MATCH FIX)
    ====================== */
+
 let selectedTags = [];
 let page = 0;
 const PAGE_SIZE = 4; // 2 filas x 2
 
-// Helpers
-const normalizeTag = t => (t || "")
+// -------- Utils --------
+const norm = str => str
+  ?.toString()
   .toLowerCase()
-  .replace(/\s+/g, '')   // quita espacios/tabs nuevos
-  .trim();
+  .trim()
+  .replace(/\s+/g,' ')                          // colapsa espacios/tabs
+  .normalize('NFD').replace(/\p{Diacritic}/gu,'')// quita acentos
+  .replace(/^\[|\]$/g,'');                       // sin corchetes
 
-const extractCardTags = (card) => {
-  // Busca formato [tag1, tag2]
-  const m = card.className.match(/\[([^\]]+)\]/);
-  if (m) {
-    return m[1].split(',').map(x => normalizeTag(x));
+function scope(){ return document.querySelector('.filter-set.active'); }
+function isMobile(){ return window.matchMedia("(max-width:480px)").matches; }
+
+function getCardTags(card){
+  // 1) Si existe data-tags
+  const attr = card.getAttribute('data-tags');
+  if(attr){
+    return attr.split(',').map(norm).filter(Boolean);
   }
-  // Fallback: usa classList filtrando utilitarias
-  return Array.from(card.classList)
-    .map(c => normalizeTag(c))
-    .filter(c => !['card','filter-item','highlight','grayscale'].includes(c));
-};
+  // 2) Parseo por clases + contenido con corchetes
+  let tags = Array.from(card.classList)
+    .map(norm)
+    .filter(c => !['card','filter-item','highlight','grayscale',''].includes(c));
 
-// ---- Selectores ----
-const mobileFilters   = document.querySelector('.mobile-filters');
-const headerClosed    = document.querySelector('.mobile-header-closed');
-const filterToggle    = headerClosed.querySelector('.filter-toggle');
-const tagsButton      = headerClosed.querySelector('.tags-button');
-const lessButton      = document.querySelector('.less-button');
+  // Extrae cualquier cosa entre corchetes en la cadena completa
+  const matches = card.className.match(/\[([^\]]+)\]/g);
+  if(matches){
+    matches.forEach(m=>{
+      const inside = m.replace(/^\[|\]$/g,'');
+      inside.split(',').forEach(t=> tags.push(norm(t)));
+    });
+  }
+  // Únicos
+  return [...new Set(tags)];
+}
 
-const arrowLeft       = document.querySelector('.tags-slider .arrow-left');
-const arrowRight      = document.querySelector('.tags-slider .arrow-right');
+// -------- Switch entre sets --------
+const switchBtns = document.querySelectorAll('.switch-wrapper .switch-btn');
+const sets = document.querySelectorAll('.filter-set');
 
-const selectedTagsBox = document.querySelector('.selected-tags');
-
-const allMobileBtns   = Array.from(document.querySelectorAll('.tags-slider .filter-btn'));
-const allBtns         = Array.from(document.querySelectorAll('.filter-btn'));
-
-// ---- Listeners filtros ----
-allBtns.forEach(btn=>{
+switchBtns.forEach(btn=>{
   btn.addEventListener('click', ()=>{
-    const raw = btn.value;
-    const tag = normalizeTag(raw);
-    console.log("Clic en botón:", raw, "-> normalizado:", tag);
+    const id = btn.dataset.set;
+    console.log("🔁 Cambiar set:", id);
 
-    const idx = selectedTags.indexOf(tag);
-    if(idx === -1){
-      selectedTags.push(tag);
-      btn.classList.add('active');
-      console.log("✅ Agregando filtro:", tag);
-    }else{
-      selectedTags.splice(idx,1);
-      btn.classList.remove('active');
-      console.log("❌ Quitando filtro:", tag);
-    }
-    console.log("📌 Tags seleccionados:", selectedTags);
+    switchBtns.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+
+    sets.forEach(s=>{
+      const active = s.dataset.set === id;
+      if (active) {
+        s.style.display = '';
+        s.classList.add('active');
+      } else {
+        s.style.display = 'none';
+        s.classList.remove('active');
+      }
+    });
+
+    // Reset
+    selectedTags = [];
+    page = 0;
+
+    bindSetEvents();
     filterCardsByTags();
     updateSelectedTagsUI();
     renderMobilePage();
   });
 });
 
-// ---- Filtrado cards ----
+// -------- Bind eventos en set activo --------
+function bindSetEvents(){
+  const activeSet = scope();
+  if(!activeSet) return;
+
+  // Filtros
+  const allBtns = Array.from(activeSet.querySelectorAll('.filter-btn'));
+  allBtns.forEach(btn=>{
+    btn.onclick = ()=>{
+      const tag = norm(btn.value);
+      console.log("Clic en botón:", tag);
+      const idx = selectedTags.indexOf(tag);
+      if(idx === -1){
+        selectedTags.push(tag);
+        btn.classList.add('active');
+        console.log("✅ Agregando filtro:", tag);
+      }else{
+        selectedTags.splice(idx,1);
+        btn.classList.remove('active');
+        console.log("❌ Quitando filtro:", tag);
+      }
+      console.log("📌 Tags seleccionados:", selectedTags);
+      filterCardsByTags();
+      updateSelectedTagsUI();
+      renderMobilePage();
+    };
+  });
+
+  // Toggle móvil
+  const filterToggle = activeSet.querySelector('.filter-toggle');
+  const tagsButton   = activeSet.querySelector('.tags-button');
+  const lessButton   = activeSet.querySelector('.less-button');
+
+  if(filterToggle){
+    filterToggle.onclick = ()=>{
+      const mf = activeSet.querySelector('.mobile-filters');
+      mf.classList.contains('open') ? closeMenu() : openMenu();
+    };
+  }
+  if(tagsButton){ tagsButton.onclick = openMenu; }
+  if(lessButton){ lessButton.onclick = closeMenu; }
+
+  // Paginación móvil
+  const arrowLeft  = activeSet.querySelector('.tags-slider .arrow-left');
+  const arrowRight = activeSet.querySelector('.tags-slider .arrow-right');
+
+  if(arrowLeft){
+    arrowLeft.onclick = ()=>{
+      if(page > 0){
+        page--;
+        renderMobilePage();
+        console.log("🔙 Página móvil:", page);
+      }
+    };
+  }
+  if(arrowRight){
+    arrowRight.onclick = ()=>{
+      const total = activeSet.querySelectorAll('.tags-slider .filter-btn').length;
+      if((page + 1) * PAGE_SIZE < total){
+        page++;
+        renderMobilePage();
+        console.log("🔜 Página móvil:", page);
+      }
+    };
+  }
+}
+
+// -------- Filtrado de cards --------
 function filterCardsByTags(){
   console.log("🔎 Ejecutando filtro con tags:", selectedTags);
+  const activeSet = scope();
+  if(!activeSet) return;
 
-  const isMobile = window.matchMedia("(max-width:480px)").matches;
+  const mobile = isMobile();
+  const cards = activeSet.querySelectorAll('.filter-item');
 
-  document.querySelectorAll('.filter-item').forEach(card=>{
-    const cardTags = extractCardTags(card);
-    console.log("➡️ Card tags:", cardTags, "vs selected:", selectedTags);
+  cards.forEach(card=>{
+    const cardTags = getCardTags(card);
+    // console.log('CARD TAGS', card, cardTags); // debug extra si quieres
 
-    const noFilters = selectedTags.length === 0;
-    const match = noFilters || selectedTags.some(t => cardTags.includes(t));
+    if(selectedTags.length === 0){
+      card.classList.add('highlight');
+      card.classList.remove('grayscale');
+      if(mobile) card.style.display = 'block';
+      return;
+    }
 
+    const match = selectedTags.some(t => cardTags.includes(t));
     if(match){
       card.classList.add('highlight');
       card.classList.remove('grayscale');
-      if(isMobile) card.style.display = 'block';
+      if(mobile) card.style.display = 'block';
     }else{
       card.classList.remove('highlight');
       card.classList.add('grayscale');
-      if(isMobile) card.style.display = 'none';
+      if(mobile) card.style.display = 'none';
     }
   });
 }
 
-// ---- Toggle menú móvil ----
+// -------- Toggle menú móvil --------
 function openMenu(){
   console.log("🔀 Abrir filtros móviles");
-  filterToggle.classList.add('open');
-  mobileFilters.classList.add('open');
-  filterToggle.setAttribute('aria-expanded', true);
+  const activeSet = scope();
+  if(!activeSet) return;
+  const mf = activeSet.querySelector('.mobile-filters');
+  const filterToggle = activeSet.querySelector('.filter-toggle');
+  mf.classList.add('open');
+  if(filterToggle){
+    filterToggle.classList.add('open');
+    filterToggle.setAttribute('aria-expanded', true);
+  }
 }
 function closeMenu(){
   console.log("🔽 Cerrar filtros móviles");
-  filterToggle.classList.remove('open');
-  mobileFilters.classList.remove('open');
-  filterToggle.setAttribute('aria-expanded', false);
+  const activeSet = scope();
+  if(!activeSet) return;
+  const mf = activeSet.querySelector('.mobile-filters');
+  const filterToggle = activeSet.querySelector('.filter-toggle');
+  mf.classList.remove('open');
+  if(filterToggle){
+    filterToggle.classList.remove('open');
+    filterToggle.setAttribute('aria-expanded', false);
+  }
 }
 
-filterToggle.addEventListener('click', ()=>{
-  mobileFilters.classList.contains('open') ? closeMenu() : openMenu();
-});
-tagsButton.addEventListener('click', openMenu);
-lessButton.addEventListener('click', closeMenu);
-
-// ---- UI tags seleccionados ----
+// -------- UI tags seleccionados --------
 function updateSelectedTagsUI(){
-  selectedTagsBox.innerHTML = '';
+  const activeSet = scope();
+  if(!activeSet) return;
+  const container = activeSet.querySelector('.selected-tags');
+  if(!container) return;
+
+  container.innerHTML = '';
   selectedTags.forEach(tag=>{
     const div = document.createElement('div');
     div.className = 'tag';
@@ -122,8 +222,9 @@ function updateSelectedTagsUI(){
     x.addEventListener('click', ()=>{
       console.log("❌ Quitando filtro desde UI seleccionados:", tag);
       selectedTags = selectedTags.filter(t => t !== tag);
-      document.querySelectorAll(`.filter-btn`).forEach(b=>{
-        if (normalizeTag(b.value) === tag) b.classList.remove('active');
+      // Desactivar botones del set activo
+      scope().querySelectorAll('.filter-btn').forEach(b=>{
+        if(norm(b.value) === tag) b.classList.remove('active');
       });
       filterCardsByTags();
       updateSelectedTagsUI();
@@ -131,12 +232,18 @@ function updateSelectedTagsUI(){
     });
 
     div.appendChild(x);
-    selectedTagsBox.appendChild(div);
+    container.appendChild(div);
   });
 }
 
-// ---- Paginación móvil ----
+// -------- Paginación móvil --------
 function renderMobilePage(){
+  const activeSet = scope();
+  if(!activeSet) return;
+  const allMobileBtns = Array.from(activeSet.querySelectorAll('.tags-slider .filter-btn'));
+  const arrowLeft     = activeSet.querySelector('.tags-slider .arrow-left');
+  const arrowRight    = activeSet.querySelector('.tags-slider .arrow-right');
+
   const start = page * PAGE_SIZE;
   allMobileBtns.forEach(b => b.style.display = 'none');
   allMobileBtns.slice(start, start + PAGE_SIZE).forEach(b => b.style.display = 'inline-flex');
@@ -153,33 +260,15 @@ function renderMobilePage(){
   }
 }
 
-if(arrowLeft){
-  arrowLeft.addEventListener('click', ()=>{
-    if(page > 0){
-      page--;
-      renderMobilePage();
-      console.log("🔙 Página móvil:", page);
-    }
-  });
-}
-if(arrowRight){
-  arrowRight.addEventListener('click', ()=>{
-    if((page + 1) * PAGE_SIZE < allMobileBtns.length){
-      page++;
-      renderMobilePage();
-      console.log("🔜 Página móvil:", page);
-    }
-  });
-}
-
-// ---- Re-evaluar en resize (opcional)
+// -------- Resize re-eval --------
 window.addEventListener('resize', ()=>{
   console.log("📏 Resize -> re-evaluar filtro");
   filterCardsByTags();
 });
 
-// ---- Init ----
-console.log("🚀 Inicializando módulo");
-filterCardsByTags();    // Todas visibles por defecto
-updateSelectedTagsUI(); // Limpia UI
-renderMobilePage();     // Página 0
+// -------- INIT --------
+console.log("🚀 Inicializando módulo multi-set");
+bindSetEvents();
+filterCardsByTags();
+updateSelectedTagsUI();
+renderMobilePage();

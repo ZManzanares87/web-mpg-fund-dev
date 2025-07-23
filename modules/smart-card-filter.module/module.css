@@ -9,7 +9,7 @@
   border: none;
   border-radius: 50px;
   display: inline-flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   gap: 16px;
   color: #5e7c70;
@@ -107,17 +107,19 @@
 
 @media (max-width:480px){
 
-  /* Oculta solo el header desktop, deja las cards */
-  .desktop-filters .filter-buttons-wrapper{ display:none !important; }
-  .desktop-filters{ display:block !important; }
-
-  .module-wrapper{
+  /* Reordena dentro de cada filter-set */
+  .filter-set{
     display:flex;
     flex-direction:column;
   }
   .mobile-filters{ order:1; }
   .desktop-filters{ order:2; }
 
+  /* Oculta SOLO el header desktop, deja las cards */
+  .desktop-filters .filter-buttons-wrapper{ display:none !important; }
+  .desktop-filters{ display:block !important; }
+
+  /* --------- MOBILE UI --------- */
   .mobile-filters{
     display:flex;
     flex-direction:column;
@@ -139,7 +141,7 @@
     gap:19px;
   }
   .question-row{
-    width:220px;
+    width:250px;
     padding:6px 0;
     border-radius:50px;
     display:inline-flex;
@@ -238,7 +240,7 @@
   }
   .pag-arrow[disabled]{ opacity:.3; cursor:default; }
 
-  /* Mostrar/ocultar cards */
+  /* Mostrar/ocultar cards en mobile */
   .filter-item{ display:block !important; }
   .filter-item.grayscale{ display:none !important; }
 
