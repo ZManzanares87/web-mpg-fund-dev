@@ -1,93 +1,110 @@
+document.addEventListener('DOMContentLoaded', ()=>{
 
-/* ======================
-   JS con console.log y multi-set (MATCH FIX)
-   ====================== */
-
+/* ===========================
+   VARS & CONSTANTES
+=========================== */
 let selectedTags = [];
 let page = 0;
-const PAGE_SIZE = 4; // 2 filas x 2
+const PAGE_SIZE = 4;
 
-// -------- Utils --------
+/* ===========================
+   HELPERS
+=========================== */
 const norm = str => str
   ?.toString()
   .toLowerCase()
   .trim()
-  .replace(/\s+/g,' ')                          // colapsa espacios/tabs
-  .normalize('NFD').replace(/\p{Diacritic}/gu,'')// quita acentos
-  .replace(/^\[|\]$/g,'');                       // sin corchetes
+  .replace(/\s+/g,' ')
+  .normalize('NFD').replace(/\p{Diacritic}/gu,'')
+  .replace(/^\[|\]$/g,'');
 
-function scope(){ return document.querySelector('.filter-set.active'); }
-function isMobile(){ return window.matchMedia("(max-width:480px)").matches; }
+const scope    = () => document.querySelector('.filter-set.active');
+const isMobile = () => window.matchMedia("(max-width:480px)").matches;
 
 function getCardTags(card){
-  // 1) Si existe data-tags
   const attr = card.getAttribute('data-tags');
   if(attr){
     return attr.split(',').map(norm).filter(Boolean);
   }
-  // 2) Parseo por clases + contenido con corchetes
   let tags = Array.from(card.classList)
     .map(norm)
     .filter(c => !['card','filter-item','highlight','grayscale',''].includes(c));
 
-  // Extrae cualquier cosa entre corchetes en la cadena completa
   const matches = card.className.match(/\[([^\]]+)\]/g);
   if(matches){
     matches.forEach(m=>{
-      const inside = m.replace(/^\[|\]$/g,'');
-      inside.split(',').forEach(t=> tags.push(norm(t)));
+      m.replace(/^\[|\]$/g,'')
+        .split(',')
+        .forEach(t => tags.push(norm(t)));
     });
   }
-  // Únicos
   return [...new Set(tags)];
 }
 
-// -------- Switch entre sets --------
-const switchBtns = document.querySelectorAll('.switch-wrapper .switch-btn');
-const sets = document.querySelectorAll('.filter-set');
+/* ===========================
+   SWITCH ENTRE SETS
+=========================== */
+const switchCards = document.querySelectorAll('.switch-card');
+const switchBtns  = document.querySelectorAll('.switch-wrapper .switch-btn'); // opcional si existen
+const sets        = document.querySelectorAll('.filter-set');
 
-switchBtns.forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    const id = btn.dataset.set;
-    console.log("🔁 Cambiar set:", id);
+function activateSet(id){
+  id = norm(id);
+  if(!id) return;
 
-    switchBtns.forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
+  console.log("🔁 Cambiar set:", id);
 
-    sets.forEach(s=>{
-      const active = s.dataset.set === id;
-      if (active) {
-        s.style.display = '';
-        s.classList.add('active');
-      } else {
-        s.style.display = 'none';
-        s.classList.remove('active');
-      }
-    });
+  // Estado visual de las tarjetas y (si hay) botones antiguos
+  switchCards.forEach(c => c.classList.toggle('active', norm(c.dataset.set) === id));
+  switchBtns.forEach(b => b.classList.toggle('active', norm(b.dataset.set) === id));
 
-    // Reset
-    selectedTags = [];
-    page = 0;
-
-    bindSetEvents();
-    filterCardsByTags();
-    updateSelectedTagsUI();
-    renderMobilePage();
+  // Mostrar/ocultar sets (el CSS hará display:none/block con .active)
+  sets.forEach(s=>{
+    const active = norm(s.dataset.set) === id;
+    s.classList.toggle('active', active);
   });
+
+  // Reset estado de filtros
+  selectedTags = [];
+  page = 0;
+
+  bindSetEvents();
+  filterCardsByTags();
+  updateSelectedTagsUI();
+  renderMobilePage();
+}
+
+// Click en tarjetas switch
+switchCards.forEach(card=>{
+  card.addEventListener('click', ()=> activateSet(card.dataset.set));
+  const cta = card.querySelector('.switch-cta');
+  if(cta){
+    cta.addEventListener('click', e=>{
+      e.stopPropagation();
+      activateSet(card.dataset.set);
+    });
+  }
 });
 
-// -------- Bind eventos en set activo --------
+// Click en botones antiguos (si aún existen en el HTML)
+switchBtns.forEach(btn=>{
+  btn.addEventListener('click', ()=> activateSet(btn.dataset.set));
+});
+
+/* ===========================
+   EVENTOS DENTRO DEL SET ACTIVO
+=========================== */
 function bindSetEvents(){
   const activeSet = scope();
   if(!activeSet) return;
 
-  // Filtros
+  // Botones de filtro (desktop + mobile)
   const allBtns = Array.from(activeSet.querySelectorAll('.filter-btn'));
   allBtns.forEach(btn=>{
     btn.onclick = ()=>{
       const tag = norm(btn.value);
-      console.log("Clic en botón:", tag);
       const idx = selectedTags.indexOf(tag);
+
       if(idx === -1){
         selectedTags.push(tag);
         btn.classList.add('active');
@@ -97,6 +114,7 @@ function bindSetEvents(){
         btn.classList.remove('active');
         console.log("❌ Quitando filtro:", tag);
       }
+
       console.log("📌 Tags seleccionados:", selectedTags);
       filterCardsByTags();
       updateSelectedTagsUI();
@@ -143,7 +161,9 @@ function bindSetEvents(){
   }
 }
 
-// -------- Filtrado de cards --------
+/* ===========================
+   FILTRADO DE CARDS
+=========================== */
 function filterCardsByTags(){
   console.log("🔎 Ejecutando filtro con tags:", selectedTags);
   const activeSet = scope();
@@ -154,7 +174,6 @@ function filterCardsByTags(){
 
   cards.forEach(card=>{
     const cardTags = getCardTags(card);
-    // console.log('CARD TAGS', card, cardTags); // debug extra si quieres
 
     if(selectedTags.length === 0){
       card.classList.add('highlight');
@@ -176,9 +195,10 @@ function filterCardsByTags(){
   });
 }
 
-// -------- Toggle menú móvil --------
+/* ===========================
+   MENÚ MÓVIL
+=========================== */
 function openMenu(){
-  console.log("🔀 Abrir filtros móviles");
   const activeSet = scope();
   if(!activeSet) return;
   const mf = activeSet.querySelector('.mobile-filters');
@@ -190,7 +210,6 @@ function openMenu(){
   }
 }
 function closeMenu(){
-  console.log("🔽 Cerrar filtros móviles");
   const activeSet = scope();
   if(!activeSet) return;
   const mf = activeSet.querySelector('.mobile-filters');
@@ -202,7 +221,9 @@ function closeMenu(){
   }
 }
 
-// -------- UI tags seleccionados --------
+/* ===========================
+   TAGS SELECCIONADOS (UI)
+=========================== */
 function updateSelectedTagsUI(){
   const activeSet = scope();
   if(!activeSet) return;
@@ -218,11 +239,9 @@ function updateSelectedTagsUI(){
     const x = document.createElement('span');
     x.className = 'remove-tag';
     x.textContent = 'x';
-
     x.addEventListener('click', ()=>{
       console.log("❌ Quitando filtro desde UI seleccionados:", tag);
       selectedTags = selectedTags.filter(t => t !== tag);
-      // Desactivar botones del set activo
       scope().querySelectorAll('.filter-btn').forEach(b=>{
         if(norm(b.value) === tag) b.classList.remove('active');
       });
@@ -236,7 +255,9 @@ function updateSelectedTagsUI(){
   });
 }
 
-// -------- Paginación móvil --------
+/* ===========================
+   PAGINACIÓN MÓVIL
+=========================== */
 function renderMobilePage(){
   const activeSet = scope();
   if(!activeSet) return;
@@ -260,15 +281,23 @@ function renderMobilePage(){
   }
 }
 
-// -------- Resize re-eval --------
+/* ===========================
+   RESIZE
+=========================== */
 window.addEventListener('resize', ()=>{
   console.log("📏 Resize -> re-evaluar filtro");
   filterCardsByTags();
 });
 
-// -------- INIT --------
+/* ===========================
+   INIT
+=========================== */
 console.log("🚀 Inicializando módulo multi-set");
-bindSetEvents();
-filterCardsByTags();
-updateSelectedTagsUI();
-renderMobilePage();
+
+const firstId =
+  (document.querySelector('.switch-card.active')?.dataset.set) ||
+  (sets[0]?.dataset.set);
+
+activateSet(firstId || ''); // activa el primero que exista
+
+}); // DOMContentLoaded

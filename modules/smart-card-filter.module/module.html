@@ -1,15 +1,79 @@
-<div class="switch-wrapper">
-  {% for fs in module.filter_sets %}
-    <button class="switch-btn{% if loop.first %} active{% endif %}" data-set="{{ fs.set_id }}">
-      {{ fs.switch_label }}
-    </button>
-  {% endfor %}
-</div>
+{# =========================
+   SWITCHER SECTION (IMG + CARDS)
+   ========================= #}
+<section class="switch-section">
+  <div class="switch-img">
+    <img src="https://4272053.fs1.hubspotusercontent-na1.net/hubfs/4272053/WEB_FUND_MPG/FOTOS%20POWER%20YOU%20EXPERIENCE/chicos-jovenes-estudiando-1.png"
+         alt="Jóvenes estudiando" loading="lazy">
+  </div>
 
+  <div class="switch-content">
+    <!-- Título + línea -->
+    <div class="section-text">
+      <div class="top">
+        <h2 class="secondary-headline">Explora nuestros programas por colectivo</h2>
+      </div>
+      <div class="line1">
+        <svg width="462" height="6" viewBox="0 0 462 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2.5 2.88678H458.518" stroke="#40669D" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Tarjetas switch (usa los dos primeros sets del módulo) -->
+    {% set first_id  = module.filter_sets[0].set_id|lower|trim %}
+    {% set second_id = module.filter_sets[1].set_id|lower|trim %}
+
+    <div class="switch-row">
+      <article class="switch-card active" data-set="{{ first_id }}">
+        <div class="switch-card-inner">
+          <div class="switch-card-header">
+            <h3 class="switch-title">LGD</h3>
+          </div>
+          <p class="switch-paragraph">
+            Ayudamos a las empresas a derrumbar los muros que les separan del talento que necesitan
+          </p>
+        </div>
+        <div class="switch-card-footer">
+          <button class="switch-cta" type="button">
+            Ver programas
+            <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16.086 11.2907L12.136 7.34071C11.9538 7.15211 11.853 6.8995 11.8553 6.63731C11.8576 6.37511 11.9628 6.1243 12.1482 5.93889C12.3336 5.75348 12.5844 5.64831 12.8466 5.64603C13.1088 5.64376 13.3614 5.74455 13.55 5.92671L19.207 11.5837C19.3002 11.6764 19.3741 11.7865 19.4246 11.9079C19.4751 12.0292 19.501 12.1593 19.501 12.2907C19.501 12.4221 19.4751 12.5522 19.4246 12.6736C19.3741 12.7949 19.3002 12.9051 19.207 12.9977L13.55 18.6547C13.4578 18.7502 13.3474 18.8264 13.2254 18.8788C13.1034 18.9312 12.9722 18.9588 12.8394 18.96C12.7066 18.9611 12.5749 18.9358 12.452 18.8855C12.3291 18.8352 12.2175 18.761 12.1236 18.6671C12.0297 18.5732 11.9555 18.4616 11.9052 18.3387C11.8549 18.2158 11.8296 18.0841 11.8307 17.9513C11.8319 17.8185 11.8595 17.6873 11.9119 17.5653C11.9643 17.4433 12.0405 17.333 12.136 17.2407L16.086 13.2907H6.5C6.23478 13.2907 5.98043 13.1854 5.79289 12.9978C5.60536 12.8103 5.5 12.5559 5.5 12.2907C5.5 12.0255 5.60536 11.7711 5.79289 11.5836C5.98043 11.3961 6.23478 11.2907 6.5 11.2907H16.086Z" fill="#40669D"/>
+            </svg>
+          </button>
+        </div>
+      </article>
+
+      <article class="switch-card" data-set="{{ second_id }}">
+        <div class="switch-card-inner">
+          <div class="switch-card-header">
+            <h3 class="switch-title">Otros Colectivos</h3>
+          </div>
+          <p class="switch-paragraph">
+            Orientamos, formamos y acompañamos a personas con discapacidad y otros colectivos con dificultades de acceso al empleo.
+          </p>
+        </div>
+        <div class="switch-card-footer">
+          <button class="switch-cta" type="button">
+            Ver programas
+            <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16.086 11.2907L12.136 7.34071C11.9538 7.15211 11.853 6.8995 11.8553 6.63731C11.8576 6.37511 11.9628 6.1243 12.1482 5.93889C12.3336 5.75348 12.5844 5.64831 12.8466 5.64603C13.1088 5.64376 13.3614 5.74455 13.55 5.92671L19.207 11.5837C19.3002 11.6764 19.3741 11.7865 19.4246 11.9079C19.4751 12.0292 19.501 12.1593 19.501 12.2907C19.501 12.4221 19.4751 12.5522 19.4246 12.6736C19.3741 12.7949 19.3002 12.9051 19.207 12.9977L13.55 18.6547C13.4578 18.7502 13.3474 18.8264 13.2254 18.8788C13.1034 18.9312 12.9722 18.9588 12.8394 18.96C12.7066 18.9611 12.5749 18.9358 12.452 18.8855C12.3291 18.8352 12.2175 18.761 12.1236 18.6671C12.0297 18.5732 11.9555 18.4616 11.9052 18.3387C11.8549 18.2158 11.8296 18.0841 11.8307 17.9513C11.8319 17.8185 11.8595 17.6873 11.9119 17.5653C11.9643 17.4433 12.0405 17.333 12.136 17.2407L16.086 13.2907H6.5C6.23478 13.2907 5.98043 13.1854 5.79289 12.9978C5.60536 12.8103 5.5 12.5559 5.5 12.2907C5.5 12.0255 5.60536 11.7711 5.79289 11.5836C5.98043 11.3961 6.23478 11.2907 6.5 11.2907H16.086Z" fill="#40669D"/>
+            </svg>
+          </button>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+{# =========================
+   BLOQUES DE FILTRADO (uno por set)
+   ========================= #}
 {% for fs in module.filter_sets %}
-<section class="filter-set{% if loop.first %} active{% endif %}" data-set="{{ fs.set_id }}" style="{% if not loop.first %}display:none;{% endif %}">
+  {% set fs_id = fs.set_id|lower|trim %}
+<section class="filter-set{% if loop.first %} active{% else %} is-hidden{% endif %}" data-set="{{ fs_id }}">
 
-  {# ================= DESKTOP ================= #}
+  <!-- DESKTOP -->
   <div class="desktop-filters">
     <div class="filter-buttons-wrapper">
       <div class="arrow arrow-left"></div>
@@ -38,14 +102,12 @@
     </div>
   </div>
 
-  {# ================= MOBILE ================= #}
+  <!-- MOBILE -->
   <div class="mobile-filters">
-    <!-- Header cerrado -->
     <div class="mobile-header-closed">
       <div class="question-row">
         <div class="Question">{{ fs.question_text }}</div>
         <div class="IconContainer filter-toggle" aria-expanded="false">
-          <!-- Logo: barras -->
           <svg class="logo-svg" width="23" height="25" viewBox="0 0 23 25" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="15.7402" width="6.80376" height="24.0735" rx="3.40188" fill="#C05801"/>
             <rect x="9.66211"  y="1.90332" width="4.66487" height="19.016"  rx="2.33243" fill="#5E7C70"/>
@@ -57,7 +119,6 @@
       <button class="tags-button" type="button">{{ fs.tags_button_text }}</button>
     </div>
 
-    <!-- Contenido abierto -->
     <div class="mobile-filters-content">
       <div class="selected-tags"></div>
 
