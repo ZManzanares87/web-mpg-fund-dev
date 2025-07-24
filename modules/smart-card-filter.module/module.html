@@ -9,7 +9,7 @@
         <h2 class="secondary-headline">Explora nuestros programas por colectivo</h2>
       </div>
       <div class="line1">
-        <svg width="462" height="6" viewBox="0 0 462 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 462 6" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M2.5 2.88678H458.518" stroke="#40669D" stroke-width="5" stroke-linecap="round"/>
         </svg>
       </div>
@@ -27,6 +27,12 @@
         <div class="switch-card-footer">
           <button class="switch-cta" type="button">
             Ver programas
+            <span class="switch-arrow" aria-hidden="true">
+              <svg width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 1L17 8L10 15" stroke="#40669D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M1 8H17" stroke="#40669D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
           </button>
         </div>
       </article>
@@ -42,12 +48,19 @@
         <div class="switch-card-footer">
           <button class="switch-cta" type="button">
             Ver programas
+            <span class="switch-arrow" aria-hidden="true">
+              <svg width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 1L17 8L10 15" stroke="#40669D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M1 8H17" stroke="#40669D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
           </button>
         </div>
       </article>
     </div>
   </div>
 </section>
+
 
 {% for fs in module.filter_sets %}
   {% set fs_id = fs.set_id|lower|trim %}
@@ -58,6 +71,7 @@
         <div class="question-row">
           <div class="Question">{{ fs.question_text }}</div>
           <div class="IconContainer filter-toggle" aria-expanded="false">
+            <!-- SVG LOGO ANIMADO: NO TOQUES NADA AQUÍ -->
             <svg class="logo-svg" width="23" height="25" viewBox="0 0 23 25" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="15.7402" width="6.80376" height="24.0735" rx="3.40188" fill="#C05801"/>
               <rect x="9.66211"  y="1.90332" width="4.66487" height="19.016"  rx="2.33243" fill="#5E7C70"/>
@@ -88,7 +102,7 @@
         <button class="less-button" type="button">{{ fs.less_button_text }}</button>
       </div>
     </div>
-    <!-- FILTRADOR DESKTOP (solo los filtros, sin las cards) -->
+    <!-- FILTRADOR DESKTOP -->
     <div class="desktop-filters">
       <div class="filter-buttons-wrapper">
         <div class="arrow arrow-left"></div>
@@ -100,7 +114,7 @@
         <div class="arrow arrow-right"></div>
       </div>
     </div>
-    <!-- LAS CARDS SIEMPRE FUERA DE LOS FILTROS (SIEMPRE VISIBLES) -->
+    <!-- CARDS -->
     <div class="cards">
       {% for c in fs.card_content %}
         {% set tags_norm = c.card_tag|lower|replace('[','')|replace(']','')|trim %}

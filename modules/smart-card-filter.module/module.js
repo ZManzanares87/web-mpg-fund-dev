@@ -1,15 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-
-  // ==========================
-  // VARS Y CONSTANTES
-  // ==========================
   let selectedTags = [];
   let page = 0;
   const PAGE_SIZE = 4;
 
-  // ==========================
-  // HELPERS
-  // ==========================
   const norm = str => str
     ?.toString()
     .toLowerCase()
@@ -18,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .normalize('NFD').replace(/\p{Diacritic}/gu, '')
     .replace(/^\[|\]$/g, '');
 
-  const scope    = () => document.querySelector('.filter-set.active');
+  const scope = () => document.querySelector('.filter-set.active');
   const isMobile = () => window.matchMedia("(max-width:1024px)").matches;
 
   function getCardTags(card) {
@@ -29,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let tags = Array.from(card.classList)
       .map(norm)
       .filter(c => !['card', 'filter-item', 'highlight', 'grayscale', ''].includes(c));
-
     const matches = card.className.match(/\[([^\]]+)\]/g);
     if (matches) {
       matches.forEach(m => {
@@ -41,11 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
     return [...new Set(tags)];
   }
 
-  // ==========================
-  // SWITCH ENTRE SETS
-  // ==========================
   const switchCards = document.querySelectorAll('.switch-card');
-  const sets        = document.querySelectorAll('.filter-set');
+  const sets = document.querySelectorAll('.filter-set');
 
   function activateSet(id) {
     id = norm(id);
@@ -53,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Activar/desactivar tarjetas switch
     switchCards.forEach(c => c.classList.toggle('active', norm(c.dataset.set) === id));
-
     // Mostrar solo el set activo
     sets.forEach(s => {
       const active = norm(s.dataset.set) === id;
@@ -71,7 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
     renderMobilePage();
   }
 
-  // Click en tarjetas switch (arriba)
   switchCards.forEach(card => {
     card.addEventListener('click', () => activateSet(card.dataset.set));
     const cta = card.querySelector('.switch-cta');
@@ -83,12 +70,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ==========================
-  // EVENTOS DENTRO DEL SET ACTIVO
-  // ==========================
   function bindSetEvents() {
     const activeSet = scope();
     if (!activeSet) return;
+
+    // --- CORRECCIÓN DE ANIMACIÓN LOGO ---
+    // Quita la clase .open de todos los IconContainer
+    document.querySelectorAll('.filter-toggle').forEach(ic => {
+      ic.classList.remove('open');
+      ic.setAttribute('aria-expanded', false);
+    });
+    // Si el menú móvil está abierto en el set activo, añade .open y aria-expanded=true
+    const mf = activeSet.querySelector('.mobile-filters');
+    const filterToggle = activeSet.querySelector('.filter-toggle');
+    if (filterToggle && mf && mf.classList.contains('open')) {
+      filterToggle.classList.add('open');
+      filterToggle.setAttribute('aria-expanded', true);
+    }
 
     // Limpiar antes de volver a bindear
     activeSet.querySelectorAll('.filter-btn').forEach(btn => {
@@ -100,7 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.onclick = () => {
         const tag = norm(btn.value);
         const idx = selectedTags.indexOf(tag);
-
         if (idx === -1) {
           selectedTags.push(tag);
           btn.classList.add('active');
@@ -108,7 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
           selectedTags.splice(idx, 1);
           btn.classList.remove('active');
         }
-
         filterCardsByTags();
         updateSelectedTagsUI();
         renderMobilePage();
@@ -116,23 +112,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Toggle móvil
-    const filterToggle = activeSet.querySelector('.filter-toggle');
-    const tagsButton   = activeSet.querySelector('.tags-button');
-    const lessButton   = activeSet.querySelector('.less-button');
-
     if (filterToggle) {
       filterToggle.onclick = () => {
         const mf = activeSet.querySelector('.mobile-filters');
-        mf.classList.contains('open') ? closeMenu() : openMenu();
+        if (mf.classList.contains('open')) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
       };
     }
+    const tagsButton = activeSet.querySelector('.tags-button');
+    const lessButton = activeSet.querySelector('.less-button');
     if (tagsButton) { tagsButton.onclick = openMenu; }
     if (lessButton) { lessButton.onclick = closeMenu; }
 
     // Paginador móvil
-    const arrowLeft  = activeSet.querySelector('.tags-slider .arrow-left');
+    const arrowLeft = activeSet.querySelector('.tags-slider .arrow-left');
     const arrowRight = activeSet.querySelector('.tags-slider .arrow-right');
-
     if (arrowLeft) {
       arrowLeft.onclick = () => {
         if (page > 0) {
@@ -152,26 +149,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // ==========================
-  // FILTRADO DE CARDS
-  // ==========================
   function filterCardsByTags() {
     const activeSet = scope();
     if (!activeSet) return;
-
     const mobile = isMobile();
     const cards = activeSet.querySelectorAll('.filter-item');
-
     cards.forEach(card => {
       const cardTags = getCardTags(card);
-
       if (selectedTags.length === 0) {
         card.classList.add('highlight');
         card.classList.remove('grayscale');
         if (mobile) card.style.display = 'block';
         return;
       }
-
       const match = selectedTags.some(t => cardTags.includes(t));
       if (match) {
         card.classList.add('highlight');
@@ -185,9 +175,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ==========================
-  // MENÚ MÓVIL
-  // ==========================
   function openMenu() {
     const activeSet = scope();
     if (!activeSet) return;
@@ -211,9 +198,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // ==========================
-  // TAGS SELECCIONADOS (UI)
-  // ==========================
   function updateSelectedTagsUI() {
     const activeSet = scope();
     if (!activeSet) return;
@@ -225,7 +209,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const div = document.createElement('div');
       div.className = 'tag';
       div.textContent = tag;
-
       const x = document.createElement('span');
       x.className = 'remove-tag';
       x.textContent = 'x';
@@ -238,26 +221,20 @@ document.addEventListener('DOMContentLoaded', () => {
         updateSelectedTagsUI();
         renderMobilePage();
       });
-
       div.appendChild(x);
       container.appendChild(div);
     });
   }
 
-  // ==========================
-  // PAGINACIÓN MÓVIL
-  // ==========================
   function renderMobilePage() {
     const activeSet = scope();
     if (!activeSet) return;
     const allMobileBtns = Array.from(activeSet.querySelectorAll('.tags-slider .filter-btn'));
-    const arrowLeft     = activeSet.querySelector('.tags-slider .arrow-left');
-    const arrowRight    = activeSet.querySelector('.tags-slider .arrow-right');
-
+    const arrowLeft = activeSet.querySelector('.tags-slider .arrow-left');
+    const arrowRight = activeSet.querySelector('.tags-slider .arrow-right');
     const start = page * PAGE_SIZE;
     allMobileBtns.forEach(b => b.style.display = 'none');
     allMobileBtns.slice(start, start + PAGE_SIZE).forEach(b => b.style.display = 'inline-flex');
-
     if (arrowLeft) {
       const first = page === 0;
       arrowLeft.style.visibility = first ? 'hidden' : 'visible';
@@ -270,21 +247,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // ==========================
-  // RESIZE
-  // ==========================
   window.addEventListener('resize', () => {
     filterCardsByTags();
     renderMobilePage();
   });
 
-  // ==========================
   // INIT
-  // ==========================
   const firstId =
     (document.querySelector('.switch-card.active')?.dataset.set) ||
     (sets[0]?.dataset.set);
-
   activateSet(firstId || '');
 
 });
