@@ -111,16 +111,16 @@ label: Footer
   <!-- Contenedor para los iconos sociales -->
   <div class="footer-disclaimer-icons">
     <div class="icon full">
-      {% module "logo-image1" path="@hubspot/image",  link="https://www.manpowergroup.com/", target="true", label="ManpowerGroup Logo", img={src="{{get_asset_url('C:\Users\zorman\hubspot-mpg\web-mpg-fund-dev\images\MPG_Logo_RGB_STK.png')}}", alt="ManpowerGroup", override_inherited_src= true} %}
+      {% module "logo-image1" path="@hubspot/image",  link="https://www.manpowergroup.com/", target="true", label="ManpowerGroup Logo", img={src="{{get_asset_url('web-mpg-fund-dev/images/logo-man-white-stacked.svg')}}", alt="ManpowerGroup", override_inherited_src= true} %}
     </div>
     <div class="icon icon1">
-      {% module "logo-image2" path="@hubspot/image", link="https://www.manpower.com/", target="true",label="Manpower Logo", img={src="{{ get_asset_url('C:\Users\zorman\hubspot-mpg\web-mpg-fund-dev\images\MAN_Logo_RGB_STK.svg') }}", alt="Manpower", override_inherited_src= true} %}
+      {% module "logo-image2" path="@hubspot/image", link="https://www.manpower.com/", target="true",label="Manpower Logo", img={src="{{ get_asset_url('web-mpg-fund-dev/images/logo-mpg-white-stacked.svg') }}", alt="Manpower", override_inherited_src= true} %}
     </div>
     <div class="icon icon2">
-      {% module "logo-image3" path="@hubspot/image", link="https://www.experis.com/", target="true",label="Experis Logo", img={src="{{get_asset_url('C:\Users\zorman\hubspot-mpg\web-mpg-fund-dev\images\EXP_Logo_RGB_STK (1).svg')}}", alt="Experis", override_inherited_src= true} %}
+      {% module "logo-image3" path="@hubspot/image", link="https://www.experis.com/", target="true",label="Experis Logo", img={src="{{get_asset_url('web-mpg-fund-dev/images/logo-exp-white-stacked.svg')}}", alt="Experis", override_inherited_src= true} %}
     </div>
     <div class="icon icon3">
-      {% module "logo-image4" path="@hubspot/image", link="https://talentsolutions.manpowergroup.com/", target="true",label="Talent Solutions Logo", img={src="{{get_asset_url('C:\Users\zorman\hubspot-mpg\web-mpg-fund-dev\images\TS_Logo_RGB_STK (1).svg')}}", alt="Talent Solutions", override_inherited_src= true} %}
+      {% module "logo-image4" path="@hubspot/image", link="https://talentsolutions.manpowergroup.com/", target="true",label="Talent Solutions Logo", img={src="{{get_asset_url('web-mpg-fund-dev/images/logo-ts-white-stacked.svg')}}", alt="Talent Solutions", override_inherited_src= true} %}
     </div>
     <div class="icon icon4">
       <a href="https://www.fundacionmanpowergroup.es/" target="_blank" aria-label="fundacion MPG logo">
@@ -290,16 +290,12 @@ label: Footer
   margin-right: 20px;
 }
 
-/* Unifica tamaño y padding de TODOS los logos */
-.footer-disclaimer-icons .icon img {
-  display: inline-block;
-  margin: 0 15px 48px;
-  max-height: 100px !important;    /* mismo tamaño que icon4 */
-  padding: 9px;         /* mismo padding que icon4 */
-  vertical-align: top;
-  width: auto !important;
+.site-footer .social-bar a.social-icon img {
+  max-height: 25px;
+  min-height: 25px;
+  vertical-align: middle;
+  width: auto;
 }
-
 
 .site-footer button#footerLangNav {
   text-transform: none;
@@ -363,7 +359,7 @@ label: Footer
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 5px;
+  padding: 50px 10%;
   gap: 15px;
   text-align: center;
 }
@@ -385,7 +381,7 @@ label: Footer
 .footer-disclaimer-icons .icon img {
   display: inline-block;
   margin: 0 15px 48px;
-  max-height: 100px;
+  max-height: 60px;
   vertical-align: top;
   width: auto !important;
 }
@@ -420,7 +416,7 @@ label: Footer
 }
 
 .footer-disclaimer-icons .icon.icon4 img {
-  max-height: 100px !important;
+  max-height: 100px;
       padding: 9px;
 }
 
@@ -754,30 +750,17 @@ nav.footer-menu .hs-menu-wrapper>ul>li>a {
     width: 100%;
     float: none;
   }
+}.footer-disclaimer-icons .icon.icon2 img {
+    max-height: 65px;
 }
-/* Primero, desactiva los max-height específicos */
+
 .footer-disclaimer-icons .icon img {
-  max-width: none !important;
-  max-height: none !important;
+        display: inline-block !important;
+    margin: 0 15px !important;
+    max-height: 76px !important;
+    vertical-align: middle !important;
 }
 
-/* Logos estándar iguales entre sí */
-.footer-disclaimer-icons .icon:not(.full) img {
-    width: 127px !important;
-    height: 128px !important;
-    object-fit: contain;
-    display: inline-block;
-    margin: 0 15px 48px;
-}
-
-/* Logo “full” sigue siendo más grande */
-.footer-disclaimer-icons .icon.full img {
-    width: 138px !important;
-    height: 200px !important;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto 58px;
-}
 </style>
 
 

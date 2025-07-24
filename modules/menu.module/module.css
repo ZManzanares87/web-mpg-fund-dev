@@ -134,7 +134,7 @@
 @media (max-width: 767px) {
   .menu__item--depth-1 {
     border-top: 2px solid#CED4DB;
-    padding: 0;
+    padding: 25px;
   }
 
   .menu__item--depth-1 > .menu__link {

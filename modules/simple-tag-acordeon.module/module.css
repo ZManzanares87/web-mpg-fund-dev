@@ -19,14 +19,14 @@
   gap: 8px;
   padding: 20px;
   width: 100%;
-  max-width: 420px;
+  max-width: 600px;
   background: var(--card-bg);
   border-radius: 8px;
   overflow: hidden;
   font-family: 'Inter', sans-serif;
 }
 @media (min-width: 601px) {
-  .accordion__card { height: 450px; }
+  .accordion__card { height: 700px; }
 }
 @media (max-width: 600px) {
   .accordion__card {
