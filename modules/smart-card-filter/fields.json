@@ -1,0 +1,146 @@
+[
+ {
+  "children": [
+   {
+    "allow_new_line": false,
+    "default": "tag",
+    "display_width": null,
+    "id": "3cce8fa5-e612-2e8a-9dde-3c69b0a5c2c6",
+    "label": "tag",
+    "locked": false,
+    "name": "tag",
+    "required": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "validation_regex": ""
+   }
+  ],
+  "default": [],
+  "display_width": null,
+  "expanded": false,
+  "group_occurrence_meta": null,
+  "id": "d43b652c-5bff-70fd-3324-51761d95acef",
+  "label": "button tags",
+  "locked": false,
+  "name": "button_tags",
+  "occurrence": {},
+  "required": false,
+  "tab": "CONTENT",
+  "type": "group"
+ },
+ {
+  "children": [
+   {
+    "allow_new_line": false,
+    "default": "Título",
+    "display_width": null,
+    "id": "a5bef753-0ab9-2ec7-73a8-05bbabb4a1c5",
+    "label": "Título",
+    "locked": false,
+    "name": "titulo",
+    "required": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "validation_regex": ""
+   },
+   {
+    "default": {
+     "size_type": "auto",
+     "src": "https://4272053.fs1.hubspotusercontent-na1.net/hubfs/4272053/Imported%20sitepage%20images/dummy-image-square.jpg",
+     "alt": "dummy-image-square",
+     "loading": "lazy",
+     "width": 800,
+     "height": 800,
+     "max_width": 800,
+     "max_height": 800
+    },
+    "display_width": null,
+    "id": "1a27fa36-e625-1c33-e50b-d1f90373279a",
+    "label": "Background img",
+    "locked": false,
+    "name": "background_img",
+    "required": false,
+    "resizable": true,
+    "responsive": true,
+    "show_loading": false,
+    "type": "image"
+   },
+   {
+    "allow_new_line": false,
+    "display_width": null,
+    "id": "676b8728-b8c7-2038-539a-87c81eebf81a",
+    "label": "card tag",
+    "locked": false,
+    "name": "card_tag",
+    "occurrence": {},
+    "required": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "validation_regex": ""
+   },
+   {
+    "display_width": null,
+    "id": "cfb4c8ab-5dc4-e7d7-f37e-b810bbb4af36",
+    "label": "descripcion",
+    "locked": false,
+    "name": "descripcion",
+    "required": false,
+    "type": "richtext"
+   },
+   {
+    "allow_new_line": false,
+    "display_width": null,
+    "id": "b6cd8d63-e56b-eec2-a04c-9ddff97a84d9",
+    "label": "botón",
+    "locked": false,
+    "name": "boton",
+    "required": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "validation_regex": ""
+   },
+   {
+    "default": {
+     "url": {
+      "content_id": null,
+      "type": "EXTERNAL",
+      "href": ""
+     },
+     "open_in_new_tab": false,
+     "no_follow": false
+    },
+    "display_width": null,
+    "id": "df5a24b5-d603-1fb7-10b7-0a17787f1e11",
+    "label": "boton link",
+    "locked": false,
+    "name": "boton_link",
+    "required": false,
+    "show_advanced_rel_options": false,
+    "supported_types": [
+     "EXTERNAL",
+     "CONTENT",
+     "FILE",
+     "EMAIL_ADDRESS",
+     "BLOG",
+     "CALL_TO_ACTION",
+     "PHONE_NUMBER",
+     "WHATSAPP_NUMBER",
+     "PAYMENT"
+    ],
+    "type": "link"
+   }
+  ],
+  "default": [],
+  "display_width": null,
+  "expanded": false,
+  "group_occurrence_meta": null,
+  "id": "9af7bdcb-d1f2-5b9e-76aa-435d5ea84133",
+  "label": "Card content",
+  "locked": false,
+  "name": "card_content",
+  "occurrence": {},
+  "required": false,
+  "tab": "CONTENT",
+  "type": "group"
+ }
+]
