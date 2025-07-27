@@ -7,25 +7,34 @@
             {{ tag.tag_name }}
           </div>
           <div class="accordion__divider"></div>
-          <div class="accordion__content">
-            {% for btn in tag.program_button %}
-              {# Solo muestra si hay URL #}
-              {% if btn.program_link.url.href %}
-                <a 
-                  href="{{ btn.program_link.url.href }}" 
-                  {% if btn.program_link.open_in_new_tab %}target="_blank"{% endif %}
-                  {% if btn.program_link.no_follow %}rel="nofollow"{% endif %}
-                >
-                  {{ btn.program_name }}
-                </a>
-              {% endif %}
-            {% endfor %}
+
+          <div class="accordion__content-wrapper">
+            <div class="accordion__content">
+              {% for btn in tag.program_button %}
+                {% if btn.program_link.url.href %}
+                  <a 
+                    href="{{ btn.program_link.url.href }}" 
+                    {% if btn.program_link.open_in_new_tab %}target="_blank"{% endif %}
+                    {% if btn.program_link.no_follow %}rel="nofollow"{% endif %}
+                  >
+                    {{ btn.program_name }}
+                  </a>
+                {% endif %}
+              {% endfor %}
+            </div>
+
+            <div class="accordion__scroll-indicator">
+              <button class="accordion__scroll-button" aria-label="Scroll down">
+                <svg width="13" height="23" viewBox="0 0 13 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6.27 4.83L10.67 0.43C10.84 0.27 11.06 0.18 11.3 0.19C11.53 0.19 11.75 0.28 11.92 0.45C12.08 0.61 12.17 0.83 12.18 1.07C12.18 1.3 12.09 1.52 11.93 1.69L6.9 6.72C6.73 6.89 6.51 6.98 6.27 6.98C6.03 6.98 5.81 6.89 5.64 6.72L0.61 1.69C0.45 1.52 0.36 1.3 0.36 1.07C0.37 0.83 0.46 0.61 0.62 0.45C0.79 0.28 1.01 0.19 1.24 0.19C1.48 0.18 1.7 0.27 1.87 0.43L6.27 4.83Z" fill="white"/>
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       {% endfor %}
     </div>
   </div>
 {% else %}
-  {# Fallback si no has añadido ningún tag #}
   <p>Configura al menos un “Tag box” en el módulo.</p>
 {% endif %}
