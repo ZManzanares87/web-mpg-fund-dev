@@ -26,7 +26,7 @@
   font-family: 'Inter', sans-serif;
 }
 @media (min-width: 601px) {
-  .accordion__card { height: 700px; }
+  .accordion__card { height: auto; }
 }
 @media (max-width: 600px) {
   .accordion__card {
@@ -79,24 +79,40 @@
   transition: opacity var(--trans);
 }
 
-/* Content oculto */
-.accordion__content {
+/* Content wrapper: scroll area + indicador */
+.accordion__content-wrapper {
+  position: relative;
   width: 100%;
-  box-sizing: border-box;
+  max-height: 240px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--trans);
+}
+
+/* Área scrollable */
+.accordion__content {
+  overflow-y: auto;
   padding: 0 20px;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity var(--trans);
   align-items: center;
+  flex: 1;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.accordion__content::-webkit-scrollbar {
+  display: none;
 }
 .accordion__content a {
   width: 100%;
   text-align: center;
   background: rgba(255,255,255,0.08);
-     padding: 13px;
+  padding: 13px;
   border-radius: 4px;
   font-weight: 600;
   font-size: 0.7em;
@@ -109,7 +125,37 @@
   background: rgba(255,255,255,0.18);
 }
 
-/* Desktop: caso 1 sólo item */
+/* Scroll indicator al final */
+.accordion__scroll-indicator {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0;
+  background: transparent;
+}
+.accordion__scroll-button {
+  all: unset;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.accordion__scroll-button svg {
+  animation: bounce 1.5s infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(3px); }
+}
+
+/* Mostrar contenido solo cuando activo */
+.accordion__item:hover .accordion__content-wrapper,
+.accordion__item--expanded .accordion__content-wrapper {
+  opacity: 1;
+  pointer-events: auto;
+  margin-top: .3em;
+}
+
+/* Desktop: caso 1 solo item */
 @media (min-width: 601px) {
   .accordion__card > .accordion__item:only-child {
     flex-basis: 90px;
@@ -130,8 +176,8 @@
   .accordion__card > .accordion__item:only-child.accordion__item--expanded .accordion__divider {
     display: block;
   }
-  .accordion__card > .accordion__item:only-child:hover .accordion__content,
-  .accordion__card > .accordion__item:only-child.accordion__item--expanded .accordion__content {
+  .accordion__card > .accordion__item:only-child:hover .accordion__content-wrapper,
+  .accordion__card > .accordion__item:only-child.accordion__item--expanded .accordion__content-wrapper {
     opacity: 1;
     pointer-events: auto;
     margin-top: .3em;
@@ -151,7 +197,7 @@
   .accordion__item:hover .accordion__divider {
     display: block;
   }
-  .accordion__item:hover .accordion__content {
+  .accordion__item:hover .accordion__content-wrapper {
     opacity: 1;
     pointer-events: auto;
     margin-top: .3em;
@@ -163,10 +209,10 @@
   .accordion__item {
     flex: none;
     width: 100%;
-    min-height: 50px;
+    height: 70px;
   }
   .accordion__item--expanded {
-    min-height: 140px;
+    height: auto;
     background: var(--orange-dark);
     z-index: 2;
   }
@@ -178,7 +224,7 @@
   .accordion__item--expanded .accordion__divider {
     display: block;
   }
-  .accordion__item--expanded .accordion__content {
+  .accordion__item--expanded .accordion__content-wrapper {
     opacity: 1;
     pointer-events: auto;
     margin-top: .3em;
@@ -186,4 +232,22 @@
   .accordion__divider {
     width: 80%;
   }
+  .accordion__header {
+    color: #fff;
+    font-size: 1em;
+    font-weight: 700;
+    padding: .7em 0;
+    pointer-events: none;
+    transition: unset;
+    transform: unset;
+    writing-mode: horizontal-tb;
+  }
+}
+.accordion__scroll-button:hover,
+.accordion__scroll-button:focus {
+  all: unset;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
