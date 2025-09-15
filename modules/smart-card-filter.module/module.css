@@ -47,14 +47,14 @@
   max-width: 787px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 10px;
 }
 .section-text .top {
   width: 630px;
   max-width: 630px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 16px;
 }
 .secondary-headline {
   color: #40669d;
@@ -67,7 +67,7 @@
 }
 .line1 {
   width: 100%;
-  max-width: 630px;
+  max-width: 50%;
   overflow-x: hidden;
 }
 .line1 svg {
