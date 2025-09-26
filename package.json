@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/ZManzanares87/web-mpg-fund-dev/issues"
   },
-  "homepage": "https://github.com/ZManzanares87/web-mpg-fund-dev#readme"
+  "homepage": "https://github.com/ZManzanares87/web-mpg-fund-dev#readme",
+  "devDependencies": {
+    "prettier": "3.6.2"
+  }
 }
