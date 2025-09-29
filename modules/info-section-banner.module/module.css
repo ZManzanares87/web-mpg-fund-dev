@@ -37,8 +37,38 @@ width: 1280px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 32px;
+  gap: 10px;
   color: #fff;
+}
+
+/* Contenedor principal */
+.info-section {
+  width: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+}
+
+/* Contenedores interno */
+.info-section__container {
+  max-width: 1440px;
+}
+
+/* =========== Versión escritorio =========== */
+.info-section__container--desktop {
+  display: flex;
+width: 1280px;
+}
+
+.info-section__block {
+  display: flex;
+  width: 100%;
+  background: linear-gradient(137deg, #EF8036 0%, #D36881 100%);
+  border-top-left-radius: 500px;
+  border-bottom-left-radius: 500px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  overflow: hidden;
 }
 
 .info-card__title {
@@ -59,7 +89,7 @@ width: 1280px;
   line-height: 1.4;
 }
 
-.info-card__link {
+.info-card__link a {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -166,173 +196,3 @@ width: 1280px;
     display: inline-block;
   }
 }
-
-/* CONTACT BANNER */
-
-
-/* Contenedor principal */
-.info-section-inverse {
-  width: 100%;
-  background: #fff;
-  display: flex;
-  justify-content: center;
-}
-
-/* Contenedor interno */
-.info-section-inverse__container {
-  max-width: 1440px;
-}
-
-/* ===== Desktop ===== */
-.info-section-inverse__container--desktop {
-  display: flex;
-  width: 1280px; /* igual que el rojo */
-}
-
-.info-section-inverse__block {
-  display: flex;
-  width: 100%;
-  /* gradiente verde + “pill” a la derecha (espejo del rojo) */
-  background: linear-gradient(221deg, #48709D 0%, #6F9B76 100%);
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  border-top-right-radius: 500px;
-  border-bottom-right-radius: 500px;
-  overflow: hidden;
-}
-
-/* contenido: padding espejado del rojo
-   rojo: 9px 83px 20px 113px  => inverse: 9px 113px 20px 83px */
-.info-card-inverse__content {
-  flex: 1 1 0;
-  padding: 9px 113px 20px 83px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 32px;
-  color: #fff;
-}
-
-/* tipografías iguales */
-.info-card-inverse__title {
-  margin: 0;
-  font-family: Inter, sans-serif;
-  font-size: 42px;
-  font-weight: 700;
-  line-height: 1.1;
-  color: #fff;
-}
-.info-card-inverse__text,
-.info-card-inverse__description {
-  margin: 0;
-  font-family: Inter, sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.5; /* respetado de tu CSS */
-  color: #fff;
-}
-
-/* CTA igual que el rojo */
-.info-card-inverse__link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: Inter, sans-serif;
-  font-size: 16px;
-  font-weight: 800;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: #fff;
-}
-.info-card-inverse__icon { display: inline-block; }
-
-/* imagen a la izquierda (espejo), misma altura que el rojo */
-.info-section-inverse__image {
-  flex: 0 0 auto;
-}
-.info-section-inverse__image img {
-  display: block;
-  height: 443px;  /* EXACTAMENTE igual que el rojo */
-  object-fit: cover;
-}
-
-/* ===== Mobile (≤576px) ===== */
-.info-section-inverse__container--mobile {
-  display: none;
-}
-
-@media (max-width: 576px) {
-  /* ocultar desktop, mostrar móvil */
-  .info-section-inverse__container--desktop { display: none; }
-  .info-section-inverse__container--mobile {
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-  }
-
-  .info-card-inverse-mobile {
-    /* mismo patrón que el rojo móvil, solo cambia el gradiente a verde */
-    background: linear-gradient(221deg, #48709D 0%, #6F9B76 100%);
-    border-radius: 12px;
-    overflow: hidden; /* importante para redondear la imagen superior */
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* === NUEVO: wrapper que controla la altura/proporción de la imagen móvil === */
-  .info-card-inverse-mobile__image-wrapper {
-    width: 100%;
-   
-    overflow: hidden;       /* recorta la imagen al contenedor */
-  }
-
-  /* la imagen se adapta al wrapper */
-  .info-card-inverse-mobile__image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .info-card-inverse-mobile__content {
-    padding: 32px 38px;   /* EXACTO como el rojo */
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-    width: 100%;
-  }
-
-  .info-card-inverse-mobile__title {
-    margin: 0;
-    color: #fff;
-    font-family: Inter, sans-serif;
-    font-size: 32px;
-    font-weight: 700;
-    line-height: 1.1;
-  }
-  .info-card-inverse-mobile__text,
-  .info-card-inverse-mobile__description {
-    margin: 0;
-    color: #fff;
-    font-family: Inter, sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.4;
-  }
-
-  .info-card-inverse-mobile__link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: #fff;
-    font-family: Inter, sans-serif;
-    font-size: 16px;
-    font-weight: 800;
-    text-transform: uppercase;
-    text-decoration: none;
-  }
-  .info-card-inverse-mobile__icon { display: inline-block; }
-}
-
-/* (ELIMINADO el aspect-ratio directo en .info-card-inverse-mobile__image para respetar tus cambios) */
-

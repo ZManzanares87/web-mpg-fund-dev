@@ -5,114 +5,92 @@
   <div class="info-section__container info-section__container--desktop"> 
     <div class="info-section__block">
       <div class="info-card__content">
-        <h2 class="info-card__title">21 años de historia</h2>
+        <h2 class="info-card__title">{{ module.titulo_section|escape_html }}</h2>
+
         <p class="info-card__text">
-          Presente en España desde 1988, ManpowerGroup crea su Fundación en 2003 con el objetivo de ayudar a las personas en riesgo de exclusión social o colectivos vulnerables a través de la orientación o intermediación sociolaboral.<br><br>
-          En sus más de 20 años de historia, Fundación ha ayudado a cerca de 50.000 personas a alcanzar sus objetivos profesionales contribuyendo a derribar las barreras y limitaciones ajenas al talento que han aparecido en su camino.
+          {{ module.descripcion_section }}
         </p>
-        <a href="https://www.fundacionmanpowergroup.es/quienes-somos" class="info-card__link">
-          Quiénes somos
-          <svg class="info-card__icon" width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4.66663 10.5H16.3333" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M10.5 4.6665L16.3333 10.4998L10.5 16.3332" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
+
+        {# --- BOTÓN --- #}
+        {% set link = module.boton.enlace_info_section %}
+        {% set href = link.url.href %}
+        {% if link.url.type == "EMAIL_ADDRESS" %}
+          {% set href = "mailto:" ~ href %}
+        {% elif link.url.type == "PHONE_NUMBER" %}
+          {% set href = "tel:" ~ href %}
+        {% endif %}
+
+        <div class="info-card__link">
+          <a
+            {% if link.url.type == "CALL_TO_ACTION" %}
+              href="{{ href }}"
+            {% else %}
+              href="{{ href|escape_url }}"
+            {% endif %}
+            {% if link.open_in_new_tab %} target="_blank"{% endif %}
+            {% if link.rel %} rel="{{ link.rel|escape_attr }}"{% endif %}
+            aria-label="{{ module.boton.texto_enlace|default('Abrir enlace')|escape_attr }}"
+          >
+            {{ module.boton.texto_enlace|escape_html }}
+            <svg class="info-card__icon" width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4.66663 10.5H16.3333" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M10.5 4.6665L16.3333 10.4998L10.5 16.3332" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
       </div>
+
       <div class="info-section__image">
-        <img src="https://4272053.fs1.hubspotusercontent-na1.net/hubfs/4272053/WEB_FUND_MPG/young%20person%2c%2020%20years%20old.%20Modern%20and%20with%20only%20one%20arm%2c%20looking%20her%20phone..png"
-             alt="Joven con teléfono">
+        {% if module.imagen_section.src %}
+          {% set sizeAttrs = 'width="' ~ module.imagen_section.width|escape_attr ~ '" height="' ~ module.imagen_section.height|escape_attr ~ '"' %}
+          {% if module.imagen_section.size_type == 'auto' %}
+            {% set sizeAttrs = 'style="max-width:100%;height:auto;"' %}
+          {% elif module.imagen_section.size_type == 'auto_custom_max' %}
+            {% set sizeAttrs = 'width="' ~ module.imagen_section.max_width|escape_attr ~ '" height="' ~ module.imagen_section.max_height|escape_attr ~ '" style="max-width:100%;height:auto;"' %}
+          {% endif %}
+          {% set loadingAttr = module.imagen_section.loading != 'disabled' ? 'loading="' ~ module.imagen_section.loading|escape_attr ~ '"' : '' %}
+          <img src="{{ module.imagen_section.src|escape_url }}"
+               alt="{{ module.imagen_section.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+        {% endif %}
       </div>
     </div>
   </div>
-  
-  {% elif module.variant == 'contact-banner' %}
 
-  <!--CAMPOS MOVIL SOLO IMAGEN -->
+  <!-- Móvil: si quieres que también sea editable via módulo, usa los mismos campos -->
   <div class="info-section__container info-section__container--mobile">
     <div class="info-card-mobile">
-      <img
-        src="https://4272053.fs1.hubspotusercontent-na1.net/hubfs/4272053/WEB_FUND_MPG/FOTOS%20POWER%20YOU%20EXPERIENCE/info%20banner%20responsive.png"
-        alt="Banner info móvil"
-        class="info-card-mobile__image"
-      >
+      <img src="{{ module.imagen_mobile.src|escape_url }}"
+           alt="{{ module.imagen_mobile.alt|escape_attr }}"
+           loading="lazy" class="info-card-mobile__image">
       <div class="info-card-mobile__content">
-        <h2 class="info-card-mobile__title">21 años de historia</h2>
-        <p class="info-card-mobile__text">
-          Presente en España desde 1988, ManpowerGroup crea su Fundación en 2003 con el objetivo de ayudar a las personas en riesgo de exclusión social o colectivos vulnerables a través de la orientación o intermediación sociolaboral.<br><br>
-          En sus más de 20 años de historia, Fundación ha ayudado a cerca de 50.000 personas a alcanzar sus objetivos profesionales contribuyendo a derribar las barreras y limitaciones ajenas al talento que han aparecido en su camino.
-        </p>
-        <a href="https://www.fundacionmanpowergroup.es/quienes-somos" class="info-card-mobile__link">
-          Quiénes somos
+        <h2 class="info-card-mobile__title">{{ module.titulo_mobile|default(module.titulo_section)|escape_html }}</h2>
+        <p class="info-card-mobile__text">{{ module.descripcion_mobile|default(module.descripcion_section) }}</p>
+
+        {% set mlink = module.boton_mobile.enlace|default(module.boton.enlace_info_section) %}
+        {% set mhref = mlink.url.href %}
+        {% if mlink.url.type == "EMAIL_ADDRESS" %}
+          {% set mhref = "mailto:" ~ mhref %}
+        {% elif mlink.url.type == "PHONE_NUMBER" %}
+          {% set mhref = "tel:" ~ mhref %}
+        {% endif %}
+
+        <a
+          {% if mlink.url.type == "CALL_TO_ACTION" %}
+            href="{{ mhref }}"
+          {% else %}
+            href="{{ mhref|escape_url }}"
+          {% endif %}
+          {% if mlink.open_in_new_tab %} target="_blank"{% endif %}
+          {% if mlink.rel %} rel="{{ mlink.rel|escape_attr }}"{% endif %}
+          class="info-card-mobile__link"
+        >
+          {{ module.boton_mobile.texto|default(module.boton.texto_enlace)|escape_html }}
           <svg class="info-card-mobile__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4.16666 10H15.8333" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M10 4.16675L15.8333 10.0001L10 15.8334" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4.16666 10H15.8333" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M10 4.16675L15.8333 10.0001L10 15.8334" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </a>
       </div>
     </div>
   </div>
 </section>
-
-  <!-- CONTACT BANNER-->
-
-<section class="info-section-inverse">
-  <div class="info-section-inverse__container info-section-inverse__container--desktop">
-    <div class="info-section-inverse__block">
-      <!-- Imagen a la izquierda (espejo) -->
-      <div class="info-section-inverse__image">
-        <img
-          src="https://4272053.fs1.hubspotusercontent-na1.net/hubfs/4272053/WEB_FUND_MPG/FOTOS%20POWER%20YOU%20EXPERIENCE/down%20symdrom%2c%20smiling.%20happy%20working.png"
-          alt="Persona sonriendo trabajando"
-        >
-      </div>
-
-      <!-- Contenido a la derecha (idéntico al rojo) -->
-      <div class="info-card-inverse__content">
-        <h2 class="info-card-inverse__title">Aquí estamos para ti</h2>
-        <p class="info-card-inverse__description">
-          Sabemos que a veces necesitas una mano amiga, y estamos aquí para dártela.
-          No dudes en contactarnos. Te ayudaremos de la forma más cercana y rápida posible.
-          No dudes en contactarnos. Te ayudaremos de la forma más cercana y rápida posible.
-        </p>
-        <a href="https://www.fundacionmanpowergroup.es/contacto" class="info-card-inverse__link">
-          Contacta con nosotros
-          <svg class="info-card-inverse__icon" width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4.66663 10.5H16.3333" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M10.5 4.6665L16.3333 10.4998L10.5 16.3332" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Móvil: SOLO EL CAMPO IMAGEN -->
-  <div class="info-section-inverse__container info-section-inverse__container--mobile">
-    <div class="info-card-inverse-mobile">
-      <!-- NUEVO: wrapper que controla la altura de la imagen -->
-      <div class="info-card-inverse-mobile__image-wrapper">
-        <img
-          src="https://www.fundacionmanpowergroup.es/hubfs/WEB_FUND_MPG/FOTOS%20POWER%20YOU%20EXPERIENCE/info%20banner%20responsive.png"
-          alt="Persona sonriente móvil"
-          class="info-card-inverse-mobile__image"
-        >
-      </div>
-
-      <div class="info-card-inverse-mobile__content">
-        <h2 class="info-card-inverse-mobile__title">Aquí estamos para ti</h2>
-        <p class="info-card-inverse-mobile__description">
-          Sabemos que a veces necesitas una mano amiga, y estamos aquí para dártela.
-          No dudes en contactarnos. Te ayudaremos de la forma más cercana y rápida posible.
-        </p>
-        <a href="https://www.fundacionmanpowergroup.es/candidatos" class="info-card-inverse-mobile__link">
-          Contacta con nosotros
-          <svg class="info-card-inverse-mobile__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4.16666 10H15.8333" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M10 4.16675L15.8333 10.0001L10 15.8334" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-{% endif %}
