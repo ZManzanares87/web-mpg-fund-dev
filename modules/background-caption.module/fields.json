@@ -1,1 +1,36 @@
-[ ]
+[
+ {
+  "type": "text",
+  "id": "841a7bb7-ebd3-72d8-73b6-d870a49eb443",
+  "validation_regex": "",
+  "label": "Titulo banner",
+  "name": "titulo_banner",
+  "default": "Este es el titulo"
+ },
+ {
+  "type": "richtext",
+  "id": "bb34c71f-1c58-17f8-bfc9-7ec6b89d9c54",
+  "label": "Descripcion",
+  "name": "descripcion",
+  "default": "Esta seria la descripción tipo subtitulo o explicación corta."
+ },
+ {
+  "type": "image",
+  "id": "d076be33-87fb-f787-1844-3702b47b4b08",
+  "default": {
+   "size_type": "auto",
+   "src": "https://4272053.fs1.hubspotusercontent-na1.net/hubfs/4272053/image%207.png",
+   "alt": "image 7",
+   "loading": "lazy",
+   "width": 1278,
+   "height": 567,
+   "max_width": 1278,
+   "max_height": 567
+  },
+  "resizable": true,
+  "responsive": true,
+  "show_loading": false,
+  "label": "Imagen de fondo",
+  "name": "imagen_de_fondo"
+ }
+]
