@@ -1,3 +1,6 @@
+<!-- -------------------VERSIÓN RIGHT-------------------- -->
+{% if module.variant == 'rigth' %}
+
   <!-- INFO BANNER -->
 {% if module.variant == 'info-banner' %}
 
@@ -59,9 +62,16 @@
   <!-- Móvil: si quieres que también sea editable via módulo, usa los mismos campos -->
   <div class="info-section__container info-section__container--mobile">
     <div class="info-card-mobile">
-      <img src="{{ module.imagen_mobile.src|escape_url }}"
-           alt="{{ module.imagen_mobile.alt|escape_attr }}"
-           loading="lazy" class="info-card-mobile__image">
+       {% if module.mobile_img.src %}
+	{% set sizeAttrs = 'width="{{ module.mobile_img.width|escape_attr }}" height="{{ module.mobile_img.height|escape_attr }}"' %}
+	{% if module.mobile_img.size_type == 'auto' %}
+		{% set sizeAttrs = 'width="{{ module.mobile_img.width|escape_attr }}" height="{{ module.mobile_img.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+	{% elif module.mobile_img.size_type == 'auto_custom_max' %}
+		{% set sizeAttrs = 'width="{{ module.mobile_img.max_width|escape_attr }}" height="{{ module.mobile_img.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+	{% endif %}
+	 {% set loadingAttr = module.mobile_img.loading != 'disabled' ? 'loading="{{ module.mobile_img.loading|escape_attr }}"' : '' %}
+	<img src="{{ module.mobile_img.src|escape_url }}" alt="{{ module.mobile_img.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+{% endif %}
       <div class="info-card-mobile__content">
         <h2 class="info-card-mobile__title">{{ module.titulo_mobile|default(module.titulo_section)|escape_html }}</h2>
         <p class="info-card-mobile__text">{{ module.descripcion_mobile|default(module.descripcion_section) }}</p>
@@ -94,3 +104,96 @@
     </div>
   </div>
 </section>
+
+
+<!-- -------------VERSIÓN LEFT--------------- -->
+
+{% elif module.variant == 'left' %}
+
+<section class="contact-section">
+  <!-- Versión escritorio -->
+  <div class="contact-section__container contact-section__container--desktop">
+    <div class="contact-section__image">
+      {% if module.left_imagen_section.src %}
+	{% set sizeAttrs = 'width="{{ module.left_imagen_section.width|escape_attr }}" height="{{ module.left_imagen_section.height|escape_attr }}"' %}
+	{% if module.left_imagen_section.size_type == 'auto' %}
+		{% set sizeAttrs = 'width="{{ module.left_imagen_section.width|escape_attr }}" height="{{ module.left_imagen_section.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+	{% elif module.left_imagen_section.size_type == 'auto_custom_max' %}
+		{% set sizeAttrs = 'width="{{ module.left_imagen_section.max_width|escape_attr }}" height="{{ module.left_imagen_section.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+	{% endif %}
+	 {% set loadingAttr = module.left_imagen_section.loading != 'disabled' ? 'loading="{{ module.left_imagen_section.loading|escape_attr }}"' : '' %}
+	<img src="{{ module.left_imagen_section.src|escape_url }}" alt="{{ module.left_imagen_section.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+{% endif %}
+    </div>
+
+    <div class="contact-card">
+      <div class="contact-card__content">
+        <!-- DESCRIPCIÓN DESKTOP -->
+         <h2 class="contact-card__title">{{ module.left_titulo_section }}</h2>
+        <p class="contact-card__description">
+          {{ module.left_description_section }}
+        </p>
+<div class="contact-button-left">
+        <a {% set href = module.left_boton.left_btn_link.url.href %}
+{% if module.left_boton.left_btn_link.url.type is equalto "EMAIL_ADDRESS" %}
+  {% set href = "mailto:" + href %}
+{% elif module.left_boton.left_btn_link.url.type is equalto "PHONE_NUMBER" %}
+  {% set href = "tel:" + href %}
+{% endif %}
+  {% if module.left_boton.left_btn_link.url.type is equalto "CALL_TO_ACTION"  %}
+    href="{{ href }}" {# The href here is not escaped as it is not editable and functions as a JavaScript call to the associated CTA #}
+  {% else %}
+    href="{{ href|escape_url }}"
+  {% endif %}
+  {% if module.left_boton.left_btn_link.open_in_new_tab %}
+    target="_blank"
+  {% endif %}
+  {% if module.left_boton.left_btn_link.rel %}
+    rel="{{ module.left_boton.left_btn_link.rel|escape_attr }}"
+  {% endif %}
+  >
+{% inline_text field="left_boton.left_bton_txt" value="{{ module.left_boton.left_bton_txt }}" %}
+          <svg class="contact-card__icon" width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.66663 10.5H16.3333" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10.5 4.6665L16.3333 10.4998L10.5 16.3332" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Versión móvil -->
+  <div class="contact-section__container contact-section__container--mobile">
+    <div class="contact-card-mobile">
+      <!-- TITULO Y SUBTITULO ARRIBA DE LA IMAGEN -->
+      <h2 class="contact-card-mobile__title">Aquí estamos para ti</h2>
+      <p class="contact-card-mobile__text">
+        Siempre listos para escucharte y ayudarte en lo que necesites
+      </p>
+
+      <!-- IMAGEN -->
+      <img
+        src="https://4272053.fs1.hubspotusercontent-na1.net/hubfs/4272053/WEB_FUND_MPG/FOTOS%20POWER%20YOU%20EXPERIENCE/down%20symdrom%20MOBILE.png"
+        alt="Persona sonriente móvil"
+        class="contact-card-mobile__image"
+      >
+
+      <!-- DESCRIPCIÓN MÓVIL -->
+      <p class="contact-card-mobile__description">
+        Sabemos que a veces necesitas una mano amiga, y estamos aquí para dártela.
+        No dudes en contactarnos. Te ayudaremos de la forma más cercana y rápida posible.
+      </p>
+
+      <a href="#" class="contact-card-mobile__button">
+        CONTACTA CON NOSOTROS
+        <svg class="contact-card-mobile__icon" width="25" height="24" viewBox="0 0 25 24" fill="none">
+          <!-- ...ruta del icono... -->
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+{% endif %}
+
+ 
