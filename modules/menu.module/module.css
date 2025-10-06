@@ -12,7 +12,7 @@
   .menu--mobile { display: block; }
 }
 
-/* ===== ITEMS ===== */
+/* ===== ITEMS ===== */ 
 .menu__item {
   position: relative;
   pointer-events: auto !important;
