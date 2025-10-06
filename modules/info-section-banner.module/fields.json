@@ -1,1 +1,288 @@
-[ ]
+[
+ {
+  "allow_new_line": false,
+  "default": "Este es el título",
+  "display_width": null,
+  "id": "375265d5-3e4d-508d-9923-43a4af8f636f",
+  "label": "Titulo section",
+  "locked": false,
+  "name": "titulo_section",
+  "required": false,
+  "type": "text"
+ },
+ {
+  "default": "Aquí va una descripción",
+  "display_width": null,
+  "id": "6914353e-8bfb-2ec1-b587-a7207c598b7e",
+  "label": "descripcion section",
+  "locked": false,
+  "name": "descripcion_section",
+  "required": false,
+  "type": "richtext"
+ },
+ {
+  "default": {
+   "size_type": "auto",
+   "src": "https://4272053.fs1.hubspotusercontent-na1.net/hubfs/4272053/Imported%20images/young%20person%2c%2020%20years%20old.%20Modern%20and%20with%20only%20one%20arm%2c%20looking%20her%20phone..png",
+   "alt": "young person, 20 years old. Modern and with only one arm, looking her phone.",
+   "loading": "lazy",
+   "width": 423,
+   "height": 443,
+   "max_width": 423,
+   "max_height": 443
+  },
+  "display_width": null,
+  "id": "0012d1ea-23cd-1924-684e-45effd48514e",
+  "label": "Imagen section",
+  "locked": false,
+  "name": "imagen_section",
+  "required": false,
+  "resizable": true,
+  "responsive": true,
+  "show_loading": false,
+  "type": "image"
+ },
+ {
+  "choices": [
+   [
+    "left",
+    "left"
+   ],
+   [
+    "right",
+    "right"
+   ]
+  ],
+  "display": "select",
+  "display_width": null,
+  "id": "41cd7631-3eb4-6b38-4b29-46aa9e9bd309",
+  "label": "variant",
+  "locked": false,
+  "multiple": false,
+  "name": "variant",
+  "preset": null,
+  "reordering_enabled": true,
+  "required": false,
+  "type": "choice"
+ },
+ {
+  "children": [
+   {
+    "allow_new_line": false,
+    "default": "Texto del boton",
+    "display_width": null,
+    "id": "78e26bda-14fa-5423-6354-77c53e7d356b",
+    "label": "boton txt",
+    "locked": false,
+    "name": "texto_enlace",
+    "required": false,
+    "type": "text"
+   },
+   {
+    "default": {
+     "url": {
+      "content_id": null,
+      "href": "",
+      "type": "EXTERNAL"
+     },
+     "open_in_new_tab": false,
+     "no_follow": false
+    },
+    "display_width": null,
+    "id": "1fa78afb-1ed1-9101-4607-269b903997e8",
+    "label": "bnt link",
+    "locked": false,
+    "name": "enlace_info_section",
+    "required": false,
+    "show_advanced_rel_options": false,
+    "supported_types": [
+     "EXTERNAL",
+     "CONTENT",
+     "FILE",
+     "EMAIL_ADDRESS",
+     "BLOG",
+     "CALL_TO_ACTION",
+     "PHONE_NUMBER",
+     "WHATSAPP_NUMBER",
+     "PAYMENT"
+    ],
+    "type": "link"
+   }
+  ],
+  "default": {
+   "texto_enlace": "Texto del boton",
+   "enlace_info_section": {
+    "url": {
+     "content_id": null,
+     "href": "",
+     "type": "EXTERNAL"
+    },
+    "open_in_new_tab": false,
+    "no_follow": false
+   }
+  },
+  "display_width": null,
+  "expanded": false,
+  "group_occurrence_meta": null,
+  "help_text": "Texto link tipo \"quienes somos..\"",
+  "id": "66bce870-7855-bc92-0db1-ea82d2d85501",
+  "label": "Boton",
+  "locked": false,
+  "name": "boton",
+  "required": false,
+  "tab": "CONTENT",
+  "type": "group"
+ },
+ {
+  "default": {
+   "size_type": "auto",
+   "src": "https://4272053.fs1.hubspotusercontent-na1.net/hubfs/4272053/Imported%20images/info%20banner%20responsive.png",
+   "alt": "info banner responsive",
+   "loading": "lazy",
+   "width": 430,
+   "height": 273,
+   "max_width": 430,
+   "max_height": 273
+  },
+  "display_width": null,
+  "id": "fbe451e2-d565-88ac-6375-cbe44d9d161d",
+  "label": "mobile_img",
+  "locked": false,
+  "name": "mobile_img",
+  "required": false,
+  "resizable": true,
+  "responsive": true,
+  "show_loading": false,
+  "type": "image"
+ },
+ {
+  "allow_new_line": false,
+  "default": "Esto es un titulo",
+  "display_width": null,
+  "id": "aeb12fbb-a980-d4b1-facd-c2b10aa92892",
+  "label": "left titulo section",
+  "locked": false,
+  "name": "left_titulo_section",
+  "required": false,
+  "type": "text"
+ },
+ {
+  "default": "Aquí pon una descripción",
+  "display_width": null,
+  "id": "9119d9b2-c430-c052-ed21-125a78eb5b9a",
+  "label": "left description section",
+  "locked": false,
+  "name": "left_description_section",
+  "required": false,
+  "type": "richtext"
+ },
+ {
+  "default": {
+   "size_type": "auto",
+   "src": "https://4272053.fs1.hubspotusercontent-na1.net/hubfs/4272053/Imported%20images/down%20symdrom%2c%20smiling.%20happy%20working.png",
+   "alt": "down symdrom, smiling. happy working",
+   "loading": "lazy",
+   "width": 423,
+   "height": 443,
+   "max_width": 423,
+   "max_height": 443
+  },
+  "display_width": null,
+  "id": "38f631d0-b67b-1920-101a-a23bbe23b29b",
+  "label": "left imagen section",
+  "locked": false,
+  "name": "left_imagen_section",
+  "required": false,
+  "resizable": true,
+  "responsive": true,
+  "show_loading": false,
+  "type": "image"
+ },
+ {
+  "children": [
+   {
+    "default": {
+     "url": {
+      "content_id": null,
+      "type": "EXTERNAL",
+      "href": ""
+     },
+     "open_in_new_tab": false,
+     "no_follow": false
+    },
+    "display_width": null,
+    "id": "928fb0f5-bfbe-f244-d26d-a71ef9f0a98c",
+    "label": "left btn link",
+    "locked": false,
+    "name": "left_btn_link",
+    "required": false,
+    "show_advanced_rel_options": false,
+    "supported_types": [
+     "EXTERNAL",
+     "CONTENT",
+     "FILE",
+     "EMAIL_ADDRESS",
+     "BLOG",
+     "CALL_TO_ACTION",
+     "PHONE_NUMBER",
+     "WHATSAPP_NUMBER",
+     "PAYMENT"
+    ],
+    "type": "link"
+   },
+   {
+    "allow_new_line": false,
+    "display_width": null,
+    "id": "e11ef06c-7818-4678-1bf3-84eeefe40464",
+    "label": "left bton txt",
+    "locked": false,
+    "name": "left_bton_txt",
+    "required": false,
+    "type": "text"
+   }
+  ],
+  "default": {
+   "left_btn_link": {
+    "url": {
+     "content_id": null,
+     "type": "EXTERNAL",
+     "href": ""
+    },
+    "open_in_new_tab": false,
+    "no_follow": false
+   }
+  },
+  "display_width": null,
+  "expanded": false,
+  "group_occurrence_meta": null,
+  "id": "33583fad-725c-f577-ad81-03aab093e1bf",
+  "label": "left boton",
+  "locked": false,
+  "name": "left_boton",
+  "required": false,
+  "tab": "CONTENT",
+  "type": "group"
+ },
+ {
+  "default": {
+   "size_type": "auto",
+   "src": "https://4272053.fs1.hubspotusercontent-na1.net/hubfs/4272053/Imported%20images/down%20symdrom%2c%20smiling.%20happy%20working.png",
+   "alt": "down symdrom, smiling. happy working",
+   "loading": "lazy",
+   "width": 423,
+   "height": 443,
+   "max_width": 423,
+   "max_height": 443
+  },
+  "display_width": null,
+  "id": "1fba49b1-b84a-3fc5-5d4c-144948fdcca3",
+  "label": "left mobile img",
+  "locked": false,
+  "name": "left_mobile_img",
+  "required": false,
+  "resizable": true,
+  "responsive": true,
+  "show_loading": false,
+  "type": "image"
+ }
+]

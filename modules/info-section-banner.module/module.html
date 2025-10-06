@@ -1,3 +1,6 @@
+  <!-- INFO BANNER -->
+{% if module.variant == 'info-banner' %}
+
 <section class="info-section">
   <div class="info-section__container info-section__container--desktop">
     <div class="info-section__block">
@@ -21,8 +24,10 @@
       </div>
     </div>
   </div>
+  
+  {% elif module.variant == 'contact-banner' %}
 
-  <!-- Versión móvil sigue igual -->
+  <!--CAMPOS MOVIL SOLO IMAGEN -->
   <div class="info-section__container info-section__container--mobile">
     <div class="info-card-mobile">
       <img
@@ -47,3 +52,67 @@
     </div>
   </div>
 </section>
+
+  <!-- CONTACT BANNER-->
+
+<section class="info-section-inverse">
+  <div class="info-section-inverse__container info-section-inverse__container--desktop">
+    <div class="info-section-inverse__block">
+      <!-- Imagen a la izquierda (espejo) -->
+      <div class="info-section-inverse__image">
+        <img
+          src="https://4272053.fs1.hubspotusercontent-na1.net/hubfs/4272053/WEB_FUND_MPG/FOTOS%20POWER%20YOU%20EXPERIENCE/down%20symdrom%2c%20smiling.%20happy%20working.png"
+          alt="Persona sonriendo trabajando"
+        >
+      </div>
+
+      <!-- Contenido a la derecha (idéntico al rojo) -->
+      <div class="info-card-inverse__content">
+        <h2 class="info-card-inverse__title">Aquí estamos para ti</h2>
+        <p class="info-card-inverse__description">
+          Sabemos que a veces necesitas una mano amiga, y estamos aquí para dártela.
+          No dudes en contactarnos. Te ayudaremos de la forma más cercana y rápida posible.
+          No dudes en contactarnos. Te ayudaremos de la forma más cercana y rápida posible.
+        </p>
+        <a href="https://www.fundacionmanpowergroup.es/contacto" class="info-card-inverse__link">
+          Contacta con nosotros
+          <svg class="info-card-inverse__icon" width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.66663 10.5H16.3333" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10.5 4.6665L16.3333 10.4998L10.5 16.3332" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Móvil: SOLO EL CAMPO IMAGEN -->
+  <div class="info-section-inverse__container info-section-inverse__container--mobile">
+    <div class="info-card-inverse-mobile">
+      <!-- NUEVO: wrapper que controla la altura de la imagen -->
+      <div class="info-card-inverse-mobile__image-wrapper">
+        <img
+          src="https://www.fundacionmanpowergroup.es/hubfs/WEB_FUND_MPG/FOTOS%20POWER%20YOU%20EXPERIENCE/info%20banner%20responsive.png"
+          alt="Persona sonriente móvil"
+          class="info-card-inverse-mobile__image"
+        >
+      </div>
+
+      <div class="info-card-inverse-mobile__content">
+        <h2 class="info-card-inverse-mobile__title">Aquí estamos para ti</h2>
+        <p class="info-card-inverse-mobile__description">
+          Sabemos que a veces necesitas una mano amiga, y estamos aquí para dártela.
+          No dudes en contactarnos. Te ayudaremos de la forma más cercana y rápida posible.
+        </p>
+        <a href="https://www.fundacionmanpowergroup.es/candidatos" class="info-card-inverse-mobile__link">
+          Contacta con nosotros
+          <svg class="info-card-inverse-mobile__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.16666 10H15.8333" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10 4.16675L15.8333 10.0001L10 15.8334" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endif %}
