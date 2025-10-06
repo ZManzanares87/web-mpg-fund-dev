@@ -212,92 +212,73 @@ width: 1280px;
   }
 }
 
-/* --------------------VERSIÓN LEFT--------------------- */
+/* CONTACT BANNER */
+
 
 /* Contenedor principal */
-.contact-section {
+.info-section-inverse {
   width: 100%;
+  background: #fff;
   display: flex;
   justify-content: center;
-  background: #fff;
 }
 
-/* Contenedores internos */
-.contact-section__container {
+/* Contenedor interno */
+.info-section-inverse__container {
   max-width: 1440px;
+}
+
+/* ===== Desktop ===== */
+.info-section-inverse__container--desktop {
+  display: flex;
+  width: 1280px; /* igual que el rojo */
+}
+
+.info-section-inverse__block {
+  display: flex;
   width: 100%;
-}
-
-/* ===== Versión escritorio ===== */
-.contact-section__container--desktop {
-      width: 1440px;
-    color: #fff;
-    display: flex;
-    flex: 1 1 0;        /* igual que el banner */
-   /* igual que el banner */
-  margin: 0 auto;
-}
-
-.contact-section__image { 
-  flex: 0 0 auto;
-}
-
-.contact-section__image img {
-  display: block;
-  height: 517px;          /* igual que el banner */
-  object-fit: cover;
-}
-
-.contact-card {
-  flex: 1;
+  /* gradiente verde + “pill” a la derecha (espejo del rojo) */
   background: linear-gradient(221deg, #48709D 0%, #6F9B76 100%);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
   border-top-right-radius: 500px;
   border-bottom-right-radius: 500px;
   overflow: hidden;
-  display: flex;
-  align-items: center;
 }
 
-.contact-card__content {
-  width: 100%;
-  padding: 18px 25px;
+/* contenido: padding espejado del rojo
+   rojo: 9px 83px 20px 113px  => inverse: 9px 113px 20px 83px */
+.info-card-inverse__content {
+  flex: 1 1 0;
+  padding: 9px 113px 20px 83px;
   display: flex;
   flex-direction: column;
-    align-items: start; 
+  justify-content: center;
   gap: 32px;
-  text-align: center;
+  color: #fff;
 }
 
-.contact-card__title {
+/* tipografías iguales */
+.info-card-inverse__title {
   margin: 0;
-  color: #fff;
   font-family: Inter, sans-serif;
-  font-size: 24px;
+  font-size: 42px;
   font-weight: 700;
   line-height: 1.1;
-}
-
-.contact-card__text {
-  margin: 0;
   color: #fff;
-  font-family: Inter, sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1.1;
 }
-
-/* Nueva descripción en desktop */
-.contact-card__description {
+.info-card-inverse__text,
+.info-card-inverse__description {
   margin: 0;
-  color: #fff;
   font-family: Inter, sans-serif;
   font-size: 16px;
-  line-height: 1.5;
-  text-align: start;
- 
+  font-weight: 400;
+  line-height: 1.5; /* respetado de tu CSS */
+  color: #fff;
 }
 
-.contact-button-left a {
+/* CTA igual que el rojo */
+.info-card-inverse__link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -308,87 +289,95 @@ width: 1280px;
   text-decoration: none;
   color: #fff;
 }
+.info-card-inverse__icon { display: inline-block; }
 
-
-.contact-card__icon {
-  display: inline-block;
+/* imagen a la izquierda (espejo), misma altura que el rojo */
+.info-section-inverse__image {
+  flex: 0 0 auto;
+}
+.info-section-inverse__image img {
+  display: block;
+  height: 443px;  /* EXACTAMENTE igual que el rojo */
+  object-fit: cover;
 }
 
-/* ===== Versión móvil (≤576px) ===== */
-.contact-section__container--mobile {
+/* ===== Mobile (≤576px) ===== */
+.info-section-inverse__container--mobile {
   display: none;
 }
 
 @media (max-width: 576px) {
-  .contact-section__container--desktop {
-    display: none;
-  }
-  .contact-section__container--mobile {
+  /* ocultar desktop, mostrar móvil */
+  .info-section-inverse__container--desktop { display: none; }
+  .info-section-inverse__container--mobile {
     display: flex;
     flex-direction: column;
     padding: 20px;
   }
 
-  .contact-card-mobile {
+  .info-card-inverse-mobile {
+    /* mismo patrón que el rojo móvil, solo cambia el gradiente a verde */
+    background: linear-gradient(221deg, #48709D 0%, #6F9B76 100%);
+    border-radius: 12px;
+    overflow: hidden; /* importante para redondear la imagen superior */
     display: flex;
     flex-direction: column;
-    background: linear-gradient(221deg, #48709D 0%, #6F9B76 100%);
-    border-radius: 8px;
-    overflow: hidden;
-    align-items: center;
-    gap: 10px;
-    padding: 18px 25px;
   }
 
-  .contact-card-mobile__title {
-    margin: 0;
-    color: #fff;
-    font-family: Inter, sans-serif;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 1.1;
-  }
-
-  .contact-card-mobile__text {
-    margin: 0;
-    color: #fff;
-    font-family: Inter, sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 1.1;
-  }
-
-  .contact-card-mobile__image {
+  /* === NUEVO: wrapper que controla la altura/proporción de la imagen móvil === */
+  .info-card-inverse-mobile__image-wrapper {
     width: 100%;
-    height: auto;
+   
+    overflow: hidden;       /* recorta la imagen al contenedor */
+  }
+
+  /* la imagen se adapta al wrapper */
+  .info-card-inverse-mobile__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     display: block;
   }
 
-  /* Nueva descripción en mobile */
-  .contact-card-mobile__description {
+  .info-card-inverse-mobile__content {
+    padding: 32px 38px;   /* EXACTO como el rojo */
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+  }
+
+  .info-card-inverse-mobile__title {
+    margin: 0;
+    color: #fff;
+    font-family: Inter, sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  .info-card-inverse-mobile__text,
+  .info-card-inverse-mobile__description {
     margin: 0;
     color: #fff;
     font-family: Inter, sans-serif;
     font-size: 16px;
-    line-height: 1.5;
-    text-align: center;
-    width: 100%;
+    font-weight: 400;
+    line-height: 1.4;
   }
 
-  .contact-card-mobile__button {
+  .info-card-inverse-mobile__link {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+    color: #fff;
     font-family: Inter, sans-serif;
     font-size: 16px;
     font-weight: 800;
     text-transform: uppercase;
-    color: #fff;
     text-decoration: none;
-    cursor: pointer;
   }
-
-  .contact-card-mobile__icon {
-    display: inline-block;
-  }
+  .info-card-inverse-mobile__icon { display: inline-block; }
 }
+
+/* (ELIMINADO el aspect-ratio directo en .info-card-inverse-mobile__image para respetar tus cambios) */
+
