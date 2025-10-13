@@ -1,1 +1,3 @@
 node_modules/
+__remote_fields.json
+fields.backup.json
