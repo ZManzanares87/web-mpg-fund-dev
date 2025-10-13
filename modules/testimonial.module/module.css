@@ -6,6 +6,11 @@
   justify-content: center;
   gap: 14.22px;
   position: relative;
+  user-select: none;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  
 }
 
 .home-testimonial-slider__arrow {
