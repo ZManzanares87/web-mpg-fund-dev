@@ -1,8 +1,9 @@
 :root {
-  --orange-light: #ef8036;
-  --orange-dark:  #9e5530;
+  --orange-light: #CF7A3F; /* color base NO HOVER */
+  --orange-dark:  #9e5530; /* color hover/expanded */
   --card-bg:      #fff;
   --trans:        .5s cubic-bezier(.4,0,.2,1);
+  --radius: 27.72px;
 }
 
 /* 1) Contenedor principal */
@@ -25,6 +26,7 @@
   overflow: hidden;
   font-family: 'Inter', sans-serif;
 }
+
 @media (min-width: 601px) {
   .accordion__card { height: auto; }
 }
@@ -39,8 +41,6 @@
 /* 3) Item */
 .accordion__item {
   flex: 1 1 0;
-  background: var(--orange-light);
-  border-radius: 6px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -52,8 +52,28 @@
     background  var(--trans),
     height      var(--trans);
 }
+
+/* NO HOVER: medidas y color específicas */
+.accordion__item:not(:hover):not(.accordion__item--expanded) {
+  width: 139.97px;
+  height: 335.37px;
+  border-radius: var(--radius);
+  background: var(--orange-light);
+}
+
+/* Desktop */
 @media (min-width: 601px) {
   .accordion__item { height: 100%; }
+}
+
+/* Mobile NO HOVER */
+@media (max-width: 600px) {
+  .accordion__item:not(:hover):not(.accordion__item--expanded) {
+    width: 100%;
+    height: 80px;
+    background: var(--orange-light);
+    border-radius: var(--radius);
+  }
 }
 
 /* Header */
@@ -79,7 +99,7 @@
   transition: opacity var(--trans);
 }
 
-/* Content wrapper: scroll area + indicador */
+/* Content wrapper */
 .accordion__content-wrapper {
   position: relative;
   width: 100%;
@@ -92,7 +112,7 @@
   transition: opacity var(--trans);
 }
 
-/* Área scrollable */
+/* Scrollable content */
 .accordion__content {
   overflow-y: auto;
   padding: 0 20px;
@@ -105,9 +125,7 @@
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
-.accordion__content::-webkit-scrollbar {
-  display: none;
-}
+.accordion__content::-webkit-scrollbar { display: none; }
 .accordion__content a {
   width: 100%;
   text-align: center;
@@ -125,7 +143,7 @@
   background: rgba(255,255,255,0.18);
 }
 
-/* Scroll indicator al final */
+/* Scroll indicator */
 .accordion__scroll-indicator {
   display: flex;
   justify-content: center;
@@ -153,6 +171,13 @@
   opacity: 1;
   pointer-events: auto;
   margin-top: .3em;
+}
+
+/* Hover / Expanded: border-radius y color */
+.accordion__item:hover,
+.accordion__item.accordion__item--expanded {
+  border-radius: var(--radius);
+  background: var(--orange-dark);
 }
 
 /* Desktop: caso 1 solo item */
@@ -186,7 +211,6 @@
   /* Desktop: varios items */
   .accordion__item:hover {
     flex-grow: 4;
-    background: var(--orange-dark);
     z-index: 2;
   }
   .accordion__item:hover .accordion__header {
@@ -204,45 +228,76 @@
   }
 }
 
-/* Móvil (<600px) */
+/* Mobile (<600px) */
 @media (max-width: 600px) {
   .accordion__item {
     flex: none;
     width: 100%;
-    height: 70px;
+    height: 80px;
+    border-radius: var(--radius);
+    background: var(--orange-light);
   }
-  .accordion__item--expanded {
-    height: auto;
+
+  /* Expandido (click) */
+  .accordion__item.accordion__item--expanded {
+    height: auto; /* se ajusta al contenido */
     background: var(--orange-dark);
+    border-radius: var(--radius);
     z-index: 2;
+    display: flex;
+    flex-direction: column;
   }
-  .accordion__item--expanded .accordion__header {
+
+  /* Header */
+  .accordion__item .accordion__header {
     writing-mode: horizontal-tb;
     transform: rotate(0);
-    padding: .7em 0 .2em;
-  }
-  .accordion__item--expanded .accordion__divider {
-    display: block;
-  }
-  .accordion__item--expanded .accordion__content-wrapper {
-    opacity: 1;
-    pointer-events: auto;
-    margin-top: .3em;
-  }
-  .accordion__divider {
-    width: 80%;
-  }
-  .accordion__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: #fff;
-    font-size: 1em;
     font-weight: 700;
+    font-size: 1em;
     padding: .7em 0;
     pointer-events: none;
-    transition: unset;
-    transform: unset;
-    writing-mode: horizontal-tb;
+  }
+
+  /* Divider */
+  .accordion__item .accordion__divider {
+    display: none;
+  }
+  .accordion__item.accordion__item--expanded .accordion__divider {
+    display: block;
+  }
+
+  /* Contenido desplegado */
+  .accordion__item .accordion__content-wrapper {
+    opacity: 0;
+    pointer-events: none;
+    height: 0;
+    overflow: hidden;
+    transition: opacity var(--trans), height var(--trans);
+  }
+
+  .accordion__item.accordion__item--expanded .accordion__content-wrapper {
+    opacity: 1;
+    pointer-events: auto;
+    height: auto;
+    overflow-y: auto;
+    margin-top: .3em;
+  }
+
+  /* Scroll indicators siempre visibles al expandir */
+  .accordion__item .accordion__scroll-indicator {
+    display: none;
+  }
+  .accordion__item.accordion__item--expanded .accordion__scroll-indicator {
+    display: flex;
+    justify-content: center;
+    padding: 8px 0;
   }
 }
+/* Scroll button */
 .accordion__scroll-button:hover,
 .accordion__scroll-button:focus {
   all: unset;

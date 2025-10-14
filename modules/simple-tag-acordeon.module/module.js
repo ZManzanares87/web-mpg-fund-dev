@@ -10,6 +10,25 @@ document.addEventListener('DOMContentLoaded', () => {
       const open = item.classList.contains('accordion__item--expanded');
       items.forEach(x => x.classList.remove('accordion__item--expanded'));
       if (!open) item.classList.add('accordion__item--expanded');
+
+      // Forzar checkScroll para flechas en mobile
+      const content = item.querySelector('.accordion__content');
+      const scrollIndicator = item.querySelector('.accordion__scroll-indicator');
+      if (scrollIndicator && content) {
+        content.scrollTop = 0; // reiniciar scroll al abrir
+        const downBtn = scrollIndicator.querySelector('.accordion__scroll-down');
+        const upBtn = scrollIndicator.querySelector('.accordion__scroll-up');
+
+        const checkScroll = () => {
+          const atTop = content.scrollTop <= 0;
+          const atBottom = Math.ceil(content.scrollTop + content.clientHeight) >= content.scrollHeight - 2;
+          if (downBtn) downBtn.style.display = atBottom ? 'none' : 'flex';
+          if (upBtn) upBtn.style.display = atTop ? 'none' : 'flex';
+        };
+
+        checkScroll();
+        content.addEventListener('scroll', checkScroll);
+      }
     });
   });
 
