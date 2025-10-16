@@ -1,8 +1,5 @@
 [
  {
-  "type": "group",
-  "id": "fb8f3d40-a57f-399e-4034-eba6cac6c0cf",
-  "label": "Campos right",
   "children": [
    {
     "allow_new_line": false,
@@ -138,7 +135,6 @@
     "type": "image"
    }
   ],
-  "name": "campos_right",
   "default": {
    "titulo_section": "Este es el título",
    "descripcion_section": "Aquí va una descripción",
@@ -174,7 +170,17 @@
     "max_width": 430,
     "max_height": 273
    }
-  }
+  },
+  "display_width": null,
+  "expanded": false,
+  "group_occurrence_meta": null,
+  "id": "fb8f3d40-a57f-399e-4034-eba6cac6c0cf",
+  "label": "Campos right",
+  "locked": false,
+  "name": "campos_right",
+  "required": false,
+  "tab": "CONTENT",
+  "type": "group"
  },
  {
   "choices": [
@@ -187,6 +193,7 @@
     "right"
    ]
   ],
+  "default": "right",
   "display": "select",
   "display_width": null,
   "id": "41cd7631-3eb4-6b38-4b29-46aa9e9bd309",
@@ -200,9 +207,6 @@
   "type": "choice"
  },
  {
-  "type": "group",
-  "id": "c7c94b6a-c1e9-2d94-980a-8c7a6ff66841",
-  "label": "Campos left",
   "children": [
    {
     "allow_new_line": false,
@@ -214,6 +218,14 @@
     "name": "left_titulo_section",
     "required": false,
     "type": "text"
+   },
+   {
+    "type": "text",
+    "id": "13cc28c2-cd2a-22ee-fd99-a63c56478fdc",
+    "validation_regex": "",
+    "label": "Subtitulo_left",
+    "name": "subtitulo_left",
+    "default": "Escribe aquí el subtítulo"
    },
    {
     "default": "Aquí pon una descripción",
@@ -335,9 +347,9 @@
     "type": "image"
    }
   ],
-  "name": "campos_left",
   "default": {
    "left_titulo_section": "Esto es un titulo",
+   "subtitulo_left": "Escribe aquí el subtítulo",
    "left_description_section": "Aquí pon una descripción",
    "left_imagen_section": {
     "size_type": "auto",
@@ -370,6 +382,16 @@
     "max_width": 423,
     "max_height": 443
    }
-  }
+  },
+  "display_width": null,
+  "expanded": false,
+  "group_occurrence_meta": null,
+  "id": "c7c94b6a-c1e9-2d94-980a-8c7a6ff66841",
+  "label": "Campos left",
+  "locked": false,
+  "name": "campos_left",
+  "required": false,
+  "tab": "CONTENT",
+  "type": "group"
  }
 ]

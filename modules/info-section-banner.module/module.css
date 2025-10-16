@@ -266,14 +266,23 @@ width: 1280px;
 }
 
 .contact-card__title {
-  margin: 0;
+  margin: 0; 
   color: #fff;
-  font-family: Inter, sans-serif;
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 1.1;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700; 
+  font-style: normal; 
+  font-size: 42px;
+  line-height: 110%; 
+  letter-spacing: 0;
 }
-
+.contact-card__subtitle{
+  font-family: 'Inter', sans-serif;
+  font-weight: 500; 
+  font-style: normal; 
+  font-size: 24px;
+  line-height: 110%; 
+  letter-spacing: 0;
+}
 .contact-card__text {
   margin: 0;
   color: #fff;
