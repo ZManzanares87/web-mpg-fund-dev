@@ -294,21 +294,18 @@ width: 1280px;
 
 /* Nueva descripción en desktop */
 .contact-card__description {
-  width: 630px;        /* ancho fijo */
-  height: 66px;        /* alto fijo */
-  opacity: 1;          /* visibilidad total */
-  transform: rotate(0deg);  /* sin rotación */
-  
+  width: 630px;        
+  height: 66px;        
+  opacity: 1;          
+  transform: rotate(0deg);  
   margin: 0;
   color: #fff;
   font-family: 'Inter', sans-serif;
   font-size: 16px;
   line-height: 1.5;
   text-align: start;
-  overflow: hidden;    /* corta texto si supera la altura */
+  overflow: hidden;    
 }
-
-
 
 .contact-button-left a {
   display: inline-flex;

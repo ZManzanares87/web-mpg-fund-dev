@@ -1,5 +1,29 @@
 [
  {
+  "choices": [
+   [
+    "left",
+    "left"
+   ],
+   [
+    "right",
+    "right"
+   ]
+  ],
+  "default": "right",
+  "display": "select",
+  "display_width": null,
+  "id": "41cd7631-3eb4-6b38-4b29-46aa9e9bd309",
+  "label": "variant",
+  "locked": false,
+  "multiple": false,
+  "name": "variant",
+  "preset": null,
+  "reordering_enabled": true,
+  "required": false,
+  "type": "choice"
+ },
+ {
   "children": [
    {
     "allow_new_line": false,
@@ -183,30 +207,6 @@
   "type": "group"
  },
  {
-  "choices": [
-   [
-    "left",
-    "left"
-   ],
-   [
-    "right",
-    "right"
-   ]
-  ],
-  "default": "right",
-  "display": "select",
-  "display_width": null,
-  "id": "41cd7631-3eb4-6b38-4b29-46aa9e9bd309",
-  "label": "variant",
-  "locked": false,
-  "multiple": false,
-  "name": "variant",
-  "preset": null,
-  "reordering_enabled": true,
-  "required": false,
-  "type": "choice"
- },
- {
   "children": [
    {
     "allow_new_line": false,
@@ -220,22 +220,26 @@
     "type": "text"
    },
    {
-    "type": "text",
+    "allow_new_line": false,
+    "default": "Escribe aquí el subtítulo",
+    "display_width": null,
     "id": "13cc28c2-cd2a-22ee-fd99-a63c56478fdc",
-    "validation_regex": "",
     "label": "Subtitulo_left",
+    "locked": false,
     "name": "subtitulo_left",
-    "default": "Escribe aquí el subtítulo"
+    "required": false,
+    "type": "text"
    },
    {
-    "default": "Aquí pon una descripción",
+    "allow_new_line": false,
+    "default": "Escribe aquí la descripción",
     "display_width": null,
-    "id": "9119d9b2-c430-c052-ed21-125a78eb5b9a",
-    "label": "left description section",
+    "id": "804f9541-30ad-39cd-f19c-c435d740dee3",
+    "label": "descripcion left",
     "locked": false,
-    "name": "left_description_section",
+    "name": "descripcion_left",
     "required": false,
-    "type": "richtext"
+    "type": "text"
    },
    {
     "default": {
@@ -350,7 +354,7 @@
   "default": {
    "left_titulo_section": "Esto es un titulo",
    "subtitulo_left": "Escribe aquí el subtítulo",
-   "left_description_section": "Aquí pon una descripción",
+   "descripcion_left": "Escribe aquí la descripción",
    "left_imagen_section": {
     "size_type": "auto",
     "src": "https://4272053.fs1.hubspotusercontent-na1.net/hubfs/4272053/Imported%20images/down%20symdrom%2c%20smiling.%20happy%20working.png",
