@@ -1,3 +1,7 @@
+/* =========================================================
+   INFO SECTION
+   ========================================================= */
+
 /* Contenedor principal */
 .info-section {
   width: 100%;
@@ -6,7 +10,7 @@
   justify-content: center;
 }
 
-/* Contenedores interno */
+/* Contenedor interno */
 .info-section__container {
   max-width: 1440px;
 }
@@ -14,7 +18,7 @@
 /* =========== Versión escritorio =========== */
 .info-section__container--desktop {
   display: flex;
-width: 1280px;
+  width: 1280px;
 }
 
 .info-section__block {
@@ -38,36 +42,6 @@ width: 1280px;
   color: #fff;
 }
 
-/* Contenedor principal */
-.info-section {
-  width: 100%;
-  background: #fff;
-  display: flex;
-  justify-content: center;
-}
-
-/* Contenedores interno */
-.info-section__container {
-  max-width: 1440px;
-}
-
-/* =========== Versión escritorio =========== */
-.info-section__container--desktop {
-  display: flex;
-width: 1280px;
-}
-
-.info-section__block {
-  display: flex;
-  width: 100%;
-  background: linear-gradient(137deg, #EF8036 0%, #D36881 100%);
-  border-top-left-radius: 500px;
-  border-bottom-left-radius: 500px;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  overflow: hidden;
-}
-
 .info-card__title {
   margin: 0;
   font-family: Inter, sans-serif;
@@ -75,7 +49,6 @@ width: 1280px;
   font-weight: 700;
   line-height: 1.1;
   color: white;
-  
 }
 
 .info-card__text {
@@ -112,7 +85,6 @@ width: 1280px;
   object-fit: cover;
 }
 
-
 /* Clases adicionales para versión izquierda */
 .info-section__block--left {
   flex-direction: row-reverse; 
@@ -126,7 +98,6 @@ width: 1280px;
   /* opcional: se puede ajustar tamaño o margen si hace falta */
 }
 
-
 /* =========== Versión móvil (≤576px) =========== */
 .info-section__container--mobile {
   display: none;
@@ -135,17 +106,7 @@ width: 1280px;
 @media (max-width: 576px) {
   /* ocultar desktop, mostrar móvil */
   .info-section__container--desktop { display: none; }
-  .info-section__container--mobile { 
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-  }
-  /* ... (el CSS móvil permanece igual) ... */
-}
 
-@media (max-width: 576px) {
-  /* ocultar desktop, mostrar móvil */
-  .info-section__container--desktop { display: none; }
   .info-section__container--mobile { 
     display: flex;
     flex-direction: column;
@@ -209,7 +170,9 @@ width: 1280px;
   }
 }
 
-/* --------------------VERSIÓN LEFT--------------------- */
+/* =========================================================
+   CONTACT SECTION (LEFT VERSION)
+   ========================================================= */
 
 /* Contenedor principal */
 .contact-section {
@@ -219,7 +182,7 @@ width: 1280px;
   background: #fff;
 }
 
-/* Contenedores internos */
+/* Contenedor interno */
 .contact-section__container {
   max-width: 1440px;
   width: 100%;
@@ -227,11 +190,10 @@ width: 1280px;
 
 /* ===== Versión escritorio ===== */
 .contact-section__container--desktop {
-      width: 1440px;
-    color: #fff;
-    display: flex;
-    flex: 1 1 0;        /* igual que el banner */
-   /* igual que el banner */
+  width: 1440px;
+  color: #fff;
+  display: flex;
+  flex: 1 1 0;
   margin: 0 auto;
 }
 
@@ -241,7 +203,7 @@ width: 1280px;
 
 .contact-section__image img {
   display: block;
-  height: 517px;          /* igual que el banner */
+  height: 517px;
   object-fit: cover;
 }
 
@@ -257,12 +219,12 @@ width: 1280px;
 
 .contact-card__content {
   width: 100%;
-  padding: 18px 25px;
+  padding: 32px 44px;
   display: flex;
   flex-direction: column;
-    align-items: start; 
+  align-items: flex-start; 
   gap: 32px;
-  text-align: center;
+  text-align: start;
 }
 
 .contact-card__title {
@@ -275,17 +237,20 @@ width: 1280px;
   line-height: 110%; 
   letter-spacing: 0;
 }
-.contact-card__subtitle{
+
+.contact-card__subtitle {
   font-family: 'Inter', sans-serif;
+  color: #fff !important;
   font-weight: 500; 
   font-style: normal; 
   font-size: 24px;
   line-height: 110%; 
   letter-spacing: 0;
 }
+
 .contact-card__text {
   margin: 0;
-  color: #fff;
+  color: #fff !important;
   font-family: Inter, sans-serif;
   font-size: 18px;
   font-weight: 700;
@@ -299,7 +264,7 @@ width: 1280px;
   opacity: 1;          
   transform: rotate(0deg);  
   margin: 0;
-  color: #fff;
+  color: #fff !important;
   font-family: 'Inter', sans-serif;
   font-size: 16px;
   line-height: 1.5;
@@ -319,7 +284,6 @@ width: 1280px;
   color: #fff;
 }
 
-
 .contact-card__icon {
   display: inline-block;
 }
@@ -333,6 +297,7 @@ width: 1280px;
   .contact-section__container--desktop {
     display: none;
   }
+
   .contact-section__container--mobile {
     display: flex;
     flex-direction: column;
@@ -352,7 +317,7 @@ width: 1280px;
 
   .contact-card-mobile__title {
     margin: 0;
-    color: #fff;
+    color: #fff !important;
     font-family: Inter, sans-serif;
     font-size: 24px;
     font-weight: 700;
@@ -361,7 +326,7 @@ width: 1280px;
 
   .contact-card-mobile__text {
     margin: 0;
-    color: #fff;
+    color: #fff !important;
     font-family: Inter, sans-serif;
     font-size: 18px;
     font-weight: 700;
@@ -401,4 +366,10 @@ width: 1280px;
   .contact-card-mobile__icon {
     display: inline-block;
   }
+}
+
+.info-card-mobile__description a,
+.contact-card-mobile__description a {
+  color: #fff !important;
+  text-decoration: none;
 }
