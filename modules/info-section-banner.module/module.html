@@ -1,12 +1,15 @@
 <!-- -------------------VERSIÓN RIGHT-------------------- -->
 {% if module.variant == 'right' %}
-
 <section class="info-section">
+
+  <!-- Versión escritorio -->
   <div class="info-section__container info-section__container--desktop">
     <div class="info-section__block">
-      <div class="info-card__content">
-        <h2 class="info-card__title">{{ module.campos_right.titulo_section|escape_html }}</h2>
 
+      <div class="info-card__content">
+        <h2 class="info-card__title">
+          {{ module.campos_right.titulo_section|escape_html }}
+        </h2>
         <p class="info-card__text">
           {{ module.campos_right.descripcion_section }}
         </p>
@@ -21,12 +24,8 @@
         {% endif %}
 
         <div class="info-card__link">
-          <a
-            {% if link.url.type == "CALL_TO_ACTION" %}
-              href="{{ href }}"
-            {% else %}
-              href="{{ href|escape_url }}"
-            {% endif %}
+          <a 
+            {% if link.url.type == "CALL_TO_ACTION" %} href="{{ href }}" {% else %} href="{{ href|escape_url }}" {% endif %}
             {% if link.open_in_new_tab %} target="_blank"{% endif %}
             {% if link.rel %} rel="{{ link.rel|escape_attr }}"{% endif %}
             aria-label="{{ module.campos_right.boton.texto_enlace|default('Abrir enlace')|escape_attr }}"
@@ -49,10 +48,12 @@
             {% set sizeAttrs = 'width="' ~ module.campos_right.imagen_section.max_width|escape_attr ~ '" height="' ~ module.campos_right.imagen_section.max_height|escape_attr ~ '" style="max-width:100%;height:auto;"' %}
           {% endif %}
           {% set loadingAttr = module.campos_right.imagen_section.loading != 'disabled' ? 'loading="' ~ module.campos_right.imagen_section.loading|escape_attr ~ '"' : '' %}
-          <img src="{{ module.campos_right.imagen_section.src|escape_url }}"
-               alt="{{ module.campos_right.imagen_section.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+          <img src="{{ module.campos_right.imagen_section.src|escape_url }}" 
+               alt="{{ module.campos_right.imagen_section.alt|escape_attr }}" 
+               {{ loadingAttr }} {{ sizeAttrs }}>
         {% endif %}
       </div>
+
     </div>
   </div>
 
@@ -67,11 +68,18 @@
           {% set sizeAttrs = 'width="{{ module.campos_right.mobile_img.max_width|escape_attr }}" height="{{ module.campos_right.mobile_img.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
         {% endif %}
         {% set loadingAttr = module.campos_right.mobile_img.loading != 'disabled' ? 'loading="{{ module.campos_right.mobile_img.loading|escape_attr }}"' : '' %}
-        <img src="{{ module.campos_right.mobile_img.src|escape_url }}" alt="{{ module.campos_right.mobile_img.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+        <img src="{{ module.campos_right.mobile_img.src|escape_url }}" 
+             alt="{{ module.campos_right.mobile_img.alt|escape_attr }}" 
+             {{ loadingAttr }} {{ sizeAttrs }}>
       {% endif %}
+
       <div class="info-card-mobile__content">
-        <h2 class="info-card-mobile__title">{{ module.titulo_mobile|default(module.campos_right.titulo_section)|escape_html }}</h2>
-        <p class="info-card-mobile__text">{{ module.descripcion_mobile|default(module.campos_right.descripcion_section) }}</p>
+        <h2 class="info-card-mobile__title">
+          {{ module.titulo_mobile|default(module.campos_right.titulo_section)|escape_html }}
+        </h2>
+        <p class="info-card-mobile__text">
+          {{ module.descripcion_mobile|default(module.campos_right.descripcion_section) }}
+        </p>
 
         {% set mlink = module.boton_mobile.enlace|default(module.campos_right.boton.enlace_info_section) %}
         {% set mhref = mlink.url.href %}
@@ -81,12 +89,8 @@
           {% set mhref = "tel:" ~ mhref %}
         {% endif %}
 
-        <a
-          {% if mlink.url.type == "CALL_TO_ACTION" %}
-            href="{{ mhref }}"
-          {% else %}
-            href="{{ mhref|escape_url }}"
-          {% endif %}
+        <a 
+          {% if mlink.url.type == "CALL_TO_ACTION" %} href="{{ mhref }}" {% else %} href="{{ mhref|escape_url }}" {% endif %}
           {% if mlink.open_in_new_tab %} target="_blank"{% endif %}
           {% if mlink.rel %} rel="{{ mlink.rel|escape_attr }}"{% endif %}
           class="info-card-mobile__link"
@@ -100,15 +104,16 @@
       </div>
     </div>
   </div>
-</section>
 
+</section>
 
 <!-- -------------VERSIÓN LEFT--------------- -->
 {% elif module.variant == 'left' %}
-
 <section class="contact-section">
+
   <!-- Versión escritorio -->
   <div class="contact-section__container contact-section__container--desktop">
+
     <div class="contact-section__image">
       {% if module.campos_left.left_imagen_section.src %}
         {% set sizeAttrs = 'width="{{ module.campos_left.left_imagen_section.width|escape_attr }}" height="{{ module.campos_left.left_imagen_section.height|escape_attr }}"' %}
@@ -118,7 +123,9 @@
           {% set sizeAttrs = 'width="{{ module.campos_left.left_imagen_section.max_width|escape_attr }}" height="{{ module.campos_left.left_imagen_section.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
         {% endif %}
         {% set loadingAttr = module.campos_left.left_imagen_section.loading != 'disabled' ? 'loading="{{ module.campos_left.left_imagen_section.loading|escape_attr }}"' : '' %}
-        <img src="{{ module.campos_left.left_imagen_section.src|escape_url }}" alt="{{ module.campos_left.left_imagen_section.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+        <img src="{{ module.campos_left.left_imagen_section.src|escape_url }}" 
+             alt="{{ module.campos_left.left_imagen_section.alt|escape_attr }}" 
+             {{ loadingAttr }} {{ sizeAttrs }}>
       {% endif %}
     </div>
 
@@ -127,6 +134,7 @@
         <h2 class="contact-card__title">{{ module.campos_left.left_titulo_section }}</h2>
         <p class="contact-card__subtitle">{{ module.campos_left.subtitulo_left }}</p>
         <p class="contact-card__description">{{ module.campos_left.descripcion_left }}</p>
+
         <div class="contact-button-left">
           {% set href = module.campos_left.left_boton.left_btn_link.url.href %}
           {% if module.campos_left.left_boton.left_btn_link.url.type is equalto "EMAIL_ADDRESS" %}
@@ -134,9 +142,9 @@
           {% elif module.campos_left.left_boton.left_btn_link.url.type is equalto "PHONE_NUMBER" %}
             {% set href = "tel:" + href %}
           {% endif %}
-          <a
-            {% if module.campos_left.left_boton.left_btn_link.url.type is equalto "CALL_TO_ACTION" %} href="{{ href }}"
-            {% else %} href="{{ href|escape_url }}" {% endif %}
+
+          <a 
+            {% if module.campos_left.left_boton.left_btn_link.url.type is equalto "CALL_TO_ACTION" %} href="{{ href }}" {% else %} href="{{ href|escape_url }}" {% endif %}
             {% if module.campos_left.left_boton.left_btn_link.open_in_new_tab %} target="_blank" {% endif %}
             {% if module.campos_left.left_boton.left_btn_link.rel %} rel="{{ module.campos_left.left_boton.left_btn_link.rel|escape_attr }}" {% endif %}
           >
@@ -149,18 +157,19 @@
         </div>
       </div>
     </div>
+
   </div>
 
   <!-- Versión móvil -->
   <div class="contact-section__container contact-section__container--mobile">
     <div class="contact-card-mobile">
       {% if module.campos_left.left_mobile_img.src %}
-        <img src="{{ module.campos_left.left_mobile_img.src|escape_url }}" alt="{{ module.campos_left.left_mobile_img.alt|escape_attr }}" class="contact-card-mobile__image">
+        <img src="{{ module.campos_left.left_mobile_img.src|escape_url }}" alt="{{ module.campos_left.left_mobile_img.alt|escape_attr }}">
       {% endif %}
+
       <div class="contact-card-mobile__content">
         <h2 class="contact-card-mobile__title">{{ module.campos_left.left_titulo_section }}</h2>
-        <p class="contact-card-mobile__subtitle">{{ module.campos_left.subtitulo_left }}</p>
-        <p class="contact-card-mobile__description">{{ module.campos_left.descripcion_left }}</p>
+        <p class="contact-card-mobile__text">{{ module.campos_left.left_description_section }}</p>
 
         {% set href = module.campos_left.left_boton.left_btn_link.url.href %}
         {% if module.campos_left.left_boton.left_btn_link.url.type is equalto "EMAIL_ADDRESS" %}
@@ -169,9 +178,8 @@
           {% set href = "tel:" + href %}
         {% endif %}
 
-        <a
-          {% if module.campos_left.left_boton.left_btn_link.url.type is equalto "CALL_TO_ACTION" %} href="{{ href }}"
-          {% else %} href="{{ href|escape_url }}" {% endif %}
+        <a 
+          {% if module.campos_left.left_boton.left_btn_link.url.type is equalto "CALL_TO_ACTION" %} href="{{ href }}" {% else %} href="{{ href|escape_url }}" {% endif %}
           {% if module.campos_left.left_boton.left_btn_link.open_in_new_tab %} target="_blank" {% endif %}
           {% if module.campos_left.left_boton.left_btn_link.rel %} rel="{{ module.campos_left.left_boton.left_btn_link.rel|escape_attr }}" {% endif %}
           class="contact-card-mobile__button"
@@ -181,6 +189,6 @@
       </div>
     </div>
   </div>
-</section>
 
+</section>
 {% endif %}
