@@ -181,8 +181,8 @@
 
 /* ===== Versión escritorio ===== */
 .contact-section__container--desktop {
-  width: 1280px; /* igual que info-section */
-  max-width: 1280px; /* agregado para igualar completamente */
+  width: 1280px;
+  max-width: 1280px;
   color: #fff;
   display: flex;
   flex: 1 1 0;
@@ -249,7 +249,6 @@
   line-height: 1.1;
 }
 
-/* Nueva descripción en desktop */
 .contact-card__description {
   width: 630px;        
   height: 66px;        
@@ -280,11 +279,7 @@
   display: inline-block;
 }
 
-/* ===== Versión móvil (≤576px) ===== */
-.contact-section__container--mobile {
-  display: none;
-}
-
+/* ===== Versión móvil LEFT igual que RIGHT ===== */
 @media (max-width: 576px) {
   .contact-section__container--desktop {
     display: none;
@@ -297,55 +292,60 @@
   }
 
   .contact-card-mobile {
+    background: linear-gradient(221deg, #48709D 0%, #6F9B76 100%);
+    border-radius: 12px;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    background: linear-gradient(221deg, #48709D 0%, #6F9B76 100%);
-    border-radius: 8px;
-    overflow: hidden;
-    align-items: center;
-    gap: 10px;
-    padding: 18px 25px;
-  }
-
-  .contact-card-mobile__title {
-    margin: 0;
-    color: #fff !important;
-    font-family: Inter, sans-serif;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 1.1;
-  }
-
-  .contact-card-mobile__text {
-    margin: 0;
-    color: #fff !important;
-    font-family: Inter, sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 1.1;
+    width: 100%;
   }
 
   .contact-card-mobile__image {
     width: 100%;
-    height: auto;
+    height: auto; /* igual que right */
     display: block;
+    margin-bottom: 24px; /* espacio entre imagen y texto */
+    object-fit: cover;
   }
 
-  /* Nueva descripción en mobile */
+  .contact-card-mobile__content {
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* mismo gap que right */
+    padding: 32px 44px; /* mismo padding que right */
+    width: 100%;
+  }
+
+  .contact-card-mobile__title {
+    margin: 0;
+    font-family: Inter, sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #fff;
+  }
+
+  .contact-card-mobile__subtitle {
+    margin: 0;
+    font-family: Inter, sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: #fff;
+  }
+
   .contact-card-mobile__description {
     margin: 0;
-    color: #fff;
     font-family: Inter, sans-serif;
     font-size: 16px;
     line-height: 1.5;
-    text-align: center;
-    width: 100%;
+    color: #fff;
   }
 
   .contact-card-mobile__button {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px; /* igual que right */
     font-family: Inter, sans-serif;
     font-size: 16px;
     font-weight: 800;
@@ -353,15 +353,10 @@
     color: #fff;
     text-decoration: none;
     cursor: pointer;
+    margin-top: 8px; /* pequeño espacio extra entre description y botón */
   }
 
   .contact-card-mobile__icon {
     display: inline-block;
   }
-}
-
-.info-card-mobile__description a,
-.contact-card-mobile__description a {
-  color: #fff !important;
-  text-decoration: none;
 }

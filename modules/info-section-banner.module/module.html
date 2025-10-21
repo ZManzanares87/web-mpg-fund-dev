@@ -125,10 +125,8 @@
     <div class="contact-card">
       <div class="contact-card__content">
         <h2 class="contact-card__title">{{ module.campos_left.left_titulo_section }}</h2>
-        <p class="contact-card__subtitle"> {{ module.campos_left.subtitulo_left }}</p>
-        <p class="contact-card__description">
-          {{ module.campos_left.descripcion_left }}
-        </p>
+        <p class="contact-card__subtitle">{{ module.campos_left.subtitulo_left }}</p>
+        <p class="contact-card__description">{{ module.campos_left.descripcion_left }}</p>
         <div class="contact-button-left">
           {% set href = module.campos_left.left_boton.left_btn_link.url.href %}
           {% if module.campos_left.left_boton.left_btn_link.url.type is equalto "EMAIL_ADDRESS" %}
@@ -137,17 +135,10 @@
             {% set href = "tel:" + href %}
           {% endif %}
           <a
-            {% if module.campos_left.left_boton.left_btn_link.url.type is equalto "CALL_TO_ACTION" %}
-              href="{{ href }}"
-            {% else %}
-              href="{{ href|escape_url }}"
-            {% endif %}
-            {% if module.campos_left.left_boton.left_btn_link.open_in_new_tab %}
-              target="_blank"
-            {% endif %}
-            {% if module.campos_left.left_boton.left_btn_link.rel %}
-              rel="{{ module.campos_left.left_boton.left_btn_link.rel|escape_attr }}"
-            {% endif %}
+            {% if module.campos_left.left_boton.left_btn_link.url.type is equalto "CALL_TO_ACTION" %} href="{{ href }}"
+            {% else %} href="{{ href|escape_url }}" {% endif %}
+            {% if module.campos_left.left_boton.left_btn_link.open_in_new_tab %} target="_blank" {% endif %}
+            {% if module.campos_left.left_boton.left_btn_link.rel %} rel="{{ module.campos_left.left_boton.left_btn_link.rel|escape_attr }}" {% endif %}
           >
             {% inline_text field="campos_left.left_boton.left_bton_txt" value="{{ module.campos_left.left_boton.left_bton_txt }}" %}
             <svg class="contact-card__icon" width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -164,29 +155,25 @@
   <div class="contact-section__container contact-section__container--mobile">
     <div class="contact-card-mobile">
       {% if module.campos_left.left_mobile_img.src %}
-        <img src="{{ module.campos_left.left_mobile_img.src|escape_url }}" alt="{{ module.campos_left.left_mobile_img.alt|escape_attr }}">
+        <img src="{{ module.campos_left.left_mobile_img.src|escape_url }}" alt="{{ module.campos_left.left_mobile_img.alt|escape_attr }}" class="contact-card-mobile__image">
       {% endif %}
       <div class="contact-card-mobile__content">
         <h2 class="contact-card-mobile__title">{{ module.campos_left.left_titulo_section }}</h2>
-        <p class="contact-card-mobile__text">{{ module.campos_left.left_description_section }}</p>
+        <p class="contact-card-mobile__subtitle">{{ module.campos_left.subtitulo_left }}</p>
+        <p class="contact-card-mobile__description">{{ module.campos_left.descripcion_left }}</p>
+
         {% set href = module.campos_left.left_boton.left_btn_link.url.href %}
         {% if module.campos_left.left_boton.left_btn_link.url.type is equalto "EMAIL_ADDRESS" %}
           {% set href = "mailto:" + href %}
         {% elif module.campos_left.left_boton.left_btn_link.url.type is equalto "PHONE_NUMBER" %}
           {% set href = "tel:" + href %}
         {% endif %}
+
         <a
-          {% if module.campos_left.left_boton.left_btn_link.url.type is equalto "CALL_TO_ACTION" %}
-            href="{{ href }}"
-          {% else %}
-            href="{{ href|escape_url }}"
-          {% endif %}
-          {% if module.campos_left.left_boton.left_btn_link.open_in_new_tab %}
-            target="_blank"
-          {% endif %}
-          {% if module.campos_left.left_boton.left_btn_link.rel %}
-            rel="{{ module.campos_left.left_boton.left_btn_link.rel|escape_attr }}"
-          {% endif %}
+          {% if module.campos_left.left_boton.left_btn_link.url.type is equalto "CALL_TO_ACTION" %} href="{{ href }}"
+          {% else %} href="{{ href|escape_url }}" {% endif %}
+          {% if module.campos_left.left_boton.left_btn_link.open_in_new_tab %} target="_blank" {% endif %}
+          {% if module.campos_left.left_boton.left_btn_link.rel %} rel="{{ module.campos_left.left_boton.left_btn_link.rel|escape_attr }}" {% endif %}
           class="contact-card-mobile__button"
         >
           {% inline_text field="campos_left.left_boton.left_bton_txt" value="{{ module.campos_left.left_boton.left_bton_txt }}" %}
