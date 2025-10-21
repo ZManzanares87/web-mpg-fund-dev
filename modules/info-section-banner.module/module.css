@@ -90,21 +90,12 @@
   flex-direction: row-reverse; 
 }
 
-.info-card__content--right {
-  /* hereda todos los estilos de .info-card__content */
-}
-
-.info-section__image--left {
-  /* opcional: se puede ajustar tamaño o margen si hace falta */
-}
-
 /* =========== Versión móvil (≤576px) =========== */
 .info-section__container--mobile {
   display: none;
 }
 
 @media (max-width: 576px) {
-  /* ocultar desktop, mostrar móvil */
   .info-section__container--desktop { display: none; }
 
   .info-section__container--mobile { 
@@ -190,7 +181,8 @@
 
 /* ===== Versión escritorio ===== */
 .contact-section__container--desktop {
-  width: 1440px;
+  width: 1280px; /* igual que info-section */
+  max-width: 1280px; /* agregado para igualar completamente */
   color: #fff;
   display: flex;
   flex: 1 1 0;
