@@ -1,1 +1,66 @@
-[ ]
+[
+ {
+  "type": "group",
+  "id": "72280d48-a464-16a5-8839-a5a61df89558",
+  "label": "Slide",
+  "children": [
+   {
+    "type": "image",
+    "id": "56947a3d-de84-cfe6-0ac2-cb5ef7f175c0",
+    "default": {
+     "size_type": "auto",
+     "src": "",
+     "alt": null,
+     "loading": "lazy"
+    },
+    "resizable": true,
+    "responsive": true,
+    "show_loading": false,
+    "label": "Imagen",
+    "name": "image_field"
+   },
+   {
+    "type": "text",
+    "id": "ced85427-7150-7400-724e-21f7fbcd3307",
+    "validation_regex": "",
+    "label": "Nombre",
+    "name": "nombre",
+    "default": "Nombre Apellido"
+   },
+   {
+    "type": "text",
+    "id": "63a67279-fca7-dbea-2709-afdd00e90186",
+    "validation_regex": "",
+    "label": "Cargo",
+    "name": "cargo",
+    "default": "Cargo en la empresa"
+   },
+   {
+    "type": "text",
+    "id": "870856f5-0793-6947-3fa9-5bb0470e3473",
+    "validation_regex": "",
+    "label": "Testimonio",
+    "name": "testimonio",
+    "default": "Breve descripción del testimonio"
+   },
+   {
+    "type": "image",
+    "id": "e0401be1-4c6d-6aba-3a26-7e7037a06f85",
+    "default": {
+     "size_type": "auto",
+     "src": "",
+     "alt": null,
+     "loading": "lazy"
+    },
+    "resizable": true,
+    "responsive": true,
+    "show_loading": false,
+    "label": "Logo",
+    "name": "logo"
+   }
+  ],
+  "name": "slide",
+  "default": [],
+  "occurrence": {}
+ }
+]

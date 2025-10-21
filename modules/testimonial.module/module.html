@@ -9,44 +9,40 @@
 
   <!-- Contenedor de slides -->
   <div class="home-testimonial-slider__track">
-    <!-- Slide 1 -->
-    <div class="home-testimonial-slider__slide active">
-      <div class="home-testimonial-box">
-        <!-- Foto redondeada -->
-        <img class="home-testimonial-box__avatar" src="https://i.pravatar.cc/100?img=23" alt="Alice Doe">
-        <div class="home-testimonial-box__details">
-          <p class="home-testimonial-box__author">Alice Doe</p>
-          <p class="home-testimonial-box__role">Data Scientist</p>
-        </div>
-        <p class="home-testimonial-box__text">
-          “Nibh elit lacus mi elit, dui maecenas vestibulum cursus. Aliquet quam cursus tortor eu a. Enim, integer pellentesque sagittis lectus aliquam sed cursus tortor, ac. Ornare quisque ullamcorper a eleifend fringilla turpis.”
-        </p>
-        <!-- Logo de empresa -->
-        <img class="home-testimonial-box__logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiVUgWVy1OwiAEG8LMpgIPSVZapq5ehaZFLg&s" alt="Google Logo">
-      </div>
-    </div>
+    {% for item in module.slide %}
+      <div class="home-testimonial-slider__slide {% if loop.index == 1 %}active{% endif %}">
+        <div class="home-testimonial-box">
+          <!-- Foto redondeada -->
+          {% if item.image_field.src %}
+            {% set sizeAttrs = 'width="{{ item.image_field.width|escape_attr }}" height="{{ item.image_field.height|escape_attr }}"' %}
+            {% if item.image_field.size_type == 'auto' %}
+              {% set sizeAttrs = 'width="{{ item.image_field.width|escape_attr }}" height="{{ item.image_field.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+            {% elif item.image_field.size_type == 'auto_custom_max' %}
+              {% set sizeAttrs = 'width="{{ item.image_field.max_width|escape_attr }}" height="{{ item.image_field.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+            {% endif %}
+            {% set loadingAttr = item.image_field.loading != 'disabled' ? 'loading="{{ item.image_field.loading|escape_attr }}"' : '' %}
+            <img class="home-testimonial-box__avatar" src="{{ item.image_field.src|escape_url }}" alt="{{ item.nombre|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+          {% endif %}
 
-    <!-- Slide 2 -->
-    <div class="home-testimonial-slider__slide">
-      <div class="home-testimonial-box">
-        <!-- Foto redondeada -->
-        <img class="home-testimonial-box__avatar" src="https://i.pravatar.cc/100?img=13" alt="Bob Smith">
-        <div class="home-testimonial-box__details">
-          <p class="home-testimonial-box__author">Bob Smith</p>
-          <p class="home-testimonial-box__role">Architect</p>
-        </div>
-        <p class="home-testimonial-box__text">
-          “Aliquet quam cursus tortor eu a. Enim, integer pellentesque sagittis lectus aliquam sed cursus tortor, ac. Ornare quisque ullamcorper a eleifend fringilla turpis. Nibh elit lacus mi elit, dui maecenas vestibulum cursus.”
-        </p>
-        <!-- Logo de empresa -->
-       <img
-  class="home-testimonial-box__logo"
-  src="https://i2.wp.com/thinkmarketingmagazine.com/wp-content/uploads/2012/08/Adidas-original-Logo.jpg"
-  alt="Logo empresa"
-/>
+          <div class="home-testimonial-box__details">
+            <p class="home-testimonial-box__author">{{ item.nombre }}</p>
+            <p class="home-testimonial-box__role">{{ item.cargo }}</p>
+          </div>
+          <p class="home-testimonial-box__text">{{ item.testimonio }}</p>
 
+          {% if item.logo.src %}
+            {% set sizeAttrs = 'width="{{ item.logo.width|escape_attr }}" height="{{ item.logo.height|escape_attr }}"' %}
+            {% if item.logo.size_type == 'auto' %}
+              {% set sizeAttrs = 'width="{{ item.logo.width|escape_attr }}" height="{{ item.logo.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+            {% elif item.logo.size_type == 'auto_custom_max' %}
+              {% set sizeAttrs = 'width="{{ item.logo.max_width|escape_attr }}" height="{{ item.logo.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+            {% endif %}
+            {% set loadingAttr = item.logo.loading != 'disabled' ? 'loading="{{ item.logo.loading|escape_attr }}"' : '' %}
+            <img class="home-testimonial-box__logo" src="{{ item.logo.src|escape_url }}" alt="Logo empresa" {{ loadingAttr }} {{ sizeAttrs }}>
+          {% endif %}
+        </div>
       </div>
-    </div>
+    {% endfor %}
   </div>
 
   <!-- Flecha derecha -->
