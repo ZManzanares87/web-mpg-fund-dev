@@ -1,11 +1,14 @@
-<div class="custom-banner" style="background-image: url('{{ module.imagen_de_fondo.src }}');">
-  <div class="custom-banner__content">
-    <h1 class="custom-banner__title">{% inline_text field="titulo_banner" value="{{ module.titulo_banner }}" %}</h1>
-    <p class="custom-banner__text">
-      {% inline_rich_text field="descripcion" value="{{ module.descripcion }}" %}
-    </p>
+<div class="custom-banner-wrapper">
+  <div class="custom-banner" style="background-image: url('{{ module.imagen_de_fondo.src }}');">
+    <div class="custom-banner__content">
+      <h1 class="custom-banner__title">{% inline_text field="titulo_banner" value="{{ module.titulo_banner }}" %}</h1>
+      <p class="custom-banner__text">
+        {% inline_rich_text field="descripcion" value="{{ module.descripcion }}" %}
+      </p>
+    </div>
   </div>
 </div>
+
 
 
 

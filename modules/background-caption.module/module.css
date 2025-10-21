@@ -1,3 +1,9 @@
+.custom-banner-wrapper {
+  display: flex;
+  justify-content: center; /* centra el banner horizontalmente */
+  width: 100%;
+}
+
 .custom-banner {
   position: relative;
   width: 100%;
@@ -10,11 +16,12 @@
   background-position: center;
 }
 
+/* Contenido dentro del banner */
 .custom-banner__content {
   position: absolute;
-  bottom: 60px; 
-  left: 50px;   
-  max-width: 600px; 
+  bottom: 60px;
+  left: 50px;
+  max-width: 600px;
   color: #ffffff;
 }
 
@@ -42,7 +49,7 @@
 @media (max-width: 768px) {
   .custom-banner {
     width: 100%;
-    min-height: 914px; 
+    min-height: 600px; /* antes 914px, ahora más compacto */
   }
 
   .custom-banner__content {
