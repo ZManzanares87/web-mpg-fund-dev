@@ -1,195 +1,201 @@
-/* home-testimonial-slider.module.css */
 .home-testimonial-slider {
-  width: 800px;
+  width: 100%; 
+  max-width: 750px; /* ancho fijo máximo para desktop */
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 14.22px;
   position: relative;
+  padding: 0 16px; /* margen lateral en mobile */
+  box-sizing: border-box;
+  overflow: visible; /* permite que las flechas sean clicables */
 }
 
+/* Flechas */
 .home-testimonial-slider__arrow {
   cursor: pointer;
   flex: 0 0 auto;
-  transition: transform 0.1s;
+  transition: none; /* sin rebote */
   z-index: 10;
 }
-.home-testimonial-slider__arrow:hover {
-  transform: scale(0.9);
-}
 
-/* Hover naranja */
 .home-testimonial-slider__arrow:hover svg path {
   fill: #E0690A;
 }
 
-/* Track y slides */
+/* Contenedor de slides */
 .home-testimonial-slider__track {
   flex: 1 1 auto;
   overflow: hidden;
   display: flex;
+  position: relative;
+  z-index: 1;
 }
+
 .home-testimonial-slider__slide {
   flex: 0 0 100%;
   display: none;
   justify-content: center;
 }
+
+/* Fijamos altura mínima y máxima para que todas las slides sean iguales */
+.home-testimonial-slider__slide.active,
+.home-testimonial-slider__slide {
+  height: 400px; /* puedes ajustar según tu diseño */
+}
+
 .home-testimonial-slider__slide.active {
   display: flex;
 }
 
-/* Box */
+/* Caja principal del testimonio */
 .home-testimonial-box {
   flex: 1;
-  padding: 21.33px;
+  padding: 24px;
   background: #fff;
-  box-shadow: 0px 1.78px 3.56px #DDE1E6;
-  border-radius: 17.78px;
-  outline: 0.89px solid #DDE1E6;
-  outline-offset: -0.89px;
+  box-shadow: 0px 2px 4px #DDE1E6;
+  border-radius: 18px;
+  outline: 1px solid #DDE1E6;
+  outline-offset: -1px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14.22px;
+  gap: 16px;
+  text-align: center;
+  max-width: 100%;
+  height: 100%; /* ocupa toda la altura del slide */
+  box-sizing: border-box;
 }
 
-/* Avatar redondeado */
-.home-testimonial-box__avatar {
-  width: 85.33px;
-  height: 85.33px;
+/* Avatar */
+.home-testimonial-box__avatar-wrapper {
+  width: 85px;
+  height: 85px;
   border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-testimonial-box__avatar {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  object-position: top center;
 }
 
 /* Detalles */
 .home-testimonial-box__details {
   text-align: center;
 }
+
 .home-testimonial-box__author {
   margin: 0;
   color: #22527F;
-  font-size: 21.33px;
-  font-weight: 500;
-}
-.home-testimonial-box__role {
-  margin: 0;
-  color: #22527F;
-  font-size: 16px;
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 
-/* Texto */
-.home-testimonial-box__text {
-  max-width: 615.11px;
+.home-testimonial-box__role {
   margin: 0;
-  text-align: center;
-  color: #22527F;
-  font-size: 14.22px;
-  line-height: 14.22px;
+  color: #667085;
+  font-size: 0.95rem;
+}
+
+/* Texto principal */
+.home-testimonial-box__text {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #333;
+  max-width: 600px;
 }
 
 /* Logo */
-.home-testimonial-box__logo {
-  width: auto;
-  height: 56.89px;
-  object-fit: contain;
+.home-testimonial-box__logo-wrapper {
   margin-top: 8px;
 }
-@media (max-width: 600px) {
+
+.home-testimonial-box__logo {
+  max-width: 120px;
+  height: auto;
+}
+
+/* -------------------- 📱 Responsive -------------------- */
+@media (max-width: 768px) {
   .home-testimonial-slider {
-    width: 100vw;
-    max-width: 430px;
-    min-width: 0;
-    margin: 0 auto;
-    gap: 8px;
-    padding: 0 8px;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 20px;
   }
 
   .home-testimonial-slider__arrow {
-    width: 38px;
-    height: 38px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     z-index: 2;
   }
 
-  .home-testimonial-slider__arrow svg {
-    width: 22px;
-    height: 22px;
+  .home-testimonial-slider__arrow--prev {
+    left: 8px;
+  }
+
+  .home-testimonial-slider__arrow--next {
+    right: 8px;
   }
 
   .home-testimonial-slider__track {
-    flex: 1 1 auto;
     width: 100%;
-    min-width: 0;
-    display: flex;
-    justify-content: center;
   }
 
+  .home-testimonial-slider__slide.active,
   .home-testimonial-slider__slide {
-    width: 100%;
-    min-width: 0;
-    max-width: 100%;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    /* Mantén gap: 0 para compactar */
-  }
-
-  .home-testimonial-slider__slide.active {
-    display: flex;
+    height: 380px; /* altura fija un poco menor en mobile */
   }
 
   .home-testimonial-box {
-    width: 100%;
-    min-width: 0;
+    padding: 20px;
     max-width: 100%;
-    box-sizing: border-box;
-    padding: 18px 8px 18px 8px;
-    border-radius: 17px;
     gap: 12px;
-  }
-
-  .home-testimonial-box__avatar {
-    width: 70px;
-    height: 70px;
-    min-width: 70px;
-    min-height: 70px;
-    margin-bottom: 8px;
-  }
-
-  .home-testimonial-box__details {
-    width: 100%;
-    text-align: center;
-  }
-
-  .home-testimonial-box__author {
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 1.1;
-    margin-bottom: 0;
-  }
-
-  .home-testimonial-box__role {
-    font-size: 14px;
-    line-height: 1.1;
-    margin-bottom: 0;
+    height: 100%;
   }
 
   .home-testimonial-box__text {
-    max-width: 100%;
-    font-size: 13px;
-    line-height: 17px;
-    text-align: center;
-    margin: 0 0 10px 0;
-    padding: 0;
+    font-size: 0.95rem;
   }
 
   .home-testimonial-box__logo {
-    max-height: 44px;
-    height: 44px;
-    width: auto;
-    margin-top: 0;
+    max-width: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-testimonial-box {
+    padding: 16px;
+  }
+
+  .home-testimonial-box__avatar-wrapper {
+    width: 70px;
+    height: 70px;
+  }
+
+  .home-testimonial-box__author {
+    font-size: 1rem;
+  }
+
+  .home-testimonial-box__text {
+    font-size: 0.9rem;
+  }
+
+  .home-testimonial-box__logo {
+    max-width: 80px;
+  }
+
+  .home-testimonial-slider__slide.active,
+  .home-testimonial-slider__slide {
+    height: 360px; /* altura aún más pequeña en pantallas muy pequeñas */
   }
 }
