@@ -71,6 +71,9 @@
     font-size: 42px !important; 
     line-height: 1.2;
     color: #ffffff !important;
+    background-color: rgba(0, 0, 0, 0.4); /* mismo fondo que el texto */
+    padding: 8px 12px;
+    border-radius: 6px;
   }
 
   .custom-banner__text {
@@ -78,5 +81,8 @@
     line-height: 1.5;
     color: #ffffff !important;
     text-align: justify;
+    background-color: rgba(0, 0, 0, 0.4); /* fondo semitransparente */
+    padding: 8px 12px;
+    border-radius: 6px;
   }
 }
