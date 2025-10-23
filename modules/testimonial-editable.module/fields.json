@@ -1,0 +1,88 @@
+[
+  {
+    "children": [
+      {
+        "default": {
+          "size_type": "auto",
+          "src": "",
+          "alt": null,
+          "loading": "lazy"
+        },
+        "display_width": null,
+        "id": "56947a3d-de84-cfe6-0ac2-cb5ef7f175c0",
+        "label": "Imagen",
+        "locked": false,
+        "name": "image_field",
+        "required": false,
+        "resizable": true,
+        "responsive": true,
+        "show_loading": false,
+        "type": "image"
+      },
+      {
+        "allow_new_line": false,
+        "default": "Nombre Apellido",
+        "display_width": null,
+        "id": "ced85427-7150-7400-724e-21f7fbcd3307",
+        "label": "Nombre",
+        "locked": false,
+        "name": "nombre",
+        "required": false,
+        "type": "text"
+      },
+      {
+        "allow_new_line": false,
+        "default": "Cargo en la empresa",
+        "display_width": null,
+        "id": "63a67279-fca7-dbea-2709-afdd00e90186",
+        "label": "Cargo",
+        "locked": false,
+        "name": "cargo",
+        "required": false,
+        "type": "text"
+      },
+      {
+        "allow_new_line": false,
+        "default": "Breve descripción del testimonio",
+        "display_width": null,
+        "id": "870856f5-0793-6947-3fa9-5bb0470e3473",
+        "label": "Testimonio",
+        "locked": false,
+        "name": "testimonio",
+        "required": false,
+        "type": "text"
+      },
+      {
+        "default": {
+          "size_type": "auto",
+          "src": "",
+          "alt": null,
+          "loading": "lazy"
+        },
+        "display_width": null,
+        "id": "e0401be1-4c6d-6aba-3a26-7e7037a06f85",
+        "label": "Logo",
+        "locked": false,
+        "name": "logo",
+        "required": false,
+        "resizable": true,
+        "responsive": true,
+        "show_loading": false,
+        "type": "image"
+      }
+    ],
+    "default": [],
+    "display_width": null,
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "id": "72280d48-a464-16a5-8839-a5a61df89558",
+    "label": "Slide",
+    "locked": false,
+    "name": "slide",
+    "occurrence": {},
+    "required": false,
+    "tab": "CONTENT",
+    "type": "group",
+    "repeater": true
+  }
+]
