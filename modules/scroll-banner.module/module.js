@@ -1,18 +1,22 @@
+window.addEventListener('load', () => {
   const section = document.querySelector('.horizontal-scroll-section');
-  const wrapper = section.querySelector('.horizontal-scroll-wrapper');
+  if (!section) return;
 
+  const wrapper = section.querySelector('.horizontal-scroll-wrapper');
   let scrollX = 0;
-  let maxScroll;
+  let maxScroll = 0;
 
   const updateScrollLimits = () => {
     maxScroll = wrapper.scrollWidth - section.clientWidth;
+    if (maxScroll < 0) maxScroll = 0;
   };
 
   updateScrollLimits();
   window.addEventListener('resize', updateScrollLimits);
 
   section.addEventListener('wheel', (e) => {
-    if (Math.abs(e.deltaY) < Math.abs(e.deltaX)) return; // ignorar scrolls diagonales
+    // Solo vertical → convertimos en horizontal
+    if (Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
 
     e.preventDefault();
     scrollX += e.deltaY;
@@ -20,7 +24,7 @@
     wrapper.style.transform = `translateX(-${scrollX}px)`;
   }, { passive: false });
 
-  // Opcional: scroll táctil en mobile
+  // Scroll táctil
   let startY = 0;
   section.addEventListener('touchstart', (e) => {
     startY = e.touches[0].clientY;
@@ -35,3 +39,8 @@
       wrapper.style.transform = `translateX(-${scrollX}px)`;
     }
   }, { passive: false });
+
+  // Recalcular si HubSpot edita dinámicamente
+  const observer = new MutationObserver(updateScrollLimits);
+  observer.observe(wrapper, { childList: true, subtree: true });
+});

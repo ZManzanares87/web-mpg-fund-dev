@@ -1,1 +1,83 @@
-[ ]
+[
+ {
+  "children": [
+   {
+    "choices": [
+     [
+      "grande",
+      "grande"
+     ],
+     [
+      "pequeña",
+      "pequeña"
+     ],
+     [
+      "imagen",
+      "imagen"
+     ]
+    ],
+    "display": "select",
+    "display_width": null,
+    "id": "57512d89-2d55-055c-5dec-ff51257b45c8",
+    "label": "tipo_card",
+    "locked": false,
+    "multiple": false,
+    "name": "tipo_card",
+    "preset": null,
+    "reordering_enabled": true,
+    "required": false,
+    "type": "choice"
+   },
+   {
+    "allow_new_line": false,
+    "display_width": null,
+    "id": "9bb59055-08e6-b980-5174-e9234db76c01",
+    "label": "titulo",
+    "locked": false,
+    "name": "titulo",
+    "required": false,
+    "type": "text"
+   },
+   {
+    "allow_new_line": false,
+    "display_width": null,
+    "id": "bd953cae-7e04-ca5a-e3b2-9a8a65255341",
+    "label": "texto",
+    "locked": false,
+    "name": "texto",
+    "required": false,
+    "type": "text"
+   },
+   {
+    "default": {
+     "size_type": "auto",
+     "src": "",
+     "alt": null,
+     "loading": "lazy"
+    },
+    "display_width": null,
+    "id": "0d24be64-b197-825c-78a3-20953ffc4e82",
+    "label": "imagen",
+    "locked": false,
+    "name": "imagen",
+    "required": false,
+    "resizable": true,
+    "responsive": true,
+    "show_loading": false,
+    "type": "image"
+   }
+  ],
+  "default": [],
+  "display_width": null,
+  "expanded": false,
+  "group_occurrence_meta": null,
+  "id": "1a069135-b0d7-6f64-aa11-13f45988d903",
+  "label": "Cards",
+  "locked": false,
+  "name": "cards",
+  "occurrence": {},
+  "required": false,
+  "tab": "CONTENT",
+  "type": "group"
+ }
+]
