@@ -39,14 +39,14 @@
     "type": "text"
    },
    {
-    "allow_new_line": false,
+    "default": "Escribe aquí un texto",
     "display_width": null,
-    "id": "bd953cae-7e04-ca5a-e3b2-9a8a65255341",
-    "label": "texto",
+    "id": "677f22a2-2728-524a-0c94-d61ece4783e2",
+    "label": "Descripcion",
     "locked": false,
-    "name": "texto",
+    "name": "descripcion",
     "required": false,
-    "type": "text"
+    "type": "richtext"
    },
    {
     "default": {

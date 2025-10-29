@@ -61,6 +61,15 @@
   border-radius: 10px;
 }
 
+.square-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      
+  border-radius: 10px;    
+  display: block;         
+}
+
+
 /* Tipografía */
 .Memoria1 {
   font-size: 32px;

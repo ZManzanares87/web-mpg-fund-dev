@@ -23,9 +23,12 @@
                 </svg>
               </div>
             </div>
-            <div class="BodyText">{{ card.texto }}</div>
-          </div>
 
+            <!-- Texto enriquecido -->
+            <div class="BodyText">
+              {{card.descripcion}} 
+            </div>
+          </div>
         {% endif %}
       </div>
     {% endfor %}
