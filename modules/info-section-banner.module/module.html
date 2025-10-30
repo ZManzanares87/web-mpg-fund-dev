@@ -1,35 +1,20 @@
-<!-- -------------------VERSIÓN RIGHT-------------------- -->
+<!-- ===================== VERSIÓN RIGHT ===================== -->
 {% if module.variant == 'right' %}
 <section class="info-section">
 
-  <!-- Versión escritorio -->
+  <!-- Desktop -->
   <div class="info-section__container info-section__container--desktop">
     <div class="info-section__block">
-
       <div class="info-card__content">
-        <h2 class="info-card__title">
-          {{ module.campos_right.titulo_section|escape_html }}
-        </h2>
-        <p class="info-card__text">
-          {{ module.campos_right.descripcion_section }}
-        </p>
+        <h2 class="info-card__title">{{ module.campos_right.titulo_section|escape_html }}</h2>
+        <p class="info-card__text">{{ module.campos_right.descripcion_section }}</p>
 
-        {# --- BOTÓN --- #}
         {% set link = module.campos_right.boton.enlace_info_section %}
         {% set href = link.url.href %}
-        {% if link.url.type == "EMAIL_ADDRESS" %}
-          {% set href = "mailto:" ~ href %}
-        {% elif link.url.type == "PHONE_NUMBER" %}
-          {% set href = "tel:" ~ href %}
-        {% endif %}
+        {% if link.url.type == "EMAIL_ADDRESS" %} {% set href = "mailto:" ~ href %} {% elif link.url.type == "PHONE_NUMBER" %} {% set href = "tel:" ~ href %} {% endif %}
 
         <div class="info-card__link">
-          <a 
-            {% if link.url.type == "CALL_TO_ACTION" %} href="{{ href }}" {% else %} href="{{ href|escape_url }}" {% endif %}
-            {% if link.open_in_new_tab %} target="_blank"{% endif %}
-            {% if link.rel %} rel="{{ link.rel|escape_attr }}"{% endif %}
-            aria-label="{{ module.campos_right.boton.texto_enlace|default('Abrir enlace')|escape_attr }}"
-          >
+          <a href="{{ href|escape_url }}" {% if link.open_in_new_tab %} target="_blank"{% endif %} {% if link.rel %} rel="{{ link.rel|escape_attr }}"{% endif %}>
             {{ module.campos_right.boton.texto_enlace|escape_html }}
             <svg class="info-card__icon" width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M4.66663 10.5H16.3333" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -41,60 +26,28 @@
 
       <div class="info-section__image">
         {% if module.campos_right.imagen_section.src %}
-          {% set sizeAttrs = 'width="' ~ module.campos_right.imagen_section.width|escape_attr ~ '" height="' ~ module.campos_right.imagen_section.height|escape_attr ~ '"' %}
-          {% if module.campos_right.imagen_section.size_type == 'auto' %}
-            {% set sizeAttrs = 'style="max-width:100%;height:auto;"' %}
-          {% elif module.campos_right.imagen_section.size_type == 'auto_custom_max' %}
-            {% set sizeAttrs = 'width="' ~ module.campos_right.imagen_section.max_width|escape_attr ~ '" height="' ~ module.campos_right.imagen_section.max_height|escape_attr ~ '" style="max-width:100%;height:auto;"' %}
-          {% endif %}
-          {% set loadingAttr = module.campos_right.imagen_section.loading != 'disabled' ? 'loading="' ~ module.campos_right.imagen_section.loading|escape_attr ~ '"' : '' %}
-          <img src="{{ module.campos_right.imagen_section.src|escape_url }}" 
-               alt="{{ module.campos_right.imagen_section.alt|escape_attr }}" 
-               {{ loadingAttr }} {{ sizeAttrs }}>
+          <img src="{{ module.campos_right.imagen_section.src|escape_url }}" alt="{{ module.campos_right.imagen_section.alt|escape_attr }}">
         {% endif %}
       </div>
-
     </div>
   </div>
 
-  <!-- Móvil -->
+  <!-- Mobile -->
   <div class="info-section__container info-section__container--mobile">
     <div class="info-card-mobile">
       {% if module.campos_right.mobile_img.src %}
-        {% set sizeAttrs = 'width="{{ module.campos_right.mobile_img.width|escape_attr }}" height="{{ module.campos_right.mobile_img.height|escape_attr }}"' %}
-        {% if module.campos_right.mobile_img.size_type == 'auto' %}
-          {% set sizeAttrs = 'width="{{ module.campos_right.mobile_img.width|escape_attr }}" height="{{ module.campos_right.mobile_img.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
-        {% elif module.campos_right.mobile_img.size_type == 'auto_custom_max' %}
-          {% set sizeAttrs = 'width="{{ module.campos_right.mobile_img.max_width|escape_attr }}" height="{{ module.campos_right.mobile_img.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
-        {% endif %}
-        {% set loadingAttr = module.campos_right.mobile_img.loading != 'disabled' ? 'loading="{{ module.campos_right.mobile_img.loading|escape_attr }}"' : '' %}
-        <img src="{{ module.campos_right.mobile_img.src|escape_url }}" 
-             alt="{{ module.campos_right.mobile_img.alt|escape_attr }}" 
-             {{ loadingAttr }} {{ sizeAttrs }}>
+        <img src="{{ module.campos_right.mobile_img.src|escape_url }}" alt="{{ module.campos_right.mobile_img.alt|escape_attr }}">
       {% endif %}
 
       <div class="info-card-mobile__content">
-        <h2 class="info-card-mobile__title">
-          {{ module.titulo_mobile|default(module.campos_right.titulo_section)|escape_html }}
-        </h2>
-        <p class="info-card-mobile__text">
-          {{ module.descripcion_mobile|default(module.campos_right.descripcion_section) }}
-        </p>
+        <h2 class="info-card-mobile__title">{{ module.titulo_mobile|default(module.campos_right.titulo_section)|escape_html }}</h2>
+        <p class="info-card-mobile__text">{{ module.descripcion_mobile|default(module.campos_right.descripcion_section) }}</p>
 
         {% set mlink = module.boton_mobile.enlace|default(module.campos_right.boton.enlace_info_section) %}
         {% set mhref = mlink.url.href %}
-        {% if mlink.url.type == "EMAIL_ADDRESS" %}
-          {% set mhref = "mailto:" ~ mhref %}
-        {% elif mlink.url.type == "PHONE_NUMBER" %}
-          {% set mhref = "tel:" ~ mhref %}
-        {% endif %}
+        {% if mlink.url.type == "EMAIL_ADDRESS" %} {% set mhref = "mailto:" ~ mhref %} {% elif mlink.url.type == "PHONE_NUMBER" %} {% set mhref = "tel:" ~ mhref %} {% endif %}
 
-        <a 
-          {% if mlink.url.type == "CALL_TO_ACTION" %} href="{{ mhref }}" {% else %} href="{{ mhref|escape_url }}" {% endif %}
-          {% if mlink.open_in_new_tab %} target="_blank"{% endif %}
-          {% if mlink.rel %} rel="{{ mlink.rel|escape_attr }}"{% endif %}
-          class="info-card-mobile__link"
-        >
+        <a href="{{ mhref|escape_url }}" class="info-card-mobile__link" {% if mlink.open_in_new_tab %} target="_blank"{% endif %} {% if mlink.rel %} rel="{{ mlink.rel|escape_attr }}"{% endif %}>
           {{ module.boton_mobile.texto|default(module.campos_right.boton.texto_enlace)|escape_html }}
           <svg class="info-card-mobile__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M4.16666 10H15.8333" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -107,25 +60,15 @@
 
 </section>
 
-<!-- -------------VERSIÓN LEFT--------------- -->
+<!-- ===================== VERSIÓN LEFT ===================== -->
 {% elif module.variant == 'left' %}
 <section class="contact-section">
 
-  <!-- Versión escritorio -->
+  <!-- Desktop -->
   <div class="contact-section__container contact-section__container--desktop">
-
     <div class="contact-section__image">
       {% if module.campos_left.left_imagen_section.src %}
-        {% set sizeAttrs = 'width="{{ module.campos_left.left_imagen_section.width|escape_attr }}" height="{{ module.campos_left.left_imagen_section.height|escape_attr }}"' %}
-        {% if module.campos_left.left_imagen_section.size_type == 'auto' %}
-          {% set sizeAttrs = 'width="{{ module.campos_left.left_imagen_section.width|escape_attr }}" height="{{ module.campos_left.left_imagen_section.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
-        {% elif module.campos_left.left_imagen_section.size_type == 'auto_custom_max' %}
-          {% set sizeAttrs = 'width="{{ module.campos_left.left_imagen_section.max_width|escape_attr }}" height="{{ module.campos_left.left_imagen_section.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
-        {% endif %}
-        {% set loadingAttr = module.campos_left.left_imagen_section.loading != 'disabled' ? 'loading="{{ module.campos_left.left_imagen_section.loading|escape_attr }}"' : '' %}
-        <img src="{{ module.campos_left.left_imagen_section.src|escape_url }}" 
-             alt="{{ module.campos_left.left_imagen_section.alt|escape_attr }}" 
-             {{ loadingAttr }} {{ sizeAttrs }}>
+        <img src="{{ module.campos_left.left_imagen_section.src|escape_url }}" alt="{{ module.campos_left.left_imagen_section.alt|escape_attr }}">
       {% endif %}
     </div>
 
@@ -137,17 +80,9 @@
 
         <div class="contact-button-left">
           {% set href = module.campos_left.left_boton.left_btn_link.url.href %}
-          {% if module.campos_left.left_boton.left_btn_link.url.type is equalto "EMAIL_ADDRESS" %}
-            {% set href = "mailto:" + href %}
-          {% elif module.campos_left.left_boton.left_btn_link.url.type is equalto "PHONE_NUMBER" %}
-            {% set href = "tel:" + href %}
-          {% endif %}
+          {% if module.campos_left.left_boton.left_btn_link.url.type == "EMAIL_ADDRESS" %} {% set href = "mailto:" + href %} {% elif module.campos_left.left_boton.left_btn_link.url.type == "PHONE_NUMBER" %} {% set href = "tel:" + href %} {% endif %}
 
-          <a 
-            {% if module.campos_left.left_boton.left_btn_link.url.type is equalto "CALL_TO_ACTION" %} href="{{ href }}" {% else %} href="{{ href|escape_url }}" {% endif %}
-            {% if module.campos_left.left_boton.left_btn_link.open_in_new_tab %} target="_blank" {% endif %}
-            {% if module.campos_left.left_boton.left_btn_link.rel %} rel="{{ module.campos_left.left_boton.left_btn_link.rel|escape_attr }}" {% endif %}
-          >
+          <a href="{{ href|escape_url }}" {% if module.campos_left.left_boton.left_btn_link.open_in_new_tab %} target="_blank"{% endif %} {% if module.campos_left.left_boton.left_btn_link.rel %} rel="{{ module.campos_left.left_boton.left_btn_link.rel|escape_attr }}"{% endif %}>
             {% inline_text field="campos_left.left_boton.left_bton_txt" value="{{ module.campos_left.left_boton.left_bton_txt }}" %}
             <svg class="contact-card__icon" width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M4.66663 10.5H16.3333" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -157,10 +92,9 @@
         </div>
       </div>
     </div>
-
   </div>
 
-  <!-- Versión móvil -->
+  <!-- Mobile -->
   <div class="contact-section__container contact-section__container--mobile">
     <div class="contact-card-mobile">
       {% if module.campos_left.left_mobile_img.src %}
@@ -172,19 +106,14 @@
         <p class="contact-card-mobile__text">{{ module.campos_left.left_description_section }}</p>
 
         {% set href = module.campos_left.left_boton.left_btn_link.url.href %}
-        {% if module.campos_left.left_boton.left_btn_link.url.type is equalto "EMAIL_ADDRESS" %}
-          {% set href = "mailto:" + href %}
-        {% elif module.campos_left.left_boton.left_btn_link.url.type is equalto "PHONE_NUMBER" %}
-          {% set href = "tel:" + href %}
-        {% endif %}
+        {% if module.campos_left.left_boton.left_btn_link.url.type == "EMAIL_ADDRESS" %} {% set href = "mailto:" + href %} {% elif module.campos_left.left_boton.left_btn_link.url.type == "PHONE_NUMBER" %} {% set href = "tel:" + href %} {% endif %}
 
-        <a 
-          {% if module.campos_left.left_boton.left_btn_link.url.type is equalto "CALL_TO_ACTION" %} href="{{ href }}" {% else %} href="{{ href|escape_url }}" {% endif %}
-          {% if module.campos_left.left_boton.left_btn_link.open_in_new_tab %} target="_blank" {% endif %}
-          {% if module.campos_left.left_boton.left_btn_link.rel %} rel="{{ module.campos_left.left_boton.left_btn_link.rel|escape_attr }}" {% endif %}
-          class="contact-card-mobile__button"
-        >
+        <a href="{{ href|escape_url }}" class="contact-card-mobile__button" {% if module.campos_left.left_boton.left_btn_link.open_in_new_tab %} target="_blank"{% endif %} {% if module.campos_left.left_boton.left_btn_link.rel %} rel="{{ module.campos_left.left_boton.left_btn_link.rel|escape_attr }}"{% endif %}>
           {% inline_text field="campos_left.left_boton.left_bton_txt" value="{{ module.campos_left.left_boton.left_bton_txt }}" %}
+          <svg class="contact-card-mobile__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.16666 10H15.8333" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M10 4.16675L15.8333 10.0001L10 15.8334" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
         </a>
       </div>
     </div>

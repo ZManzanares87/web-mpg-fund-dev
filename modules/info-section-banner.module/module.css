@@ -48,7 +48,7 @@
   font-size: 42px;
   font-weight: 700;
   line-height: 1.1;
-  color: white;
+  color: #fff;
 }
 
 .info-card__text {
@@ -57,6 +57,7 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 1.4;
+  color: #fff;
 }
 
 .info-card__link a {
@@ -90,7 +91,7 @@
   flex-direction: row-reverse; 
 }
 
-/* =========== Versión móvil (≤576px) =========== */
+/* =========== Versión móvil right (≤576px) =========== */
 .info-section__container--mobile {
   display: none;
 }
@@ -159,6 +160,13 @@
   .info-card-mobile__icon {
     display: inline-block;
   }
+
+  /* Texto enriquecido forzado a blanco */
+  .info-card-mobile__content span,
+  .info-card-mobile__content p,
+  .info-card-mobile__content div {
+    color: #fff !important;
+  }
 }
 
 /* =========================================================
@@ -181,8 +189,8 @@
 
 /* ===== Versión escritorio ===== */
 .contact-section__container--desktop {
-  width: 1280px; /* igual que info-section */
-  max-width: 1280px; /* agregado para igualar completamente */
+  width: 1280px; 
+  max-width: 1280px;
   color: #fff;
   display: flex;
   flex: 1 1 0;
@@ -222,22 +230,18 @@
 .contact-card__title {
   margin: 0; 
   color: #fff;
-  font-family: 'Inter', sans-serif;
+  font-family: Inter, sans-serif;
   font-weight: 700; 
-  font-style: normal; 
   font-size: 42px;
-  line-height: 110%; 
-  letter-spacing: 0;
+  line-height: 1.1;
 }
 
 .contact-card__subtitle {
-  font-family: 'Inter', sans-serif;
+  font-family: Inter, sans-serif;
   color: #fff !important;
   font-weight: 500; 
-  font-style: normal; 
   font-size: 24px;
-  line-height: 110%; 
-  letter-spacing: 0;
+  line-height: 1.1;
 }
 
 .contact-card__text {
@@ -249,15 +253,12 @@
   line-height: 1.1;
 }
 
-/* Nueva descripción en desktop */
 .contact-card__description {
   width: 630px;        
   height: 66px;        
-  opacity: 1;          
-  transform: rotate(0deg);  
   margin: 0;
   color: #fff !important;
-  font-family: 'Inter', sans-serif;
+  font-family: Inter, sans-serif;
   font-size: 16px;
   line-height: 1.5;
   text-align: start;
@@ -278,17 +279,16 @@
 
 .contact-card__icon {
   display: inline-block;
+  stroke: currentColor; /* Asegura que el SVG tome el color del texto */
 }
 
-/* ===== Versión móvil (≤576px) ===== */
+/* ===== Versión móvil left (≤576px) ===== */
 .contact-section__container--mobile {
   display: none;
 }
 
 @media (max-width: 576px) {
-  .contact-section__container--desktop {
-    display: none;
-  }
+  .contact-section__container--desktop { display: none; }
 
   .contact-section__container--mobile {
     display: flex;
@@ -300,29 +300,12 @@
     display: flex;
     flex-direction: column;
     background: linear-gradient(221deg, #48709D 0%, #6F9B76 100%);
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
-    align-items: center;
-    gap: 10px;
-    padding: 18px 25px;
-  }
-
-  .contact-card-mobile__title {
-    margin: 0;
-    color: #fff !important;
-    font-family: Inter, sans-serif;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 1.1;
-  }
-
-  .contact-card-mobile__text {
-    margin: 0;
-    color: #fff !important;
-    font-family: Inter, sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 1.1;
+    align-items: flex-start;
+    gap: 25px;
+    padding: 32px 44px;
+    width: 100%;
   }
 
   .contact-card-mobile__image {
@@ -331,21 +314,39 @@
     display: block;
   }
 
-  /* Nueva descripción en mobile */
-  .contact-card-mobile__description {
-    margin: 0;
-    color: #fff;
-    font-family: Inter, sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-    text-align: center;
+  .contact-card-mobile__content {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
     width: 100%;
   }
 
+  .contact-card-mobile__title {
+    margin: 0;
+    color: #fff !important;
+    font-family: Inter, sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  .contact-card-mobile__text,
+  .contact-card-mobile__description {
+    margin: 0;
+    color: #fff !important;
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: left;
+    width: 100%;
+  }
+
+  /* Botón con flecha visible y alineada */
   .contact-card-mobile__button {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     font-family: Inter, sans-serif;
     font-size: 16px;
     font-weight: 800;
@@ -357,11 +358,25 @@
 
   .contact-card-mobile__icon {
     display: inline-block;
+    stroke: currentColor; /* SVG toma color del texto */
+  }
+
+  /* Texto enriquecido forzado a blanco */
+  .contact-card-mobile__content span,
+  .contact-card-mobile__content p,
+  .contact-card-mobile__content div {
+    color: #fff !important;
   }
 }
 
-.info-card-mobile__description a,
-.contact-card-mobile__description a {
-  color: #fff !important;
-  text-decoration: none;
+/* ================== Color blanco seguro solo para texto ================== */
+.info-card-mobile__text,
+.info-card-mobile__text span,
+.info-card-mobile__description,
+.info-card-mobile__description span,
+.contact-card-mobile__text,
+.contact-card-mobile__text span,
+.contact-card-mobile__description,
+.contact-card-mobile__description span {
+    color: #fff !important;
 }
