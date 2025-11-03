@@ -1,0 +1,23 @@
+<div class="blog-listing">
+    {% for content in contents %}
+    <div class="card">
+        <div class="image" 
+            {% if content.featured_image %}
+                style="background-image: url('{{ content.featured_image }}');"
+            {% endif %}>
+        </div>
+  <div class="content">
+    <a href="{{ content.absolute_url }}">
+        <span class="title">{{ content.name }}</span>
+    </a>
+    <p class="desc">
+        {{ content.post_list_content|striptags|truncatehtml(310) }}
+    </p>
+    <a class="action" href="{{ content.absolute_url }}">
+        {{ module.texto_boton }}
+        <span aria-hidden="true">→</span>
+    </a>
+</div>
+   </div>
+    {% endfor %}
+</div>
